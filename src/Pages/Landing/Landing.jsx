@@ -28,13 +28,22 @@ class Landing extends React.Component {
       campus,
       status
     });
-    console.log(result);
+
     // this.props.history.push("/projects");
   };
 
-  login = e => {
+  login = async e => {
     e.preventDefault();
-    this.props.history.push("/projects");
+    if (this.state.email === "" || this.state.password === "") {
+    } else {
+      const { email, password } = this.state;
+      const result = await axios.post("/auth/login", {
+        email,
+        password
+      });
+      //this.props.history.push("/projects");
+      console.log(result);
+    }
   };
 
   render() {
