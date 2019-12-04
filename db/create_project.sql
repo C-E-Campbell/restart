@@ -11,5 +11,6 @@ CREATE TABLE projects (
     postgres BOOLEAN DEFAULT FALSE
     mongo BOOLEAN DEFAULT FALSE,
     description VARCHAR NOT NULL,
-    linkedin VARCHAR
+    linkedin VARCHAR,
+   email VARCHAR NOT NULL
 );

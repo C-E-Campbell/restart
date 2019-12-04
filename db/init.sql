@@ -30,5 +30,6 @@ INSERT INTO projects (  user_id,
     redux FALSE,
     postgres FALSE
     mongo FALSE,
-    description )
-    VALUES (1,"poop","www.poop","poopwww", true, false, true , true, true, true,"i love me some poop")
+    description,
+    email )
+    VALUES (1,'poop','www.poop','poopwww', true, false, true , true, true, true,'i love me some poop', 'poop@poop.com')
