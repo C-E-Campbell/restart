@@ -1,0 +1,24 @@
+.single-container {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  align-items: center;
+  iframe {
+    margin: 0 auto;
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.411);
+  }
+}
+.btn-to-info {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h3 {
+    font-weight: 700;
+    color: #333;
+  }
+}

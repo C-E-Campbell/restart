@@ -1,8 +1,8 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-import Landing from "./Pages/Landing/Landing.jsx";
-import Projects from "./Pages/Projects/Projects.jsx";
-import SingleProject from "./Pages/SingleProject/SingleProjects.jsx";
+import React, { Component } from "react";
+import "./Projects.style.scss";
+import Sidebar from "../../Components/Sidebar/Sidebar";
+import Project from "../../Components/Project/Project";
+import MainContent from "../../Components/MainContent/MainContent";
 const DummyData = [
   {
     id: 1,
@@ -72,16 +72,30 @@ const DummyData = [
       "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/05/01/15/hippo-dung-life.jpg"
   }
 ];
-function App() {
-  return (
-    <React.Fragment>
-      <Switch>
-        <Route path="/" exact component={Landing} />
-        <Route path="/projects" exact component={Projects} />
-        <Route path="/project/:id" exact component={SingleProject} />
-      </Switch>
-    </React.Fragment>
-  );
+
+class Projects extends Component {
+  render() {
+    const mappedData = DummyData.map(project => {
+      return (
+        <Project
+          projectURL={project.projectURL}
+          id={project.id}
+          title={project.title}
+          creator={project.creator}
+          url={project.url}
+        />
+      );
+    });
+
+    return (
+      <div className="project-container">
+        <Sidebar />
+        <MainContent>
+          <div className="project-grid">{mappedData}</div>
+        </MainContent>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default Projects;

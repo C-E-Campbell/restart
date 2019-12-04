@@ -1,8 +1,8 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
-import Landing from "./Pages/Landing/Landing.jsx";
-import Projects from "./Pages/Projects/Projects.jsx";
-import SingleProject from "./Pages/SingleProject/SingleProjects.jsx";
+import "./SingleProject.style.scss";
+import CommentSidebar from "../../Components/CommentSidebar/CommentSidebar";
+import MainContent from "../../Components/MainContent/MainContent";
+
 const DummyData = [
   {
     id: 1,
@@ -72,16 +72,30 @@ const DummyData = [
       "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/05/01/15/hippo-dung-life.jpg"
   }
 ];
-function App() {
+
+export default function SingleProjects(props) {
+  // const myURl = DummyData.filter(project => {
+  //   // return project.id === props.match.params.id ? project.url : "NoVideo";
+  //   return "www.devtennis.xyz";
+  // });
   return (
-    <React.Fragment>
-      <Switch>
-        <Route path="/" exact component={Landing} />
-        <Route path="/projects" exact component={Projects} />
-        <Route path="/project/:id" exact component={SingleProject} />
-      </Switch>
-    </React.Fragment>
+    <div className="project-container">
+      <CommentSidebar />
+      <MainContent bgcolor={"#ccc"}>
+        <div className="single-container">
+          <iframe
+            title="project"
+            width="1260"
+            height="800"
+            src="https://www.devtennis.xyz"
+          ></iframe>
+
+          <div className="btn-to-info">
+            <h3>Project Info</h3>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+        </div>
+      </MainContent>
+    </div>
   );
 }
-
-export default App;

@@ -10,6 +10,16 @@ class Landing extends React.Component {
     };
   }
 
+  register = e => {
+    e.preventDefault();
+    this.props.history.push("/projects");
+  };
+
+  login = e => {
+    e.preventDefault();
+    this.props.history.push("/projects");
+  };
+
   render() {
     return (
       <div>
@@ -49,9 +59,13 @@ class Landing extends React.Component {
                     <option value="Mentor">Mentor</option>
                     <option value="Instructor">Instructor</option>
                   </select>
-                  <button>Register</button>
+                  <button onClick={e => this.register(e)}>Register</button>
                 </form>
-                <h6 onClick={() => this.setState({ formFlag: false })}>
+                <h6
+                  onClick={() => {
+                    this.setState({ formFlag: false });
+                  }}
+                >
                   Already have account?
                 </h6>
               </div>
@@ -104,9 +118,13 @@ class Landing extends React.Component {
                 <form className="landing-form">
                   <input placeholder="Email" />
                   <input placeholder="Password" />
-                  <button>Login</button>
+                  <button onClick={e => this.login(e)}>Login</button>
                 </form>
-                <h6 onClick={() => this.setState({ formFlag: true })}>
+                <h6
+                  onClick={() => {
+                    this.setState({ formFlag: true });
+                  }}
+                >
                   Register Here
                 </h6>
               </div>
