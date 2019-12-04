@@ -12,5 +12,5 @@ CREATE TABLE projects (
     mongo BOOLEAN DEFAULT FALSE,
     description VARCHAR NOT NULL,
     linkedin VARCHAR,
-   email VARCHAR NOT NULL
+    email VARCHAR NOT NULL
 );

@@ -15,7 +15,7 @@ export default function SingleProjects(props) {
       <CommentSidebar />
       <MainContent bgcolor={"#ccc"}>
         <div className="single-container">
-          <div style={{ margin: "0 auto" }}>
+          <div id="top" style={{ margin: "0 auto" }}>
             <iframe
               title="project"
               width="1260"
@@ -24,13 +24,13 @@ export default function SingleProjects(props) {
             ></iframe>
 
             <div className="btn-to-info">
-              <Link id="top" to="bottom">
+              <Link duration={700} smooth={true} to="bottom">
                 Project Details <i class="fas fa-chevron-down"></i>
               </Link>
             </div>
           </div>
 
-          <div className="single-project-details">
+          <div id="bottom" className="single-project-details">
             <header>
               <div className="header-inner-container">
                 <h2>Project Name</h2>
@@ -72,7 +72,7 @@ export default function SingleProjects(props) {
             </div>
           </div>
           <div className="btn-to-info">
-            <Link id="bottom" to="top">
+            <Link to="top">
               Live Project <i class="fas fa-chevron-up"></i>
             </Link>
           </div>
