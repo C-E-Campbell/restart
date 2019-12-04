@@ -61,7 +61,7 @@ module.exports = {
     const project = await db.get_project_info(id);
     return res.status(200).send(project);
   },
-  addGallery: async (req, res, next) => {
+  addProject: async (req, res, next) => {
     const db = req.app.get("db");
     const {
       project_id,
