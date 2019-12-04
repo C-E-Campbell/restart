@@ -3,7 +3,6 @@ import "./SingleProject.style.scss";
 import CommentSidebar from "../../Components/CommentSidebar/CommentSidebar";
 import logo from "../../Assets/defaultUser.png";
 import MainContent from "../../Components/MainContent/MainContent";
-
 import { Link } from "react-scroll";
 
 export default function SingleProjects(props) {
@@ -25,7 +24,7 @@ export default function SingleProjects(props) {
             ></iframe>
 
             <div className="btn-to-info">
-              <Link>
+              <Link id="top" to="bottom">
                 Project Details <i class="fas fa-chevron-down"></i>
               </Link>
             </div>
@@ -73,7 +72,7 @@ export default function SingleProjects(props) {
             </div>
           </div>
           <div className="btn-to-info">
-            <Link>
+            <Link id="bottom" to="top">
               Live Project <i class="fas fa-chevron-up"></i>
             </Link>
           </div>

@@ -2,17 +2,38 @@ import React from "react";
 import "./Landing.style.scss";
 import logo from "../../Assets/DevMtnLogo.png";
 import video from "../../Assets/landing-video.mp4";
+import axios from "axios";
 class Landing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      formFlag: false
+      formFlag: false,
+      first: "",
+      last: "",
+      email: "",
+      password: "",
+      campus: null,
+      status: null
     };
   }
 
-  register = e => {
+  register = async e => {
     e.preventDefault();
-    this.props.history.push("/projects");
+    const { first, last, email, password, campus, status } = this.state;
+    const result = await axios
+      .post("/auth/register", {
+        first,
+        last,
+        email,
+        password,
+        campus,
+        status
+      })
+      .then(res => console.log(res.data))
+      .catch(err => {
+        console.log(err);
+      });
+    // this.props.history.push("/projects");
   };
 
   login = e => {
@@ -39,20 +60,44 @@ class Landing extends React.Component {
                 <h3>Basecamp to Summit. Showcase your climb.</h3>
 
                 <form className="landing-form">
-                  <input placeholder="First Name" />
-                  <input placeholder="Last Name" />
-                  <input placeholder="Email" />
-                  <input placeholder="Password" />
-                  <select name="campus" id="campus">
-                    <option selected disabled value="none">
+                  <input
+                    placeholder="First Name"
+                    onChange={e => {
+                      this.setState({ first: e.target.value });
+                    }}
+                  />
+                  <input
+                    placeholder="Last Name"
+                    onChange={e => this.setState({ last: e.target.value })}
+                  />
+                  <input
+                    placeholder="Email"
+                    type="email"
+                    onChange={e => this.setState({ email: e.target.value })}
+                  />
+                  <input
+                    placeholder="Password"
+                    type="password"
+                    onChange={e => this.setState({ password: e.target.value })}
+                  />
+                  <select
+                    onChange={e => this.setState({ campus: e.target.value })}
+                    name="campus"
+                    id="campus"
+                  >
+                    <option defaultValue disabled value="none">
                       Choose your campus
                     </option>
                     <option value="Lehi">Lehi</option>
                     <option value="Dallas">Dallas</option>
                     <option value="Phoenix">Phoenix</option>
                   </select>
-                  <select name="campus" id="campus">
-                    <option selected disabled value="none">
+                  <select
+                    onChange={e => this.setState({ status: e.target.value })}
+                    name="statuss"
+                    id="status"
+                  >
+                    <option defaultValue disabled value="none">
                       Choose Student, Mentor, Instructor
                     </option>
                     <option value="Student">Student</option>
