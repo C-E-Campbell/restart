@@ -28,8 +28,13 @@ class Landing extends React.Component {
       campus,
       status
     });
+<<<<<<< HEAD
     console.log(result);
     // this.props.history.push("/projects");
+=======
+
+    this.props.history.push("/projects");
+>>>>>>> bc916b1d1d0e36b53e77461f8773975ed132fe11
   };
 
   login = async e => {
@@ -41,7 +46,7 @@ class Landing extends React.Component {
         email,
         password
       });
-      //this.props.history.push("/projects");
+      this.props.history.push("/projects");
       console.log(result);
     }
   };
@@ -166,8 +171,14 @@ class Landing extends React.Component {
                 </h3>
 
                 <form className="landing-form">
-                  <input placeholder="Email" />
-                  <input placeholder="Password" />
+                  <input
+                    placeholder="Email"
+                    onChange={e => this.setState({ email: e.target.value })}
+                  />
+                  <input
+                    placeholder="Password"
+                    onChange={e => this.setState({ password: e.target.value })}
+                  />
                   <button onClick={e => this.login(e)}>Login</button>
                 </form>
                 <h6

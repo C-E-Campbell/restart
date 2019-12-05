@@ -28,14 +28,7 @@ function Sidebar() {
           <li>Profile</li>
         </Link>
         <Link
-          className="sidebar-link"
-          data-aos="fade-right"
-          data-aos-delay="150"
-          data-aos-easing="ease-in"
-        >
-          <li>Dash</li>
-        </Link>
-        <Link
+          to="/idea"
           className="sidebar-link"
           data-aos="fade-right"
           data-aos-delay="200"
