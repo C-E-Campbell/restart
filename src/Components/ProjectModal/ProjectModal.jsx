@@ -4,39 +4,52 @@ class ProjectModal extends Component {
   constructor() {
     super();
     this.state = {
-      projectName: "",
+      project_name: "",
       email: "",
       linkedin: "",
-      siteUrl: "",
-      githubUrl: "",
+      host_url: "",
+      github: "",
       description: "",
       react: false,
-      node: false,
+      nodejs: false,
       javascript: false,
       redux: false,
-      postgresql: false,
-      mongodb: false
+      postgres: false,
+      mongo: false
     };
   }
 
   submitHandler = e => {
     e.preventDefault();
     const {
-      projectName,
+      project_name,
       email,
       linkedin,
-      siteUrl,
-      githubUrl,
-      description
+      host_url,
+      github,
+      description,
+      react,
+      nodejs,
+      javascript,
+      redux,
+      postgres,
+      mongo
     } = this.state;
 
     axios.post("/auth/addProject", {
-      projectName,
+      // user: 2,
+      project_name,
       email,
       linkedin,
-      siteUrl,
-      githubUrl,
-      description
+      host_url,
+      github,
+      description,
+      react,
+      nodejs,
+      javascript,
+      redux,
+      postgres,
+      mongo
     });
   };
 
@@ -46,7 +59,7 @@ class ProjectModal extends Component {
         <form onSubmit={e => this.submitHandler(e)}>
           <input
             placeholder="Project Name"
-            onChange={e => this.setState({ projectName: e.target.value })}
+            onChange={e => this.setState({ project_name: e.target.value })}
           />
           <input
             placeholder="Email"
@@ -58,11 +71,11 @@ class ProjectModal extends Component {
           />
           <input
             placeholder="Site Url"
-            onChange={e => this.setState({ siteUrl: e.target.value })}
+            onChange={e => this.setState({ host_url: e.target.value })}
           />
           <input
             placeholder="Github Url"
-            onChange={e => this.setState({ githubUrl: e.target.value })}
+            onChange={e => this.setState({ github: e.target.value })}
           />
           <input
             type="checkbox"
@@ -80,11 +93,11 @@ class ProjectModal extends Component {
           <label for="javascript">JavaScript</label>
           <input
             type="checkbox"
-            id="node"
-            name="node"
-            onChange={e => this.setState({ node: e.target.checked })}
+            id="nodejs"
+            name="nodejs"
+            onChange={e => this.setState({ nodejs: e.target.checked })}
           />
-          <label for="node">Node</label>
+          <label for="nodejs">nodejs</label>
           <input
             type="checkbox"
             id="redux"
@@ -96,16 +109,16 @@ class ProjectModal extends Component {
             type="checkbox"
             id="mongodb"
             name="mongodb"
-            onChange={e => this.setState({ mongodb: e.target.checked })}
+            onChange={e => this.setState({ mongo: e.target.checked })}
           />
           <label for="mongodb">MongoDB</label>
           <input
             type="checkbox"
-            id="postgresql"
-            name="postgresql"
-            onChange={e => this.setState({ postgresql: e.target.checked })}
+            id="postgres"
+            name="postgres"
+            onChange={e => this.setState({ postgres: e.target.checked })}
           />
-          <label for="postgresql">PostgreSQL</label>
+          <label for="postgres">postgres</label>
           <textarea
             placeholder="Project Description"
             onChange={e => this.setState({ description: e.target.value })}

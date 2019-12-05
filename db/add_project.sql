@@ -1,4 +1,5 @@
 INSERT INTO projects (
+  
     project_name,
     host_url,
     github,

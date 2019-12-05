@@ -63,6 +63,7 @@ module.exports = {
     const db = req.app.get("db");
     console.log("body:", req.body);
     const {
+      // user,
       project_name,
       host_url,
       github,
@@ -77,6 +78,7 @@ module.exports = {
       email
     } = req.body;
     const project = await db.add_project([
+      // user,
       project_name,
       host_url,
       github,

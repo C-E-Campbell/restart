@@ -28,13 +28,8 @@ class Landing extends React.Component {
       campus,
       status
     });
-<<<<<<< HEAD
-    console.log(result);
-    // this.props.history.push("/projects");
-=======
 
     this.props.history.push("/projects");
->>>>>>> bc916b1d1d0e36b53e77461f8773975ed132fe11
   };
 
   login = async e => {
