@@ -61,9 +61,10 @@ module.exports = {
   // },
   addProject: async (req, res, next) => {
     const db = req.app.get("db");
+
     console.log("body:", req.body);
     const {
-      // user,
+      id,
       project_name,
       host_url,
       github,
@@ -75,25 +76,32 @@ module.exports = {
       mongo,
       description,
       linkedin,
-      email
+      email,
+      first,
+      last
     } = req.body;
-    const project = await db.add_project([
-      // user,
-      project_name,
-      host_url,
-      github,
-      react,
-      javascript,
-      nodejs,
-      redux,
-      postgres,
-      mongo,
-      description,
-      linkedin,
-      email
-    ]);
-
-    console.log("project:", project);
-    return res.status(200).send(project);
+    try {
+      const project = await db.add_project([
+        id,
+        project_name,
+        host_url,
+        github,
+        react,
+        javascript,
+        nodejs,
+        redux,
+        postgres,
+        mongo,
+        description,
+        linkedin,
+        email,
+        first,
+        last
+      ]);
+      console.log("project:", project);
+      return res.status(200).send(project);
+    } catch (error) {
+      console.log(error);
+    }
   }
 };

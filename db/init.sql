@@ -9,7 +9,8 @@ CREATE TABLE users (
     password VARCHAR NOT NULL,
     campus VARCHAR NOT NULL,
     status VARCHAR NOT NULL,
-    admin BOOLEAN DEFAULT FALSE
+    admin BOOLEAN DEFAULT FALSE,
+    linkedin VARCHAR NOT NULL
 );
 INSERT INTO users (first, last, email, password, campus, status)
 VALUES ('Sean', 'Robnett', 'sean@sean', 'sean123', 'phoenix', 'student', true);
@@ -20,7 +21,8 @@ VALUES ('Nick', 'Tillinghast', 'nick@nick', 'nick123', 'phoenix', 'student', tru
 INSERT INTO users (first, last, email, password, campus, status)
 VALUES ('Isaac', 'Hansen', 'isaac@isaac', 'isaac123', 'phoenix', 'student');
 
-INSERT INTO projects (  user_id,
+INSERT INTO projects (  
+    user_id,
     project_name,
     host_url,
     github,

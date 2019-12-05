@@ -47,3 +47,9 @@
   height: 100px;
   width: 120px;
 }
+@media (max-width: 1300px) {
+  .sidebar-link {
+    font-size: 1rem;
+    margin: 0.5rem auto;
+  }
+}
