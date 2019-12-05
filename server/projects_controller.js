@@ -95,5 +95,30 @@ module.exports = {
 
     console.log("project:", project);
     return res.status(200).send(project);
+  },
+  addFeedback: async (req, res, next) => {
+    const db = req.app.get("db");
+    const { project_feedback, user_id , project_id } = req.body;
+    const feedback = await db.add_project_feedback([project_feedback, user_id , project_id]);
+    return res.status(200).send(feedback);
+  },
+  editFeedback: async (req, res, next) => {
+    const db = req.app.get("db");
+    const { feedback_id, project_id, project_feedback, user_id } = req.body;
+    const feedback = await db.edit_project_feedback([
+      feedback_id,
+      project_id,
+      project_feedback,
+      user_id
+    ]);
+    return res.status(200).send(feedback);
+  },
+  deleteFeedback: async (req, res, next) => {
+    const db = req.app.get("db");
+    const { feedback_id } = req.params;
+    console.log(req.params);
+    db.delete_feedback(feedback_id)
+      .then(res.sendStatus(200))
+      .catch(err => console.log(err));  
   }
 };

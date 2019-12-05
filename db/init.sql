@@ -33,3 +33,23 @@ INSERT INTO projects (  user_id,
     description,
     email )
     VALUES (1,'poop','www.poop','poopwww', true, false, true , true, true, true,'i love me some poop', 'poop@poop.com')
+
+    CREATE TABLE projectFeedback (
+      feedback_id SERIAL PRIMARY KEY,
+      project_id INTEGER REFERENCES projects(project_id),
+      project_feedback VARCHAR NOT NULL,
+      user_id INTEGER REFERENCES users(user_id)  
+    );
+
+    CREATE TABLE idea (
+        user_id INTEGER REFERENCES users(user_id),
+        idea VARCHAR NOT NULL,
+        idea_id SERIAL PRIMARY KEY
+    );
+
+    CREATE TABLE ideaFeedback (
+        idea_feedback_id SERIAL PRIMARY KEY
+        idea_id INTEGER REFERENCES idea(idea_id),
+        idea_feedback VARCHAR NOT NULL,
+        user_id INTEGER REFERENCES users(user_id)
+    );
