@@ -5,6 +5,7 @@ import Projects from "./Pages/Projects/Projects.jsx";
 import SingleProject from "./Pages/SingleProject/SingleProjects.jsx";
 import Profile from "./Pages/Profile/Profile.jsx";
 import Help from "./Pages/Help/Help.jsx";
+import ProjectModal from "./Components/ProjectModal/ProjectModal.jsx";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/project/:id" exact component={SingleProject} />
         <Route path="/profile/:id" exact component={Profile} />
         <Route path="/help" exact component={Help} />
+        <Route path="/projectUpload" exact component={ProjectModal} />
       </Switch>
     </React.Fragment>
   );

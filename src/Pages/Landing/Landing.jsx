@@ -28,7 +28,7 @@ class Landing extends React.Component {
       campus,
       status
     });
-
+    console.log(result);
     // this.props.history.push("/projects");
   };
 
