@@ -19,7 +19,7 @@ class ProjectModal extends Component {
     };
   }
 
-  submitHandler = e => {
+  submitHandler = async e => {
     e.preventDefault();
     const {
       projectName,
@@ -30,7 +30,7 @@ class ProjectModal extends Component {
       description
     } = this.state;
 
-    axios.post("/auth/addProject", {
+    const result = await axios.post("/auth/addProject", {
       projectName,
       email,
       linkedin,
@@ -38,6 +38,7 @@ class ProjectModal extends Component {
       githubUrl,
       description
     });
+    this.props.getData(result.data);
   };
 
   render() {
