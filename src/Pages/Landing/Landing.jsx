@@ -4,7 +4,6 @@ import logo from "../../Assets/DevMtnLogo.png";
 import video from "../../Assets/landing-video.mp4";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
-import { withRouter } from "react-router-dom";
 
 class Landing extends React.Component {
   constructor(props) {

@@ -82,7 +82,6 @@ module.exports = {
       last
     } = req.body;
     const project = await db.add_project([
-      // user,
       project_name,
       host_url,
       github,
