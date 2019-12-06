@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./ProjectModal.style.scss";
+
 class ProjectModal extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       project_name: "",
       email: "",
@@ -35,8 +37,15 @@ class ProjectModal extends Component {
       postgres,
       mongo
     } = this.state;
+<<<<<<< HEAD
 
     await axios.post("/auth/addProject", {
+=======
+    const { id, first, last } = this.props.id;
+    console.log(id, first, last);
+    const result = await axios.post("/auth/addProject", {
+      id,
+>>>>>>> 194cf30b5d2ad95d3feb0a3fa1ec49b57972f47e
       project_name,
       email,
       linkedin,
@@ -48,7 +57,13 @@ class ProjectModal extends Component {
       javascript,
       redux,
       postgres,
+<<<<<<< HEAD
       mongo
+=======
+      mongo,
+      first,
+      last
+>>>>>>> 194cf30b5d2ad95d3feb0a3fa1ec49b57972f47e
     });
     const result = await axios.get("/auth/getAllProjects");
     this.props.getData(result.data);
@@ -57,6 +72,7 @@ class ProjectModal extends Component {
   render() {
     return (
       <div>
+<<<<<<< HEAD
         <form onSubmit={e => this.submitHandler(e)}>
           <input
             placeholder="Project Name"
@@ -126,6 +142,85 @@ class ProjectModal extends Component {
           ></textarea>
           <button>Upload Project</button>
         </form>
+=======
+        <div className="project-modal-main">
+          <form onSubmit={e => this.submitHandler(e)}>
+            <input
+              className="project-modal-input"
+              placeholder="Project Name"
+              onChange={e => this.setState({ project_name: e.target.value })}
+            />
+            <input
+              className="project-modal-input"
+              placeholder="Email"
+              onChange={e => this.setState({ email: e.target.value })}
+            />
+            <input
+              className="project-modal-input"
+              placeholder="Linkedin"
+              onChange={e => this.setState({ linkedin: e.target.value })}
+            />
+            <input
+              className="project-modal-input"
+              placeholder="Site Url"
+              onChange={e => this.setState({ host_url: e.target.value })}
+            />
+            <input
+              className="project-modal-input"
+              placeholder="Github Url"
+              onChange={e => this.setState({ github: e.target.value })}
+            />
+            <input
+              type="checkbox"
+              id="react"
+              name="react"
+              onChange={e => this.setState({ react: e.target.checked })}
+            />
+            <label htmlFor="react">React</label>
+            <input
+              type="checkbox"
+              id="javascript"
+              name="javascript"
+              onChange={e => this.setState({ javascript: e.target.checked })}
+            />
+            <label htmlFor="javascript">JavaScript</label>
+            <input
+              type="checkbox"
+              id="nodejs"
+              name="nodejs"
+              onChange={e => this.setState({ nodejs: e.target.checked })}
+            />
+            <label htmlFor="nodejs">nodejs</label>
+            <input
+              type="checkbox"
+              id="redux"
+              name="redux"
+              onChange={e => this.setState({ redux: e.target.checked })}
+            />
+            <label htmlFor="redux">Redux</label>
+            <input
+              type="checkbox"
+              id="mongodb"
+              name="mongodb"
+              onChange={e => this.setState({ mongo: e.target.checked })}
+            />
+            <label htmlFor="mongodb">MongoDB</label>
+            <input
+              type="checkbox"
+              id="postgres"
+              name="postgres"
+              onChange={e => this.setState({ postgres: e.target.checked })}
+            />
+            <label htmlFor="postgres">postgres</label>
+            <textarea
+              className="project-modal-input"
+              placeholder="Project Description"
+              onChange={e => this.setState({ description: e.target.value })}
+            ></textarea>
+            <button>Upload Project</button>
+          </form>
+        </div>
+>>>>>>> 194cf30b5d2ad95d3feb0a3fa1ec49b57972f47e
       </div>
     );
   }

@@ -4,6 +4,8 @@ import logo from "../../Assets/DevMtnLogo.png";
 import video from "../../Assets/landing-video.mp4";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
+
 class Landing extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +20,19 @@ class Landing extends React.Component {
     };
   }
 
+  componentDidMount = () => {
+    this.setState({
+      formFlag: false,
+      first: "",
+      last: "",
+      email: "",
+      password: "",
+      campus: null,
+      status: null
+    });
+    this.props.reset();
+  };
+
   register = async e => {
     e.preventDefault();
     const { first, last, email, password, campus, status } = this.state;
@@ -29,7 +44,7 @@ class Landing extends React.Component {
       campus,
       status
     });
-
+    this.props.user(result.data);
     this.props.history.push("/projects");
   };
 
@@ -42,8 +57,8 @@ class Landing extends React.Component {
         email,
         password
       });
+      this.props.user(result.data);
       this.props.history.push("/projects");
-      console.log(result);
     }
   };
 

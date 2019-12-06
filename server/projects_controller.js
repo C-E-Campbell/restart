@@ -61,9 +61,14 @@ module.exports = {
   // },
   addProject: async (req, res, next) => {
     const db = req.app.get("db");
+
     console.log("body:", req.body);
     const {
+<<<<<<< HEAD
       // user,
+=======
+      id,
+>>>>>>> 194cf30b5d2ad95d3feb0a3fa1ec49b57972f47e
       project_name,
       host_url,
       github,
@@ -75,7 +80,9 @@ module.exports = {
       mongo,
       description,
       linkedin,
-      email
+      email,
+      first,
+      last
     } = req.body;
     const project = await db.add_project([
       // user,
@@ -95,5 +102,30 @@ module.exports = {
 
     console.log("project:", project);
     return res.status(200).send(project);
+  },
+  addFeedback: async (req, res, next) => {
+    const db = req.app.get("db");
+    const { project_feedback, user_id , project_id } = req.body;
+    const feedback = await db.add_project_feedback([project_feedback, user_id , project_id]);
+    return res.status(200).send(feedback);
+  },
+  editFeedback: async (req, res, next) => {
+    const db = req.app.get("db");
+    const { feedback_id, project_id, project_feedback, user_id } = req.body;
+    const feedback = await db.edit_project_feedback([
+      feedback_id,
+      project_id,
+      project_feedback,
+      user_id
+    ]);
+    return res.status(200).send(feedback);
+  },
+  deleteFeedback: async (req, res, next) => {
+    const db = req.app.get("db");
+    const { feedback_id } = req.params;
+    console.log(req.params);
+    db.delete_feedback(feedback_id)
+      .then(res.sendStatus(200))
+      .catch(err => console.log(err));  
   }
 };

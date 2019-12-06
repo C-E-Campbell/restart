@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
   register: async (req, res, next) => {
@@ -24,30 +24,55 @@ module.exports = {
       res.status(200).send(req.session.user);
     }
   },
-  login: (req, res, next) => {
+  login: async (req, res, next) => {
     const { email, password } = req.body;
+    console.log(req.body);
     const db = req.app.get("db");
-    db.find_user_by_email(email).then(([foundUser]) => {
-      if (!foundUser) {
-        res.status(400).send("Go login");
+    try {
+      const checkForUser = await db.find_user_by_email([email]);
+      if (!checkForUser[0]) {
+        res
+          .status(401)
+          .send("Cant find that account. You may need to register");
       } else {
-        bcrypt.compare(password, foundUser.password).then(isAuthenticated => {
-          if (isAuthenticated) {
-            req.session.user = {
-              user_id: foundUser.user_id,
-              first: foundUser.first,
-              last: foundUser.last,
-              email: foundUser.email,
-              campus: foundUser.campus,
-              status: foundUser.status
-            };
-            res.status(200).send(req.session.user);
-          } else {
-            res.status(400).send("you are not authorized");
-          }
-        });
+        let checkPass = bcrypt.compareSync(password, checkForUser[0].password);
+        if (checkPass) {
+          req.session.user = {
+            id: checkForUser[0].user_id,
+            email: checkForUser[0].email,
+            first: checkForUser[0].first,
+            last: checkForUser[0].last
+          };
+          res.status(200).send(req.session.user);
+        } else {
+          res.status(401).send("not valid email/pass");
+        }
       }
-    });
+    } catch (error) {
+      console.log(error);
+    }
+
+    // db.find_user_by_email(email).then(([foundUser]) => {
+    //   if (!foundUser) {
+    //     res.status(400).send("Go login");
+    //   } else {
+    //     bcrypt.compare(password, foundUser.password).then(isAuthenticated => {
+    //       if (isAuthenticated) {
+    //         req.session.user = {
+    //           user_id: foundUser.user_id,
+    //           first: foundUser.first,
+    //           last: foundUser.last,
+    //           email: foundUser.email,
+    //           campus: foundUser.campus,
+    //           status: foundUser.status
+    //         };
+    //         res.status(200).send(req.session.user);
+    //       } else {
+    //         res.status(400).send("you are not authorized");
+    //       }
+    //     });
+    //   }
+    // });
   },
   logout: (req, res, next) => {
     req.session.destroy();

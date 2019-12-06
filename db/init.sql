@@ -9,7 +9,8 @@ CREATE TABLE users (
     password VARCHAR NOT NULL,
     campus VARCHAR NOT NULL,
     status VARCHAR NOT NULL,
-    admin BOOLEAN DEFAULT FALSE
+    admin BOOLEAN DEFAULT FALSE,
+    linkedin VARCHAR NOT NULL
 );
 INSERT INTO users (first, last, email, password, campus, status)
 VALUES ('Sean', 'Robnett', 'sean@sean', 'sean123', 'phoenix', 'student', true);
@@ -20,7 +21,8 @@ VALUES ('Nick', 'Tillinghast', 'nick@nick', 'nick123', 'phoenix', 'student', tru
 INSERT INTO users (first, last, email, password, campus, status)
 VALUES ('Isaac', 'Hansen', 'isaac@isaac', 'isaac123', 'phoenix', 'student');
 
-INSERT INTO projects (  user_id,
+INSERT INTO projects (  
+    user_id,
     project_name,
     host_url,
     github,
@@ -33,3 +35,23 @@ INSERT INTO projects (  user_id,
     description,
     email )
     VALUES (1,'poop','www.poop','poopwww', true, false, true , true, true, true,'i love me some poop', 'poop@poop.com')
+
+    CREATE TABLE projectFeedback (
+      feedback_id SERIAL PRIMARY KEY,
+      project_id INTEGER REFERENCES projects(project_id),
+      project_feedback VARCHAR NOT NULL,
+      user_id INTEGER REFERENCES users(user_id)  
+    );
+
+    CREATE TABLE idea (
+        user_id INTEGER REFERENCES users(user_id),
+        idea VARCHAR NOT NULL,
+        idea_id SERIAL PRIMARY KEY
+    );
+
+    CREATE TABLE ideaFeedback (
+        idea_feedback_id SERIAL PRIMARY KEY
+        idea_id INTEGER REFERENCES idea(idea_id),
+        idea_feedback VARCHAR NOT NULL,
+        user_id INTEGER REFERENCES users(user_id)
+    );

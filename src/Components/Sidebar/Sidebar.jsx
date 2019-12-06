@@ -16,7 +16,7 @@ function Sidebar() {
         <img className="sidebar-user-photo" src={defaultUser} alt="user" />
         <input placeholder="search projects" />
         <Link to="/projectUpload" className="sidebar-link">
-          Upload Your Project <i class="fas fa-plus-square"></i>
+          Upload Your Project <i className="fas fa-plus-square"></i>
         </Link>
         <Link
           to={`profile/${userId}`}
