@@ -30,8 +30,12 @@ class App extends React.Component {
     this.setState({ userInfo: result });
   };
 
+  grabProjectDataFromLanding = data => {
+    this.setState({ projects: data });
+  };
+
   logout = () => {
-    this.setState({ userInfo: {}, projects: {}, comments: {} });
+    this.setState({ userInfo: {}, comments: {} });
   };
   render() {
     return (
@@ -41,7 +45,11 @@ class App extends React.Component {
             path="/"
             exact
             render={() => (
-              <Landing user={this.getUserInfo} reset={this.logout} />
+              <Landing
+                user={this.getUserInfo}
+                reset={this.logout}
+                projects={this.grabProjectDataFromLanding}
+              />
             )}
           />
 

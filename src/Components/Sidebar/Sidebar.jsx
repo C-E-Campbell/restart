@@ -8,7 +8,7 @@ function Sidebar() {
   return (
     <div className="sidebar" data-aos="fade" data-aos-easing="ease-in">
       <div className="sidebar-logo-container">
-        <Link to="/">
+        <Link to="/projects">
           <img src={logo} alt="sidebar devmtn" />
         </Link>
       </div>

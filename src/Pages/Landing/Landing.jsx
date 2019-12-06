@@ -19,7 +19,8 @@ class Landing extends React.Component {
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
+    const results = await axios.get("/auth/getAllProjects");
     this.setState({
       formFlag: false,
       first: "",
@@ -27,9 +28,12 @@ class Landing extends React.Component {
       email: "",
       password: "",
       campus: null,
-      status: null
+      status: null,
+      projectData: results.data
     });
     this.props.reset();
+
+    this.props.projects(results.data);
   };
 
   register = async e => {

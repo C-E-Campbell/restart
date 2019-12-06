@@ -15,10 +15,11 @@
     margin: 1rem auto;
     textarea {
       height: 10vh;
-      width: 89%;
+      width: 90%;
       border: none;
-      border-top: 1px solid #333;
+      padding: 0.3rem;
       background-color: #fff;
+      resize: none;
     }
     .form-btn {
       width: 90%;
