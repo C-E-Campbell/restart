@@ -64,11 +64,8 @@ module.exports = {
 
     console.log("body:", req.body);
     const {
-<<<<<<< HEAD
-      // user,
-=======
       id,
->>>>>>> 194cf30b5d2ad95d3feb0a3fa1ec49b57972f47e
+
       project_name,
       host_url,
       github,
@@ -105,8 +102,12 @@ module.exports = {
   },
   addFeedback: async (req, res, next) => {
     const db = req.app.get("db");
-    const { project_feedback, user_id , project_id } = req.body;
-    const feedback = await db.add_project_feedback([project_feedback, user_id , project_id]);
+    const { project_feedback, user_id, project_id } = req.body;
+    const feedback = await db.add_project_feedback([
+      project_feedback,
+      user_id,
+      project_id
+    ]);
     return res.status(200).send(feedback);
   },
   editFeedback: async (req, res, next) => {
@@ -126,6 +127,6 @@ module.exports = {
     console.log(req.params);
     db.delete_feedback(feedback_id)
       .then(res.sendStatus(200))
-      .catch(err => console.log(err));  
+      .catch(err => console.log(err));
   }
 };
