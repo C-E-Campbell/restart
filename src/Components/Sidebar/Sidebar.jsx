@@ -4,7 +4,7 @@ import logo from "../../Assets/smallLogo.png";
 import defaultUser from "../../Assets/defaultUser.png";
 import "./Sidebar.style.scss";
 const userId = 9;
-function Sidebar() {
+function Sidebar(props) {
   return (
     <div className="sidebar" data-aos="fade" data-aos-easing="ease-in">
       <div className="sidebar-logo-container">
@@ -14,9 +14,18 @@ function Sidebar() {
       </div>
       <ul className="sidebar-ul">
         <img className="sidebar-user-photo" src={defaultUser} alt="user" />
-        <input placeholder="search projects" />
+        {!props.showHomeBtn ? (
+          <input placeholder="search projects" />
+        ) : (
+          <Link to="/projects" className="back-to-projects-btn">
+            Back To Projects
+          </Link>
+        )}
+
         <Link to="/projectUpload" className="sidebar-link">
-          Upload Your Project <i className="fas fa-plus-square"></i>
+          <div className="upload-btn">
+            <i className="fas fa-plus-square"></i> Upload Your Work
+          </div>
         </Link>
         <Link
           to={`profile/${userId}`}

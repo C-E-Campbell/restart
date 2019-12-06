@@ -68,8 +68,8 @@ class ProjectModal extends Component {
   render() {
     return (
       <div className="modal-container">
-        <Sidebar showBack={true} />
-        <MainContent bgcolor={"#222"}>
+        <Sidebar showHomeBtn={true} />
+        <MainContent bgcolor={"linear-gradient(#222, 80%, #0c4b66)"}>
           <div className="project-modal-main">
             <h2>Upload Your Work</h2>
             <form onSubmit={e => this.submitHandler(e)}>

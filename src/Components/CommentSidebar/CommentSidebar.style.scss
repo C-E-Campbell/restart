@@ -4,7 +4,7 @@
 
   align-items: center;
   width: 20%;
-  background-color: #333;
+  background: linear-gradient(#222, 80%, #0c4b66);
 
   form {
     display: flex;
@@ -44,10 +44,8 @@
   text-decoration: none;
   color: #fff;
   font-family: "Montserrat", sans-serif;
-  transition: color 0.3s;
-  &:hover {
-    color: #25aae1;
-  }
+
+  color: #25aae1;
 }
 
 .comment-logo-container {
@@ -70,6 +68,6 @@
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
   height: 10%;
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(255, 255, 255);
   border: 1px solid #333;
 }

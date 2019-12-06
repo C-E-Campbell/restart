@@ -13,7 +13,7 @@ export default function SingleProjects(props) {
   return (
     <div className="single-project-container">
       <CommentSidebar />
-      <MainContent bgcolor={"#ccc"}>
+      <MainContent bgcolor={"#fff"}>
         <div className="single-container">
           <div id="top" style={{ margin: "0 auto" }}>
             <iframe

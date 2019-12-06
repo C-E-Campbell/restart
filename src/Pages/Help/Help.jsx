@@ -5,8 +5,12 @@ import MainContent from "../../Components/MainContent/MainContent";
 export default function Help() {
   return (
     <div className="help-container">
-      <SideBar />
-      <MainContent> Help stuff here</MainContent>
+      <SideBar showHomeBtn={true} />
+      <MainContent bgcolor={"#fff"}>
+        <div className="inner-help-container">
+          <h1>Help stuff here</h1>
+        </div>
+      </MainContent>
     </div>
   );
 }

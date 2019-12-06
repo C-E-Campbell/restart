@@ -105,11 +105,12 @@ class Landing extends React.Component {
                     onChange={e => this.setState({ password: e.target.value })}
                   />
                   <select
+                    defaultValue="none"
                     onChange={e => this.setState({ campus: e.target.value })}
                     name="campus"
                     id="campus"
                   >
-                    <option defaultValue disabled value="none">
+                    <option disabled value="none">
                       Choose your campus
                     </option>
                     <option value="Lehi">Lehi</option>
@@ -117,11 +118,12 @@ class Landing extends React.Component {
                     <option value="Phoenix">Phoenix</option>
                   </select>
                   <select
+                    defaultValue="none"
                     onChange={e => this.setState({ status: e.target.value })}
                     name="statuss"
                     id="status"
                   >
-                    <option defaultValue disabled value="none">
+                    <option disabled value="none">
                       Choose Student, Mentor, Instructor
                     </option>
                     <option value="Student">Student</option>
