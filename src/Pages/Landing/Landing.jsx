@@ -2,6 +2,7 @@ import React from "react";
 import "./Landing.style.scss";
 import logo from "../../Assets/DevMtnLogo.png";
 import video from "../../Assets/landing-video.mp4";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
 class Landing extends React.Component {
   constructor(props) {
@@ -168,9 +169,11 @@ class Landing extends React.Component {
                 <form className="landing-form">
                   <input
                     placeholder="Email"
+                    type="email"
                     onChange={e => this.setState({ email: e.target.value })}
                   />
                   <input
+                    type="password"
                     placeholder="Password"
                     onChange={e => this.setState({ password: e.target.value })}
                   />
@@ -211,4 +214,4 @@ class Landing extends React.Component {
     );
   }
 }
-export default Landing;
+export default withRouter(Landing);

@@ -36,14 +36,8 @@ class ProjectModal extends Component {
       mongo
     } = this.state;
 
-<<<<<<< HEAD
-    const result = await axios.post("/auth/addProject", {
-      projectName,
-=======
-    axios.post("/auth/addProject", {
-      // user: 2,
+    await axios.post("/auth/addProject", {
       project_name,
->>>>>>> f0b43744438ef55138c1d177f079ea065908bcbf
       email,
       linkedin,
       host_url,
@@ -56,6 +50,7 @@ class ProjectModal extends Component {
       postgres,
       mongo
     });
+    const result = await axios.get("/auth/getAllProjects");
     this.props.getData(result.data);
   };
 
