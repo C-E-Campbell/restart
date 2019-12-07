@@ -1,9 +1,5 @@
 INSERT INTO projects (
-<<<<<<< HEAD
-  
-=======
     user_id,
->>>>>>> 194cf30b5d2ad95d3feb0a3fa1ec49b57972f47e
     project_name,
     host_url,
     github,

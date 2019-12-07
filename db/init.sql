@@ -50,8 +50,8 @@ INSERT INTO projects (
     );
 
     CREATE TABLE ideaFeedback (
-        idea_feedback_id SERIAL PRIMARY KEY
+        idea_feedback_id SERIAL PRIMARY KEY,
         idea_id INTEGER REFERENCES idea(idea_id),
-        idea_feedback VARCHAR NOT NULL,
-        user_id INTEGER REFERENCES users(user_id)
+        user_id INTEGER REFERENCES users(user_id),
+        idea_feedback VARCHAR NOT NULL
     );

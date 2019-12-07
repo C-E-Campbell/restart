@@ -1,7 +1,8 @@
 INSERT INTO projectFeedback (
-    project_feedback, 
-    user_id , 
-    project_id
+    project_feedback,
+    user_id, 
+    project_id 
+   
 )
 VALUES ($1, $2, $3);
 
