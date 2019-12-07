@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import "./ProjectModal.style.scss";
 import Sidebar from "../Sidebar/Sidebar";
 import MainContent from "../MainContent/MainContent";
-import { withRouter } from "react-router-dom";
 
 class ProjectModal extends Component {
   constructor(props) {
