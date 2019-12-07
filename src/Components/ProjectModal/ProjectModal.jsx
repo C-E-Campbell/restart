@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { withRouter } from "react-router-dom";
 import "./ProjectModal.style.scss";
 import Sidebar from "../Sidebar/Sidebar";
 import MainContent from "../MainContent/MainContent";
@@ -15,6 +16,7 @@ class ProjectModal extends Component {
       host_url: "",
       github: "",
       description: "",
+      thumbnail: "",
       react: false,
       angular: false,
       vue: false,
@@ -43,7 +45,7 @@ class ProjectModal extends Component {
       mongo
     } = this.state;
     const { id, first, last } = this.props.id;
-    console.log(id, first, last);
+
     await axios.post("/auth/addProject", {
       id,
       project_name,
@@ -70,7 +72,7 @@ class ProjectModal extends Component {
     return (
       <div className="modal-container">
         <Sidebar showHomeBtn={true} />
-        <MainContent bgcolor={"linear-gradient(#222, 80%, #0c4b66)"}>
+        <MainContent bgcolor={"#fff"}>
           <div className="project-modal-main">
             <h2>Upload Your Work</h2>
             <form onSubmit={e => this.submitHandler(e)}>
@@ -91,7 +93,12 @@ class ProjectModal extends Component {
               />
               <input
                 className="project-modal-input"
-                placeholder="Site Url"
+                placeholder="Site Thumbnail"
+                onChange={e => this.setState({ thumbnail: e.target.value })}
+              />
+              <input
+                className="project-modal-input"
+                placeholder="Live Site Url: Optional but recommended"
                 onChange={e => this.setState({ host_url: e.target.value })}
               />
               <input
@@ -181,7 +188,7 @@ class ProjectModal extends Component {
                         this.setState({ postgres: e.target.checked })
                       }
                     />
-                    <label htmlFor="postgres">PostgreSql</label>
+                    <label htmlFor="postgres">PostgreSQL</label>
                   </div>
                 </div>
               </div>

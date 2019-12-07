@@ -4,8 +4,9 @@ import CommentSidebar from "../../Components/CommentSidebar/CommentSidebar";
 import logo from "../../Assets/defaultUser.png";
 import MainContent from "../../Components/MainContent/MainContent";
 import { Link } from "react-scroll";
+import { withRouter } from "react-router-dom";
 
-export default function SingleProjects(props) {
+function SingleProjects(props) {
   // const myURl = DummyData.filter(project => {
   //   // return project.id === props.match.params.id ? project.url : "NoVideo";
   //   return "www.devtennis.xyz";
@@ -81,3 +82,4 @@ export default function SingleProjects(props) {
     </div>
   );
 }
+export default withRouter(SingleProjects);
