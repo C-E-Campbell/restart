@@ -3,6 +3,7 @@ import axios from "axios";
 import "./ProjectModal.style.scss";
 import Sidebar from "../Sidebar/Sidebar";
 import MainContent from "../MainContent/MainContent";
+import { withRouter } from "react-router-dom";
 
 class ProjectModal extends Component {
   constructor(props) {
@@ -62,7 +63,7 @@ class ProjectModal extends Component {
     });
     const result = await axios.get("/auth/getAllProjects");
     this.props.getData(result.data);
-    this.props.history.push("/");
+    this.props.history.push("/projects");
   };
 
   render() {
@@ -203,4 +204,4 @@ class ProjectModal extends Component {
   }
 }
 
-export default ProjectModal;
+export default withRouter(ProjectModal);

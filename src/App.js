@@ -37,6 +37,7 @@ class App extends React.Component {
   logout = () => {
     this.setState({ userInfo: {}, comments: {} });
   };
+
   render() {
     return (
       <React.Fragment>
@@ -59,12 +60,26 @@ class App extends React.Component {
             render={() => <Projects projectData={this.state.projects} />}
           />
           <Route path="/project/:id" exact component={SingleProject} />
-          <Route path="/profile/:id" exact component={Profile} />
+          <Route
+            path="/profile/:id"
+            exact
+            render={() => (
+              <Profile
+                projectData={this.state.projects}
+                user={this.state.userInfo}
+              />
+            )}
+          />
           <Route path="/help" exact component={Help} />
           <Route
             path="/projectUpload"
             exact
-            render={() => <ProjectModal getData={this.getProjectData} />}
+            render={() => (
+              <ProjectModal
+                getData={this.getProjectData}
+                id={this.state.userInfo}
+              />
+            )}
           />
         </Switch>
       </React.Fragment>

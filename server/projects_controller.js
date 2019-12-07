@@ -65,7 +65,6 @@ module.exports = {
     console.log("body:", req.body);
     const {
       id,
-
       project_name,
       host_url,
       github,
@@ -82,6 +81,7 @@ module.exports = {
       last
     } = req.body;
     const project = await db.add_project([
+      id,
       project_name,
       host_url,
       github,
@@ -93,7 +93,9 @@ module.exports = {
       mongo,
       description,
       linkedin,
-      email
+      email,
+      first,
+      last
     ]);
 
     console.log("project:", project);
