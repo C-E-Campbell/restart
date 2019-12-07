@@ -5,6 +5,7 @@ import Projects from "./Pages/Projects/Projects.jsx";
 import SingleProject from "./Pages/SingleProject/SingleProjects.jsx";
 import Profile from "./Pages/Profile/Profile.jsx";
 import Help from "./Pages/Help/Help.jsx";
+import Idea from "./Pages/Idea/Idea.jsx";
 import ProjectModal from "./Components/ProjectModal/ProjectModal.jsx";
 import axios from "axios";
 
@@ -58,13 +59,23 @@ class App extends React.Component {
             exact
             render={() => <Projects projectData={this.state.projects} />}
           />
-          <Route path="/project/:id" exact component={SingleProject} />
+          <Route
+            path="/project/:id"
+            exact
+            render={() => <SingleProject user={this.state.userInfo} />}
+          />
           <Route path="/profile/:id" exact component={Profile} />
           <Route path="/help" exact component={Help} />
+          <Route path="/idea" exact component={Idea} />
           <Route
             path="/projectUpload"
             exact
-            render={() => <ProjectModal getData={this.getProjectData} />}
+            render={() => (
+              <ProjectModal
+                getData={this.getProjectData}
+                id={this.state.userInfo}
+              />
+            )}
           />
         </Switch>
       </React.Fragment>
