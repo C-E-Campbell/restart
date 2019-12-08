@@ -3,7 +3,7 @@ import { withRouter, Link } from "react-router-dom";
 import logo from "../../Assets/smallLogo.png";
 import defaultUser from "../../Assets/defaultUser.png";
 import "./Sidebar.style.scss";
-import { MyContext } from "../../App.js";
+import { MyContext } from "../MyProvider/MyProvider";
 const userId = 9;
 function Sidebar(props) {
   return (

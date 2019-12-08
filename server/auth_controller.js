@@ -30,38 +30,29 @@ module.exports = {
     const { email, password } = req.body;
     const db = req.app.get("db");
 
-    if (client.get(`${email}:password`)) {
-      client.get(`${email}:password`, (err, data) => {
-        res.send(data);
-      });
-    } else {
-      try {
-        const checkForUser = await db.find_user_by_email([email]);
-        if (!checkForUser[0]) {
-          res
-            .status(401)
-            .send("Cant find that account. You may need to register");
+    try {
+      const checkForUser = await db.find_user_by_email([email]);
+      if (!checkForUser[0]) {
+        res
+          .status(401)
+          .send("Cant find that account. You may need to register");
+      } else {
+        client.setex(`${email}:password`, 259200, password);
+        let checkPass = bcrypt.compareSync(password, checkForUser[0].password);
+        if (checkPass) {
+          req.session.user = {
+            id: checkForUser[0].user_id,
+            email: checkForUser[0].email,
+            first: checkForUser[0].first,
+            last: checkForUser[0].last
+          };
+          res.status(200).send(req.session.user);
         } else {
-          client.setex(`${email}:password`, 259200, password);
-          let checkPass = bcrypt.compareSync(
-            password,
-            checkForUser[0].password
-          );
-          if (checkPass) {
-            req.session.user = {
-              id: checkForUser[0].user_id,
-              email: checkForUser[0].email,
-              first: checkForUser[0].first,
-              last: checkForUser[0].last
-            };
-            res.status(200).send(req.session.user);
-          } else {
-            res.status(401).send("not valid email/pass");
-          }
+          res.status(401).send("not valid email/pass");
         }
-      } catch (error) {
-        console.log(error);
       }
+    } catch (error) {
+      console.log(error);
     }
   },
   logout: (req, res, next) => {

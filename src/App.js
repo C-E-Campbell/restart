@@ -7,25 +7,7 @@ import Profile from "./Pages/Profile/Profile.jsx";
 import Help from "./Pages/Help/Help.jsx";
 import Idea from "./Pages/Idea/Idea.jsx";
 import ProjectModal from "./Components/ProjectModal/ProjectModal.jsx";
-
-export const MyContext = React.createContext();
-
-class MyProvider extends React.Component {
-  state = {
-    log: () => {
-      console.log("cleared");
-      localStorage.clear();
-    }
-  };
-
-  render() {
-    return (
-      <MyContext.Provider value={this.state.log}>
-        {this.props.children}
-      </MyContext.Provider>
-    );
-  }
-}
+import MyProvider from "./Components/MyProvider/MyProvider.jsx";
 
 class App extends React.Component {
   constructor(props) {
@@ -45,10 +27,6 @@ class App extends React.Component {
     this.setState({ userInfo: result });
   };
 
-  logout = () => {
-    this.setState({ userInfo: {}, comments: {} });
-  };
-
   render() {
     return (
       <MyProvider>
@@ -60,7 +38,6 @@ class App extends React.Component {
               render={() => (
                 <Landing
                   user={this.getUserInfo}
-                  reset={this.logout}
                   projects={this.getProjectData}
                 />
               )}

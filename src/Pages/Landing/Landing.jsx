@@ -19,7 +19,7 @@ class Landing extends React.Component {
     };
   }
 
-  componentDidMount = async () => {
+  getProjects = async () => {
     const results = await axios.get("/auth/getAllProjects");
     this.setState({
       formFlag: false,
@@ -31,9 +31,10 @@ class Landing extends React.Component {
       status: null,
       projectData: results.data
     });
-    this.props.reset();
-
     this.props.projects(results.data);
+  };
+
+  checkcache = () => {
     if (localStorage.getItem("localCachedEmail")) {
       const lsEmail = localStorage.getItem("localCachedEmail");
       axios
@@ -48,12 +49,10 @@ class Landing extends React.Component {
           this.login();
         });
     }
-    //  const login = await axios.post("/auth/login", {
-    //    email: '',
-    //    password: ''
-    //  });
-    //  this.props.user(login.data);
-    //  this.props.history.push("/projects");
+  };
+  componentDidMount = async () => {
+    this.getProjects();
+    this.checkcache();
   };
 
   register = async e => {
