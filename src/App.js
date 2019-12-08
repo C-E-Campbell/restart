@@ -8,13 +8,19 @@ import Help from "./Pages/Help/Help.jsx";
 import Idea from "./Pages/Idea/Idea.jsx";
 import ProjectModal from "./Components/ProjectModal/ProjectModal.jsx";
 
-const MyContext = React.createContext();
+export const MyContext = React.createContext();
 
 class MyProvider extends React.Component {
-  state = {};
+  state = {
+    log: () => {
+      console.log("cleared");
+      localStorage.clear();
+    }
+  };
+
   render() {
     return (
-      <MyContext.Provider value="im the value">
+      <MyContext.Provider value={this.state.log}>
         {this.props.children}
       </MyContext.Provider>
     );

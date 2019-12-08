@@ -26,7 +26,7 @@ function SingleProjects(props) {
 
             <div className="btn-to-info">
               <Link duration={700} smooth={true} to="bottom">
-                Project Details <i class="fas fa-chevron-down"></i>
+                Project Details <i className="fas fa-chevron-down"></i>
               </Link>
             </div>
           </div>
