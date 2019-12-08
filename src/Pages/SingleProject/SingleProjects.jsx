@@ -35,7 +35,7 @@ function SingleProjects(props) {
             <header>
               <div className="header-inner-container">
                 <h2>Project Name</h2>
-                <i class="fab fa-github-alt fa-3x"></i>
+                <i className="fab fa-github-alt fa-3x"></i>
               </div>
             </header>
             <img className="project-details-photo" src={logo} alt="user" />
@@ -72,7 +72,16 @@ function SingleProjects(props) {
               </div>
             </div>
           </div>
-          <div className="btn-to-info">
+          <div
+            onClick={() =>
+              window.scrollTo({
+                top: 100,
+                left: 100,
+                behavior: "smooth"
+              })
+            }
+            className="btn-to-info"
+          >
             <Link to="top">
               Live Project <i class="fas fa-chevron-up"></i>
             </Link>

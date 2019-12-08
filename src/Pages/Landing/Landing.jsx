@@ -3,6 +3,7 @@ import "./Landing.style.scss";
 import logo from "../../Assets/DevMtnLogo.png";
 import video from "../../Assets/landing-video.mp4";
 import { withRouter } from "react-router-dom";
+import { MyContext } from "../../Components/MyProvider/MyProvider";
 import axios from "axios";
 
 class Landing extends React.Component {
@@ -50,6 +51,7 @@ class Landing extends React.Component {
         });
     }
   };
+
   componentDidMount = async () => {
     this.getProjects();
     this.checkcache();
