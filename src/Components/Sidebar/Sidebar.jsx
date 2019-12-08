@@ -3,6 +3,7 @@ import { withRouter, Link } from "react-router-dom";
 import logo from "../../Assets/smallLogo.png";
 import defaultUser from "../../Assets/defaultUser.png";
 import "./Sidebar.style.scss";
+const MyContext = React.createContext();
 const userId = 9;
 function Sidebar(props) {
   return (
@@ -54,6 +55,10 @@ function Sidebar(props) {
         >
           <li>Help</li>
         </Link>
+        <MyContext.Consumer>
+          {value => <h1>in the consumer {value}</h1>}
+        </MyContext.Consumer>
+
         <Link
           to="/"
           className="sidebar-link"

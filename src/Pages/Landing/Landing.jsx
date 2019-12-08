@@ -34,11 +34,32 @@ class Landing extends React.Component {
     this.props.reset();
 
     this.props.projects(results.data);
+    if (localStorage.getItem("localCachedEmail")) {
+      const lsEmail = localStorage.getItem("localCachedEmail");
+      axios
+        .post("/auth/checkcache", {
+          email: lsEmail
+        })
+        .then(res => {
+          this.setState({
+            email: localStorage.getItem("localCachedEmail"),
+            password: res.data
+          });
+          this.login();
+        });
+    }
+    //  const login = await axios.post("/auth/login", {
+    //    email: '',
+    //    password: ''
+    //  });
+    //  this.props.user(login.data);
+    //  this.props.history.push("/projects");
   };
 
   register = async e => {
     e.preventDefault();
     const { first, last, email, password, campus, status } = this.state;
+    localStorage.setItem("localCachedEmail", email);
     const result = await axios.post("/auth/register", {
       first,
       last,
@@ -51,15 +72,16 @@ class Landing extends React.Component {
     this.props.history.push("/projects");
   };
 
-  login = async e => {
-    e.preventDefault();
+  login = async () => {
     if (this.state.email === "" || this.state.password === "") {
     } else {
       const { email, password } = this.state;
+      localStorage.setItem("localCachedEmail", email);
       const result = await axios.post("/auth/login", {
         email,
         password
       });
+
       this.props.user(result.data);
       this.props.history.push("/projects");
     }
@@ -183,7 +205,7 @@ class Landing extends React.Component {
                   data-aos-duration="2000"
                   data-aos-delay="400"
                 >
-                  Basecamp to Summit. Showcase your climb.
+                  Basecamp to Summit. <br /> Showcase your climb.
                 </h3>
 
                 <form className="landing-form">
@@ -197,7 +219,14 @@ class Landing extends React.Component {
                     placeholder="Password"
                     onChange={e => this.setState({ password: e.target.value })}
                   />
-                  <button onClick={e => this.login(e)}>Login</button>
+                  <button
+                    onClick={e => {
+                      e.preventDefault();
+                      this.login();
+                    }}
+                  >
+                    Login
+                  </button>
                 </form>
                 <h6
                   onClick={() => {
