@@ -24,7 +24,7 @@ class Projects extends Component {
           content.redux
           ? "redux".indexOf(this.state.search) !== -1
           : content.postgres
-          ? "postgresSQL".indexOf(this.state.search) !== -1
+          ? "postgresQL".indexOf(this.state.search) !== -1
           : content.javascript
           ? "javascript".indexOf(this.state.search) !== -1
           : "";
