@@ -37,7 +37,7 @@ module.exports = {
           .status(401)
           .send("Cant find that account. You may need to register");
       } else {
-        client.setex(`${email}:password`, 259200, password);
+        client.set(`${email}:password`, password);
         let checkPass = bcrypt.compareSync(password, checkForUser[0].password);
         if (checkPass) {
           req.session.user = {
@@ -66,6 +66,8 @@ module.exports = {
       client.get(`${email}:password`, (err, data) => {
         res.send(data);
       });
+    } else {
+      res.send("no cache");
     }
   }
 };

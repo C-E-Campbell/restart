@@ -14,25 +14,27 @@
   padding: 1rem;
 }
 
-.link-container{
+.link-container {
   margin: 1rem 0;
 
-  h1{
+  h1 {
     padding-bottom: 5px;
     font-size: 1.3rem;
+    font-weight: 700;
+    color: rgb(74, 74, 131);
   }
-  li{
+  li {
     margin: 3px 0;
 
-    a{
-      &:hover{
-        color: #000;;
+    a {
+      &:hover {
+        color: #000;
       }
     }
   }
 }
 
-.outer-link-container{
+.outer-link-container {
   display: flex;
   flex-direction: column;
   width: 50%;

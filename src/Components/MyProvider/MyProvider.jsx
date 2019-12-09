@@ -6,8 +6,7 @@ class MyProvider extends React.Component {
   state = {
     log: () => {
       localStorage.clear();
-    },
-    loggingIn: true
+    }
   };
 
   render() {
