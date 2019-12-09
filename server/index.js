@@ -51,7 +51,7 @@ massive(CONNECTION_STRING).then(db => {
 
 app.post("/auth/register", register);
 app.post("/auth/login", login);
-app.post("/auth/checkcache", checkCache);
+//app.post("/auth/checkcache", checkCache);
 app.delete("/auth/logout", logout);
 app.get("/auth/getAllProjects", getAllProjects);
 app.get("/auth/userProjects/:user_id", userProjects);

@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
-const redis = require("redis");
-const client = redis.createClient(6379);
+// const redis = require("redis");
+// const client = redis.createClient(6379);
 
 module.exports = {
   register: async (req, res, next) => {
@@ -37,7 +37,7 @@ module.exports = {
           .status(401)
           .send("Cant find that account. You may need to register");
       } else {
-        client.set(`${email}:password`, password);
+        //client.set(`${email}:password`, password);
         let checkPass = bcrypt.compareSync(password, checkForUser[0].password);
         if (checkPass) {
           req.session.user = {
@@ -58,16 +58,16 @@ module.exports = {
   logout: (req, res, next) => {
     req.session.destroy();
     res.status(200).send("Logout successful");
-  },
-  checkCache: (req, res, next) => {
-    const { email } = req.body;
-
-    if (client.get(`${email}:password`)) {
-      client.get(`${email}:password`, (err, data) => {
-        res.send(data);
-      });
-    } else {
-      res.send("no cache");
-    }
   }
+  // checkCache: (req, res, next) => {
+  //   const { email } = req.body;
+
+  //   if (client.get(`${email}:password`)) {
+  //     client.get(`${email}:password`, (err, data) => {
+  //       res.send(data);
+  //     });
+  //   } else {
+  //     res.send("no cache");
+  //   }
+  // }
 };
