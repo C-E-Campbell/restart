@@ -6,27 +6,61 @@ import SingleProject from "./Pages/SingleProject/SingleProjects.jsx";
 import Profile from "./Pages/Profile/Profile.jsx";
 import Help from "./Pages/Help/Help.jsx";
 import ProjectModal from "./Components/ProjectModal/ProjectModal.jsx";
+import axios from "axios";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.class = {
-      userInfo: null,
-      projects: null,
-      comments: null
+    this.state = {
+      userInfo: {},
+      projects: {},
+      comments: {}
     };
   }
 
+  async componentDidMount() {
+    const results = await axios.get("/auth/getAllProjects");
+    this.setState({ projects: results.data });
+  }
   getProjectData = data => {
     this.setState({ projects: data });
   };
 
+  getUserInfo = result => {
+    this.setState({ userInfo: result });
+  };
+
+  grabProjectDataFromLanding = data => {
+    this.setState({ projects: data });
+  };
+
+  logout = () => {
+    this.setState({ userInfo: {}, comments: {} });
+  };
+  getFilteredProjects = data => {
+    this.setState({});
+  };
   render() {
     return (
       <React.Fragment>
         <Switch>
-          <Route path="/" exact component={Landing} />
-          <Route path="/projects" exact render={() => <Projects />} />
+          <Route
+            path="/"
+            exact
+            render={() => (
+              <Landing
+                user={this.getUserInfo}
+                reset={this.logout}
+                projects={this.grabProjectDataFromLanding}
+              />
+            )}
+          />
+
+          <Route
+            path="/projects"
+            exact
+            render={() => <Projects projectData={this.state.projects} />}
+          />
           <Route path="/project/:id" exact component={SingleProject} />
           <Route path="/profile/:id" exact component={Profile} />
           <Route path="/help" exact component={Help} />

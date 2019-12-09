@@ -1,5 +1,5 @@
 
-SELECT user_id, first, last, email, campus, status
+SELECT *
 FROM users
 WHERE email = $1;
 

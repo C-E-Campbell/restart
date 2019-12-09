@@ -12,8 +12,20 @@ const {
   deleteProject,
   editproject,
   getAllProjects,
-  addProject
+  addProject,
+  addFeedback,
+  editFeedback,
+  deleteFeedback
 } = require("./projects_controller");
+
+const {
+  addIdea,
+  editIdea,
+  deleteIdea,
+  addIdeaFeedback,
+  editIdeaFeedback,
+  deleteIdeaFeedback
+} = require("./idea_controller");
 
 app.use(express.json());
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
@@ -41,6 +53,18 @@ app.get("/auth/userProjects/:user_id", userProjects);
 app.delete("/auth/delete_project/:project_id", deleteProject);
 app.put("/auth/edit_project", editproject);
 app.post("/auth/addProject", addProject);
+
+app.post( "/auth/add_feedback",addFeedback);
+app.put( "/auth/edit_feedback",editFeedback);
+app.delete( "/auth/delete_feedback/:feedback_id",deleteFeedback);
+
+// app.post("/auth/add_idea", addIdea);
+// app.put("/auth/edit_idea", editIdea);
+// app.delete("auth/delete_idea", deleteIdea);
+
+// app.post("/auth/add_idea_feedback", addIdeaFeedback);
+// app.put("/auth/edit_idea_feedback", editIdeaFeedback);
+// app.delete("auth/delete_idea_feedback", deleteIdeaFeedback);
 
 let port = SERVER_PORT || 4001;
 app.listen(port, () => console.log(`up and running on port ${port}`));

@@ -1,0 +1,73 @@
+.modal-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.project-modal-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(253, 253, 253);
+  width: 100vw;
+  height: 100%;
+  border-radius: 4px;
+  font-family: "Montserrat", sans-serif;
+  h2 {
+    font-size: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    width: 50%;
+    height: 90%;
+
+    button {
+      width: 70%;
+      margin: 0 auto;
+    }
+
+    textarea {
+      border-radius: 4px;
+      margin: 0 auto;
+      width: 70%;
+      height: 10vh;
+      resize: none;
+    }
+  }
+}
+.project-modal-input {
+  background-color: rgb(255, 255, 255);
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 70%;
+  padding: 8px 16px;
+  margin: 0 auto;
+}
+
+.select-container {
+  justify-content: space-between;
+  display: flex;
+  width: 60%;
+  height: 15vh;
+  margin: 0 auto;
+}
+
+.select-inner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-checkbox {
+  display: flex;
+
+  input {
+    margin-right: 5px;
+  }
+}

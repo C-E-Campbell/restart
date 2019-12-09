@@ -2,7 +2,9 @@ import React from "react";
 import "./Landing.style.scss";
 import logo from "../../Assets/DevMtnLogo.png";
 import video from "../../Assets/landing-video.mp4";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
+
 class Landing extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +19,23 @@ class Landing extends React.Component {
     };
   }
 
+  componentDidMount = async () => {
+    const results = await axios.get("/auth/getAllProjects");
+    this.setState({
+      formFlag: false,
+      first: "",
+      last: "",
+      email: "",
+      password: "",
+      campus: null,
+      status: null,
+      projectData: results.data
+    });
+    this.props.reset();
+
+    this.props.projects(results.data);
+  };
+
   register = async e => {
     e.preventDefault();
     const { first, last, email, password, campus, status } = this.state;
@@ -28,7 +47,7 @@ class Landing extends React.Component {
       campus,
       status
     });
-
+    this.props.user(result.data);
     this.props.history.push("/projects");
   };
 
@@ -41,8 +60,8 @@ class Landing extends React.Component {
         email,
         password
       });
+      this.props.user(result.data);
       this.props.history.push("/projects");
-      console.log(result);
     }
   };
 
@@ -86,11 +105,12 @@ class Landing extends React.Component {
                     onChange={e => this.setState({ password: e.target.value })}
                   />
                   <select
+                    defaultValue="none"
                     onChange={e => this.setState({ campus: e.target.value })}
                     name="campus"
                     id="campus"
                   >
-                    <option defaultValue disabled value="none">
+                    <option disabled value="none">
                       Choose your campus
                     </option>
                     <option value="Lehi">Lehi</option>
@@ -98,11 +118,12 @@ class Landing extends React.Component {
                     <option value="Phoenix">Phoenix</option>
                   </select>
                   <select
+                    defaultValue="none"
                     onChange={e => this.setState({ status: e.target.value })}
                     name="statuss"
                     id="status"
                   >
-                    <option defaultValue disabled value="none">
+                    <option disabled value="none">
                       Choose Student, Mentor, Instructor
                     </option>
                     <option value="Student">Student</option>
@@ -168,9 +189,11 @@ class Landing extends React.Component {
                 <form className="landing-form">
                   <input
                     placeholder="Email"
+                    type="email"
                     onChange={e => this.setState({ email: e.target.value })}
                   />
                   <input
+                    type="password"
                     placeholder="Password"
                     onChange={e => this.setState({ password: e.target.value })}
                   />
@@ -211,4 +234,4 @@ class Landing extends React.Component {
     );
   }
 }
-export default Landing;
+export default withRouter(Landing);

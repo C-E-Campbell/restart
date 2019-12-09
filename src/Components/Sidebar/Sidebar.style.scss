@@ -6,6 +6,7 @@
   color: #fff;
   font-family: "Montserrat", sans-serif;
   position: relative;
+  background: linear-gradient(#222, 80%, #0c4b66);
 
   input {
     border-radius: 4px;
@@ -30,6 +31,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .sidebar-link {
@@ -41,9 +43,33 @@
     color: #fff;
   }
 }
+.back-to-projects-btn {
+  margin: 2rem;
+  text-decoration: none;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
 
+  color: #25aae1;
+}
 .sidebar-user-photo {
   margin: 1rem auto 3rem;
   height: 100px;
   width: 120px;
+}
+
+.upload-btn {
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+
+  i {
+    margin-right: 5px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .sidebar-link {
+    font-size: 1rem;
+    margin: 0.5rem auto;
+  }
 }
