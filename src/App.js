@@ -52,7 +52,12 @@ class App extends React.Component {
             <Route
               path="/project/:id"
               exact
-              render={() => <SingleProject user={this.state.userInfo} />}
+              render={() => (
+                <SingleProject
+                  user={this.state.userInfo}
+                  projectData={this.state.projects}
+                />
+              )}
             />
 
             <Route

@@ -23,7 +23,8 @@ class ProjectModal extends Component {
       javascript: false,
       redux: false,
       postgres: false,
-      mongo: false
+      mongo: false,
+      otherTechs: ""
     };
   }
 
@@ -41,7 +42,11 @@ class ProjectModal extends Component {
       javascript,
       redux,
       postgres,
-      mongo
+      mongo,
+      thumbnail,
+      angular,
+      vue,
+      otherTechs
     } = this.state;
     const { id, first, last } = this.props.id;
 
@@ -60,7 +65,11 @@ class ProjectModal extends Component {
       postgres,
       mongo,
       first,
-      last
+      last,
+      thumbnail,
+      angular,
+      vue,
+      otherTechs
     });
     const result = await axios.get("/auth/getAllProjects");
     this.props.getData(result.data);
@@ -199,7 +208,9 @@ class ProjectModal extends Component {
               />
               <textarea
                 placeholder="Project Description"
-                onChange={e => this.setState({ description: e.target.value })}
+                onChange={e =>
+                  this.setState({ project_description: e.target.value })
+                }
               ></textarea>
               <button>Upload Project</button>
             </form>

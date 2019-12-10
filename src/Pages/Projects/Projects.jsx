@@ -15,7 +15,7 @@ class Projects extends Component {
           title={project.project_name}
           first={project.first}
           last={project.last}
-          url={project.url}
+          thumbnail={project.thumbnail}
         />
       );
     });

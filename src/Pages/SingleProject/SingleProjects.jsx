@@ -41,9 +41,9 @@ function SingleProjects(props) {
             <img className="project-details-photo" src={logo} alt="user" />
             <h2>Creators Name</h2>
             <div className="project-contact-container">
-              <i class="fab fa-linkedin fa-2x"></i>
-              <i class="far fa-envelope fa-2x"></i>
-              <i class="fas fa-comments fa-2x"></i>
+              <i className="fab fa-linkedin fa-2x"></i>
+              <i className="far fa-envelope fa-2x"></i>
+              <i className="fas fa-comments fa-2x"></i>
             </div>
             <div className="single-project-description">
               <h2>Description:</h2>
@@ -83,7 +83,7 @@ function SingleProjects(props) {
             className="btn-to-info"
           >
             <Link to="top">
-              Live Project <i class="fas fa-chevron-up"></i>
+              Live Project <i className="fas fa-chevron-up"></i>
             </Link>
           </div>
         </div>

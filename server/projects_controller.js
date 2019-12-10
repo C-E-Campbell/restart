@@ -36,7 +36,11 @@ module.exports = {
       description,
       linkedin,
       first,
-      last
+      last,
+      thumbnail,
+      angular,
+      vue,
+      otherTechs
     } = req.body;
     const project = await db.update_project([
       id,
@@ -52,7 +56,11 @@ module.exports = {
       description,
       linkedin,
       first,
-      last
+      last,
+      thumbnail,
+      angular,
+      vue,
+      otherTechs
     ]);
     console.log("project:", project);
     return res.status(200).send(project);
@@ -82,7 +90,11 @@ module.exports = {
       linkedin,
       email,
       first,
-      last
+      last,
+      thumbnail,
+      angular,
+      vue,
+      otherTechs
     } = req.body;
     const project = await db.add_project([
       id,
@@ -99,7 +111,11 @@ module.exports = {
       linkedin,
       email,
       first,
-      last
+      last,
+      thumbnail,
+      angular,
+      vue,
+      otherTechs
     ]);
 
     console.log("project:", project);

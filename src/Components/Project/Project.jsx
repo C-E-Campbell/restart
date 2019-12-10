@@ -12,7 +12,7 @@ function Project(props) {
           </div>
           <img
             className="project-photo"
-            src={props.url}
+            src={props.thumbnail}
             alt="project-display"
           />
         </div>

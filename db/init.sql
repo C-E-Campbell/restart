@@ -55,3 +55,7 @@ INSERT INTO projects (
         user_id INTEGER REFERENCES users(user_id),
         idea_feedback VARCHAR NOT NULL
     );
+        ALTER TABLE projects
+        ADD thumbnail VARCHAR;
+
+      
