@@ -25,7 +25,10 @@ class Sidebar extends Component {
         <ul className="sidebar-ul">
           <img className="sidebar-user-photo" src={defaultUser} alt="user" />
           {!this.props.showHomeBtn ? (
-            <input onChange={e => this.props.found(e.target.value)} />
+            <input
+              placeholder="Seach Developers"
+              onChange={e => this.props.found(e.target.value)}
+            />
           ) : (
             <Link to="/projects" className="back-to-projects-btn">
               Back To Projects

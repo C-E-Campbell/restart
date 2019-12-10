@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import "./SingleComment.style.scss";
 
 export default function SingleComment(props) {
