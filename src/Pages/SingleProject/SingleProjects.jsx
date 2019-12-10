@@ -7,13 +7,13 @@ import { Link } from "react-scroll";
 import { withRouter } from "react-router-dom";
 
 function SingleProjects(props) {
-  // const myURl = DummyData.filter(project => {
-  //   // return project.id === props.match.params.id ? project.url : "NoVideo";
-  //   return "www.devtennis.xyz";
-  // });
   return (
     <div className="single-project-container">
-      <CommentSidebar />
+      <CommentSidebar
+        ids={props.allUsers}
+        user={props.user.id}
+        project={Number(props.match.params.id)}
+      />
       <MainContent bgcolor={"#fff"}>
         <div className="single-container">
           <div id="top" style={{ margin: "0 auto" }}>
