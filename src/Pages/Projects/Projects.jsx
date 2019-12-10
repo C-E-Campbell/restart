@@ -4,7 +4,6 @@ import "./Projects.style.scss";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Project from "../../Components/Project/Project";
 import MainContent from "../../Components/MainContent/MainContent";
-import { continueStatement } from "@babel/types";
 
 class Projects extends Component {
   constructor(props) {
