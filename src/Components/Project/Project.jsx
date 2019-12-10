@@ -23,7 +23,11 @@ function Project(props) {
               alt="project-display"
             />
           </div>
-          <div className="project-title">{props.all.creator}</div>
+          <img
+            className="project-photo"
+            src={props.thumbnail}
+            alt="project-display"
+          />
         </div>
       </Link>
     </React.Fragment>

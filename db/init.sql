@@ -49,6 +49,7 @@
 --         idea_id SERIAL PRIMARY KEY
 --     );
 
+<<<<<<< HEAD
 CREATE TABLE ideaFeedback
 (
     idea_feedback_id SERIAL PRIMARY KEY,
@@ -56,3 +57,15 @@ CREATE TABLE ideaFeedback
     user_id INTEGER REFERENCES users(user_id),
     idea_feedback VARCHAR NOT NULL
 );
+=======
+    CREATE TABLE ideaFeedback (
+        idea_feedback_id SERIAL PRIMARY KEY,
+        idea_id INTEGER REFERENCES idea(idea_id),
+        user_id INTEGER REFERENCES users(user_id),
+        idea_feedback VARCHAR NOT NULL
+    );
+        ALTER TABLE projects
+        ADD thumbnail VARCHAR;
+
+      
+>>>>>>> ef3ac5cb3e8ac86d86a62e5596118e9a0a74d5bd

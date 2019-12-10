@@ -8,6 +8,7 @@ import Help from "./Pages/Help/Help.jsx";
 import Idea from "./Pages/Idea/Idea.jsx";
 import ProjectModal from "./Components/ProjectModal/ProjectModal.jsx";
 import MyProvider from "./Components/MyProvider/MyProvider.jsx";
+import axios from "axios";
 
 class App extends React.Component {
   constructor(props) {
@@ -15,7 +16,8 @@ class App extends React.Component {
     this.state = {
       userInfo: {},
       projects: {},
-      comments: {}
+      comments: {},
+      allIds: []
     };
   }
 
@@ -27,16 +29,16 @@ class App extends React.Component {
     this.setState({ userInfo: result });
   };
 
-  grabProjectDataFromLanding = data => {
-    this.setState({ projects: data });
+  getAllNames = async () => {
+    const result = await axios.get("/auth/getNames");
+    console.log(result);
+    this.setState({ allIds: result.data });
   };
 
-  logout = () => {
-    this.setState({ userInfo: {}, comments: {} });
-  };
-  getFilteredProjects = data => {
-    this.setState({});
-  };
+  componentDidMount() {
+    this.getAllNames();
+  }
+
   render() {
     return (
       <MyProvider user={this.state.userInfo}>
@@ -62,7 +64,12 @@ class App extends React.Component {
             <Route
               path="/project/:id"
               exact
-              render={() => <SingleProject user={this.state.userInfo} />}
+              render={() => (
+                <SingleProject
+                  user={this.state.userInfo}
+                  allUsers={this.state.allIds}
+                />
+              )}
             />
 
             <Route
@@ -78,7 +85,11 @@ class App extends React.Component {
 
             <Route path="/help" exact component={Help} />
 
-            <Route path="/idea" exact component={Idea} />
+            <Route
+              path="/idea"
+              exact
+              render={() => <Idea users={this.state.allIds} />}
+            />
 
             <Route
               path="/projectUpload"

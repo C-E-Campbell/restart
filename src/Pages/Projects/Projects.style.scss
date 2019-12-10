@@ -1,13 +1,13 @@
 .project-container {
   display: flex;
   height: 100vh;
-  overflow: hidden;
+  overflow: scroll;
   background-color: #fff;
 }
 
 .project-grid {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1rem;
 }

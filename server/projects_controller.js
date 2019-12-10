@@ -36,7 +36,11 @@ module.exports = {
       description,
       linkedin,
       first,
-      last
+      last,
+      thumbnail,
+      angular,
+      vue,
+      otherTechs
     } = req.body;
     const project = await db.update_project([
       id,
@@ -52,7 +56,11 @@ module.exports = {
       description,
       linkedin,
       first,
-      last
+      last,
+      thumbnail,
+      angular,
+      vue,
+      otherTechs
     ]);
     console.log("project:", project);
     return res.status(200).send(project);
@@ -82,7 +90,11 @@ module.exports = {
       linkedin,
       email,
       first,
-      last
+      last,
+      thumbnail,
+      angular,
+      vue,
+      otherTechs
     } = req.body;
     const project = await db.add_project([
       id,
@@ -99,7 +111,11 @@ module.exports = {
       linkedin,
       email,
       first,
-      last
+      last,
+      thumbnail,
+      angular,
+      vue,
+      otherTechs
     ]);
 
     console.log("project:", project);
@@ -128,15 +144,15 @@ module.exports = {
   },
   deleteFeedback: async (req, res, next) => {
     const db = req.app.get("db");
-    const { feedback_id } = req.params;
+    const { feedback_id, project_id } = req.params;
     console.log(req.params);
-    db.delete_feedback(feedback_id)
-      .then(res.sendStatus(200))
-      .catch(err => console.log(err));
+    const results = await db.delete_feedback([feedback_id, project_id]);
+    return res.status(200).send(results);
   },
   getAllFeedback: async (req, res) => {
     const db = await req.app.get("db");
-    const allFeedback = await db.get_all_feedback();
+    const { id } = req.params;
+    const allFeedback = await db.get_all_feedback([id]);
     return res.status(200).send(allFeedback);
   }
 };

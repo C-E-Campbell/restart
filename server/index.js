@@ -6,7 +6,13 @@ const massive = require("massive");
 
 // app.use(express.status(__dirname + "/../build"));
 
-const { register, logout, login, checkCache } = require("./auth_controller");
+const {
+  register,
+  logout,
+  login,
+  checkCache,
+  getNames
+} = require("./auth_controller");
 const {
   userProjects,
   deleteProject,
@@ -55,14 +61,15 @@ app.post("/auth/login", login);
 app.delete("/auth/logout", logout);
 app.get("/auth/getAllProjects", getAllProjects);
 app.get("/auth/userProjects/:user_id", userProjects);
+app.get("/auth/getNames", getNames);
 app.delete("/auth/delete_project/:project_id", deleteProject);
 app.put("/auth/edit_project", editproject);
 app.post("/auth/addProject", addProject);
 
-app.get("/auth/get_all_feedback", getAllFeedback);
+app.get("/auth/get_all_feedback/:id", getAllFeedback);
 app.post("/auth/add_feedback", addFeedback);
 app.put("/auth/edit_feedback", editFeedback);
-app.delete("/auth/delete_feedback/:feedback_id", deleteFeedback);
+app.delete("/auth/delete_feedback/:feedback_id/:project_id", deleteFeedback);
 
 app.get("/auth/get_ideas", getAllIdeas);
 app.post("/auth/add_idea", addIdea);
