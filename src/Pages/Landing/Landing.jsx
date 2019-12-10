@@ -16,7 +16,8 @@ class Landing extends React.Component {
       email: "",
       password: "",
       campus: null,
-      status: null
+      status: null,
+      allIds: []
     };
   }
 
@@ -53,6 +54,7 @@ class Landing extends React.Component {
   //       });
   //   }
   // };
+  
 
   componentDidMount = async () => {
     this.getProjects();
