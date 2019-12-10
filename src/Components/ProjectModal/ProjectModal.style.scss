@@ -6,10 +6,14 @@
 
 .project-modal-main {
   display: flex;
+  color: #fff;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(253, 253, 253);
+  background: linear-gradient(90deg, #0c2c41d5, #0c2c41d8),
+    url("../../Assets/formbg.jpg");
+
+  background-size: cover;
   width: 100vw;
   height: 100%;
   border-radius: 4px;
@@ -24,7 +28,7 @@
     justify-content: space-evenly;
 
     width: 50%;
-    height: 90%;
+    height: 85%;
 
     button {
       width: 70%;

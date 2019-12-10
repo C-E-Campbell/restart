@@ -16,11 +16,11 @@ function SingleProjects(props) {
       />
       <MainContent bgcolor={"#fff"}>
         <div className="single-container">
-          <div id="top" style={{ margin: "0 auto" }}>
+          <div className="testdiv" id="top" style={{ margin: "0 auto" }}>
             <iframe
               title="project"
-              width="1260"
-              height="800"
+              width="1280px"
+              height="800px"
               src={props.location.state.host_url}
             ></iframe>
 

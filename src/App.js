@@ -31,7 +31,6 @@ class App extends React.Component {
 
   getAllNames = async () => {
     const result = await axios.get("/auth/getNames");
-    console.log(result);
     this.setState({ allIds: result.data });
   };
 

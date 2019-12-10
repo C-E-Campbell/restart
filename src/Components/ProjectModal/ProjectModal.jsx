@@ -80,10 +80,17 @@ class ProjectModal extends Component {
     return (
       <div className="modal-container">
         <Sidebar showHomeBtn={true} />
-        <MainContent bgcolor={"#fff"}>
+        <MainContent bgcolor={"#0c2c41"} padding={"0px"}>
           <div className="project-modal-main">
-            <h2>Upload Your Work</h2>
-            <form onSubmit={e => this.submitHandler(e)}>
+            <h2 data-aos="fade" data-aos-delay="300" data-aos-easing="ease-in">
+              Upload Your Work
+            </h2>
+            <form
+              data-aos="fade"
+              data-aos-delay="300"
+              data-aos-easing="ease-in"
+              onSubmit={e => this.submitHandler(e)}
+            >
               <input
                 className="project-modal-input"
                 placeholder="Project Name"

@@ -76,7 +76,7 @@ class Sidebar extends Component {
                 data-aos-delay="300"
                 data-aos-easing="ease-in"
               >
-                <li onClick={() => value()}>Logout</li>
+                <li onClick={() => value.log()}>Logout</li>
               </Link>
             )}
           </MyContext.Consumer>
