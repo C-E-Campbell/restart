@@ -67,5 +67,9 @@ CREATE TABLE ideaFeedback
         ALTER TABLE projects
         ADD thumbnail VARCHAR;
 
+<<<<<<< HEAD
       
 >>>>>>> ef3ac5cb3e8ac86d86a62e5596118e9a0a74d5bd
+=======
+      
+>>>>>>> 643ff89162ec05d298a4b31dc935dc6e6bfaa5bf

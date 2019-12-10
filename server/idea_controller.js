@@ -7,16 +7,16 @@ module.exports = {
 
   addIdea: async (req, res, next) => {
     const db = req.app.get("db");
-    const { user_id, idea  } = req.body;
-    const projectIdea = await db.add_idea([user_id, idea]);
+    const { user_id, idea, title  } = req.body;
+    const projectIdea = await db.add_idea([user_id, idea, title]);
     
     return res.status(200).send(projectIdea);
     
   },
   editIdea: async (req, res, next) => {
     const db = req.app.get("db");
-    const { user_id, idea, idea_id } = req.body;
-    const edit = await db.edit_idea([user_id, idea, idea_id]);
+    const { user_id, idea, idea_id, title } = req.body;
+    const edit = await db.edit_idea([user_id, idea, idea_id, title]);
     
     return res.status(200).send(edit);
   },

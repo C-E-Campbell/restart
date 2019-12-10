@@ -19,15 +19,10 @@ function Project(props) {
             </div>
             <img
               className="project-photo"
-              src={props.all.url}
+              src={props.all.thumbnail}
               alt="project-display"
             />
           </div>
-          <img
-            className="project-photo"
-            src={props.thumbnail}
-            alt="project-display"
-          />
         </div>
       </Link>
     </React.Fragment>
