@@ -4,27 +4,55 @@ import "./Projects.style.scss";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import Project from "../../Components/Project/Project";
 import MainContent from "../../Components/MainContent/MainContent";
+import { continueStatement } from "@babel/types";
 
 class Projects extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: ""
+    };
+  }
+  getSearch = data => {
+    this.setState({ search: data });
+  };
   render() {
-    const mappedData = this.props.projectData.map(project => {
-      return (
-        <Project
-          key={project.project_id}
-          id={project.project_id}
-          title={project.project_name}
-          first={project.first}
-          last={project.last}
-          thumbnail={project.thumbnail}
-        />
-      );
-    });
+    // const { search } = this.state;
+    const filterTech = this.props.projectData
+      .map(content => {
+        let arr = [];
+        for (let key in content) {
+          if (content[key] === true) {
+            arr.push(key);
+          }
+        }
+        content.technologies = arr;
+
+        return content;
+      })
+
+      .filter(items => {
+        return (
+          items.first.indexOf(this.state.search) !== -1 ||
+          items.last.indexOf(this.state.search) !== -1 ||
+          items.project_name.indexOf(this.state.search) !== -1
+          // items.technologies[0].indexOf(this.state.search) !== -1 ||
+          // items.technologies[1].indexOf(this.state.search) !== -1 ||
+          // items.technologies[2].indexOf(this.state.search) !== -1 ||
+          // items.technologies[3].indexOf(this.state.search) !== -1 ||
+          // items.technologies[4].indexOf(this.state.search) !== -1
+        );
+      })
+
+      .map(project => {
+        return <Project all={project} />;
+      });
 
     return (
       <div className="project-container">
-        <Sidebar />
+        <Sidebar found={this.getSearch} />
         <MainContent>
-          <div className="project-grid">{mappedData}</div>
+          <div className="project-grid">{filterTech}</div>
         </MainContent>
       </div>
     );
