@@ -1,4 +1,6 @@
 const bcrypt = require("bcryptjs");
+// const redis = require("redis");
+// const client = redis.createClient(6379);
 
 module.exports = {
   register: async (req, res, next) => {
@@ -26,8 +28,8 @@ module.exports = {
   },
   login: async (req, res, next) => {
     const { email, password } = req.body;
-    console.log(req.body);
     const db = req.app.get("db");
+
     try {
       const checkForUser = await db.find_user_by_email([email]);
       if (!checkForUser[0]) {
@@ -35,6 +37,7 @@ module.exports = {
           .status(401)
           .send("Cant find that account. You may need to register");
       } else {
+        //client.set(`${email}:password`, password);
         let checkPass = bcrypt.compareSync(password, checkForUser[0].password);
         if (checkPass) {
           req.session.user = {
@@ -51,34 +54,20 @@ module.exports = {
     } catch (error) {
       console.log(error);
     }
-
-    // db.find_user_by_email(email).then(([foundUser]) => {
-    //   if (!foundUser) {
-    //     res.status(400).send("Go login");
-    //   } else {
-    //     bcrypt.compare(password, foundUser.password).then(isAuthenticated => {
-    //       if (isAuthenticated) {
-    //         req.session.user = {
-    //           user_id: foundUser.user_id,
-    //           first: foundUser.first,
-    //           last: foundUser.last,
-    //           email: foundUser.email,
-    //           campus: foundUser.campus,
-    //           status: foundUser.status
-    //         };
-    //         res.status(200).send(req.session.user);
-    //       } else {
-    //         res.status(400).send("you are not authorized");
-    //       }
-    //     });
-    //   }
-    // });
   },
   logout: (req, res, next) => {
     req.session.destroy();
     res.status(200).send("Logout successful");
-  },
-  userSession: (req, res, next) => {
-    res.status(200).send(req.session.user);
   }
+  // checkCache: (req, res, next) => {
+  //   const { email } = req.body;
+
+  //   if (client.get(`${email}:password`)) {
+  //     client.get(`${email}:password`, (err, data) => {
+  //       res.send(data);
+  //     });
+  //   } else {
+  //     res.send("no cache");
+  //   }
+  // }
 };

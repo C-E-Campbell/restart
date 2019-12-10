@@ -1,24 +1,31 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 import "./Project.style.scss";
 
 function Project(props) {
   return (
     <React.Fragment>
-      <div onClick={() => props.history.push(`project/${props.id}`)}>
-        <div className="project-box">
-          <div className="project-overlay">
-            <p> {props.title}</p>
+      <Link
+        to={{
+          pathname: `project/${props.all.project_id}`,
+          state: props.all
+        }}
+      >
+        <div>
+          <div className="project-box">
+            <div className="project-overlay">
+              <p> {props.all.project_name}</p>
+            </div>
+            <img
+              className="project-photo"
+              src={props.all.url}
+              alt="project-display"
+            />
           </div>
-          <img
-            className="project-photo"
-            src={props.url}
-            alt="project-display"
-          />
+          <div className="project-title">{props.all.creator}</div>
         </div>
-        <div className="project-title">{props.creator}</div>
-      </div>
+      </Link>
     </React.Fragment>
   );
 }

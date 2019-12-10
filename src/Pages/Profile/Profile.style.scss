@@ -1,0 +1,49 @@
+.profile-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+.profile-container {
+  display: flex;
+  width: 100vw;
+  height: 70vh;
+  overflow: hidden;
+  background: linear-gradient(#222, 80%, #0c4b66);
+}
+
+.profile-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1rem;
+  margin: 30px;
+}
+.profile-pic {
+  width: 40vw;
+  height: 40vh;
+  background-color: cadetblue;
+  margin-top: 180px;
+}
+.profile-info {
+  width: 100vw;
+  height: 20vh;
+}
+.profile-logo {
+  height: 150px;
+  width: 100%;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+
+  img {
+    height: 90%;
+    margin: 0 auto;
+  }
+}
+.profile-details {
+  font-size: 1.7rem;
+  color: white;
+}

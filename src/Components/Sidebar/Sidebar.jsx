@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import logo from "../../Assets/smallLogo.png";
 import defaultUser from "../../Assets/defaultUser.png";
-import FilterProjects from "../ProjectFilter/FilterProjects";
+
 import "./Sidebar.style.scss";
+import { MyContext } from "../MyProvider/MyProvider";
 const userId = 9;
 class Sidebar extends Component {
   constructor(props) {
@@ -63,15 +64,19 @@ class Sidebar extends Component {
           >
             <li>Help</li>
           </Link>
-          <Link
-            to="/"
-            className="sidebar-link"
-            data-aos="fade-right"
-            data-aos-delay="300"
-            data-aos-easing="ease-in"
-          >
-            <li>Logout</li>
-          </Link>
+          <MyContext.Consumer>
+            {value => (
+              <Link
+                to="/"
+                className="sidebar-link"
+                data-aos="fade-right"
+                data-aos-delay="300"
+                data-aos-easing="ease-in"
+              >
+                <li onClick={() => value()}>Logout</li>
+              </Link>
+            )}
+          </MyContext.Consumer>
         </ul>
       </div>
     );

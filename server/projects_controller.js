@@ -23,7 +23,7 @@ module.exports = {
     const db = req.app.get("db");
     console.log("body:", req.body);
     const {
-      project_id,
+      id,
       project_name,
       host_url,
       github,
@@ -34,10 +34,12 @@ module.exports = {
       postgres,
       mongo,
       description,
-      linkedin
+      linkedin,
+      first,
+      last
     } = req.body;
     const project = await db.update_project([
-      project_id,
+      id,
       project_name,
       host_url,
       github,
@@ -48,7 +50,9 @@ module.exports = {
       postgres,
       mongo,
       description,
-      linkedin
+      linkedin,
+      first,
+      last
     ]);
     console.log("project:", project);
     return res.status(200).send(project);
@@ -65,7 +69,6 @@ module.exports = {
     console.log("body:", req.body);
     const {
       id,
-
       project_name,
       host_url,
       github,
@@ -82,6 +85,7 @@ module.exports = {
       last
     } = req.body;
     const project = await db.add_project([
+      id,
       project_name,
       host_url,
       github,
@@ -93,7 +97,9 @@ module.exports = {
       mongo,
       description,
       linkedin,
-      email
+      email,
+      first,
+      last
     ]);
 
     console.log("project:", project);
@@ -127,5 +133,10 @@ module.exports = {
     db.delete_feedback(feedback_id)
       .then(res.sendStatus(200))
       .catch(err => console.log(err));
+  },
+  getAllFeedback: async (req, res) => {
+    const db = await req.app.get("db");
+    const allFeedback = await db.get_all_feedback();
+    return res.status(200).send(allFeedback);
   }
 };
