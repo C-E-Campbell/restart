@@ -3,7 +3,6 @@ import "./SingleProject.style.scss";
 import CommentSidebar from "../../Components/CommentSidebar/CommentSidebar";
 import logo from "../../Assets/defaultUser.png";
 import MainContent from "../../Components/MainContent/MainContent";
-import { Link } from "react-scroll";
 import { withRouter } from "react-router-dom";
 
 class SingleProjects extends Component {

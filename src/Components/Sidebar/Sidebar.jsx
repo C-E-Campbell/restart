@@ -67,6 +67,15 @@ class Sidebar extends Component {
           >
             <li>Help</li>
           </Link>
+          <Link
+            to="/Chart"
+            className="sidebar-link"
+            data-aos="fade-right"
+            data-aos-delay="250"
+            data-aos-easing="ease-in"
+          >
+            <li>Campus Stats</li>
+          </Link>
           <MyContext.Consumer>
             {value => (
               <Link
