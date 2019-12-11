@@ -9,6 +9,7 @@ import Idea from "./Pages/Idea/Idea.jsx";
 import ProjectModal from "./Components/ProjectModal/ProjectModal.jsx";
 import MyProvider from "./Components/MyProvider/MyProvider.jsx";
 import axios from "axios";
+import Chart from "./Chart/Chart";
 
 class App extends React.Component {
   constructor(props) {
@@ -99,6 +100,11 @@ class App extends React.Component {
                   id={this.state.userInfo}
                 />
               )}
+            />
+            <Route
+              path="/Chart"
+              exact
+              render={() => <Chart users={this.state.allIds} />}
             />
           </Switch>
         </React.Fragment>

@@ -4,8 +4,9 @@ import { withRouter, Link } from "react-router-dom";
 import "./Project.style.scss";
 
 function Project(props) {
+  console.log(props);
   return (
-    <React.Fragment>
+    <>
       <Link
         to={{
           pathname: `project/${props.all.project_id}`,
@@ -25,7 +26,7 @@ function Project(props) {
           </div>
         </div>
       </Link>
-    </React.Fragment>
+    </>
   );
 }
 export default withRouter(Project);

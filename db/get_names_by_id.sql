@@ -1,4 +1,5 @@
 SELECT first,
        last,
-       user_id
+       user_id,
+       campus
 FROM users
