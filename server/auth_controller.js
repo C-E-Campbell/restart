@@ -62,7 +62,7 @@ module.exports = {
   getNames: async (req, res, next) => {
     const db = req.app.get("db");
     const result = await db.get_names_by_id();
-    console.log(result);
+    // console.log(result);
     return res.status(200).send(result);
   }
   // checkCache: (req, res, next) => {

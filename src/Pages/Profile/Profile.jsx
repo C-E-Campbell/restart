@@ -14,6 +14,7 @@ class Profile extends Component {
   }
 
   render() {
+    console.log(this.props.projectData);
     const mappedProjects = this.props.projectData.map(project => {
       if (project.user_id === this.props.user.id) {
         return (

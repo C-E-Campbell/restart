@@ -17,6 +17,7 @@ class Projects extends Component {
   };
   render() {
     // const { search } = this.state;
+    console.log(this.props.projectData);
     const filterTech = this.props.projectData
       .map(content => {
         let arr = [];
