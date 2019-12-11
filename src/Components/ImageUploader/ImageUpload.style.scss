@@ -1,0 +1,32 @@
+.img-container {
+  border-radius: 50%;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.img-overlay {
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  border-radius: 50%;
+}
+.fa-plus {
+  position: absolute;
+  color: rgba(187, 187, 187, 0.425);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.imgUpload {
+  width: 150px;
+  margin-bottom: 2rem;
+  &:hover {
+    cursor: pointer;
+    filter: blur(2px);
+  }
+}

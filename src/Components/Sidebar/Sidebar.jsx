@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import logo from "../../Assets/smallLogo.png";
-import defaultUser from "../../Assets/defaultUser.png";
+import ImageUploader from "../ImageUploader/ImageUploader";
 
 import "./Sidebar.style.scss";
 import { MyContext } from "../MyProvider/MyProvider";
-const userId = 9;
+
 class Sidebar extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +23,7 @@ class Sidebar extends Component {
           </Link>
         </div>
         <ul className="sidebar-ul">
-          <img className="sidebar-user-photo" src={defaultUser} alt="user" />
+          <ImageUploader />
           {!this.props.showHomeBtn ? (
             <input
               placeholder="Seach Developers"
@@ -41,7 +41,7 @@ class Sidebar extends Component {
             </div>
           </Link>
           <Link
-            to={`profile/${userId}`}
+            to={`profile/${this.props.loggedUser.id}`}
             className="sidebar-link"
             data-aos="fade-right"
             data-aos-delay="100"

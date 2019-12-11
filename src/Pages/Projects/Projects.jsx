@@ -49,7 +49,7 @@ class Projects extends Component {
 
     return (
       <div className="project-container">
-        <Sidebar found={this.getSearch} />
+        <Sidebar found={this.getSearch} loggedUser={this.props.userData} />
         <MainContent>
           <div className="project-grid">{filterTech}</div>
         </MainContent>

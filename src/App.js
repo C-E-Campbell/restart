@@ -57,7 +57,12 @@ class App extends React.Component {
             <Route
               path="/projects"
               exact
-              render={() => <Projects projectData={this.state.projects} />}
+              render={() => (
+                <Projects
+                  projectData={this.state.projects}
+                  userData={this.state.userInfo}
+                />
+              )}
             />
 
             <Route
@@ -70,24 +75,42 @@ class App extends React.Component {
                 />
               )}
             />
-
+            <Route
+              path="/profile/project/:id"
+              exact
+              render={() => (
+                <SingleProject
+                  user={this.state.userInfo}
+                  allUsers={this.state.allIds}
+                />
+              )}
+            />
             <Route
               path="/profile/:id"
               exact
               render={() => (
                 <Profile
-                  projectData={this.state.projects}
+                  projectDataMain={this.state.projects}
                   user={this.state.userInfo}
                 />
               )}
             />
 
-            <Route path="/help" exact component={Help} />
+            <Route
+              path="/help"
+              exact
+              render={() => <Help user={this.state.userInfo} />}
+            />
 
             <Route
               path="/idea"
               exact
-              render={() => <Idea users={this.state.allIds} />}
+              render={() => (
+                <Idea
+                  users={this.state.allIds}
+                  userData={this.state.userInfo}
+                />
+              )}
             />
 
             <Route

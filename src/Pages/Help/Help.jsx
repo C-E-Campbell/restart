@@ -2,10 +2,10 @@ import React from "react";
 import "./Help.style.scss";
 import SideBar from "../../Components/Sidebar/Sidebar";
 import MainContent from "../../Components/MainContent/MainContent";
-export default function Help() {
+export default function Help(props) {
   return (
     <div className="help-container">
-      <SideBar showHomeBtn={true} />
+      <SideBar showHomeBtn={true} loggedUser={props.user} />
       <MainContent bgcolor={"#fff"}>
         <div className="inner-help-container">
           <div className="outer-link-container">

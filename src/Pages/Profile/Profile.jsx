@@ -1,7 +1,9 @@
 /* eslint-disable array-callback-return */
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import BasicHeader from "../../Components/BasicHeader/BasicHeader";
 import "./Profile.style.scss";
-import Project from "../../Components/Project/Project";
+import Project from "../../Components/ProfileProject/ProfileProject";
 import logo from "../../Assets/DevMtnLogo.png";
 
 class Profile extends Component {
@@ -14,28 +16,21 @@ class Profile extends Component {
   }
 
   render() {
-    const mappedProjects = this.props.projectData.map(project => {
+    const mappedProjects = this.props.projectDataMain.map(project => {
       if (project.user_id === this.props.user.id) {
-        return (
-          <Project
-            key={project.project_id}
-            id={project.project_id}
-            title={project.project_name}
-            first={project.first}
-            last={project.last}
-            url={project.url}
-          />
-        );
+        return <Project profile={project} />;
       }
     });
 
     return (
-      <div>
+      <React.Fragment>
         <div className="profile-main">
+          <BasicHeader />
           <div className="profile-logo">
             <img src={logo} alt="devmtn" />
           </div>
-          <div className="profile-pic">profile picture</div>
+          <div className="profile-pic"></div>
+          <form></form>
           <div className="profile-info">
             <h1 className="profile-details">{this.props.user.first}</h1>
             <h1 className="profile-details">{this.props.user.last}</h1>
@@ -46,8 +41,8 @@ class Profile extends Component {
             <div className="profile-grid"> {mappedProjects}</div>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
-export default Profile;
+export default withRouter(Profile);

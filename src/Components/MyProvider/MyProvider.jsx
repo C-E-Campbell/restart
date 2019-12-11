@@ -12,8 +12,8 @@ class MyProvider extends React.Component {
       user: this.props.user.id
     };
   }
-  componentDid() {
-    this.setState({ user: 6 });
+  componentDidMount() {
+    this.setState({ user: this.props.user });
   }
   render() {
     return (

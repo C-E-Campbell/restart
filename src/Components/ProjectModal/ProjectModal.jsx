@@ -79,7 +79,7 @@ class ProjectModal extends Component {
   render() {
     return (
       <div className="modal-container">
-        <Sidebar showHomeBtn={true} />
+        <Sidebar showHomeBtn={true} loggedUser={this.props.id} />
         <MainContent bgcolor={"#0c2c41"} padding={"0px"}>
           <div className="project-modal-main">
             <h2 data-aos="fade" data-aos-delay="300" data-aos-easing="ease-in">

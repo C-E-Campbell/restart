@@ -3,8 +3,21 @@ const express = require("express");
 const app = express();
 const session = require("express-session");
 const massive = require("massive");
-
+const profileCTRL = require("./profile_controller");
 // app.use(express.status(__dirname + "/../build"));
+const multer = require("multer");
+
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, "./uploads");
+  },
+  filename: function(req, file, cb) {
+    cb(null, `${file.originalname}`);
+  }
+});
+
+const upload = multer({ storage: storage });
+upload.single("profileImg");
 
 const {
   register,
@@ -58,6 +71,11 @@ massive(CONNECTION_STRING).then(db => {
 app.post("/auth/register", register);
 app.post("/auth/login", login);
 //app.post("/auth/checkcache", checkCache);
+app.post(
+  "/auth/imageupload",
+  upload.single("profileImage"),
+  profileCTRL.imgUpload
+);
 app.delete("/auth/logout", logout);
 app.get("/auth/getAllProjects", getAllProjects);
 app.get("/auth/userProjects/:user_id", userProjects);

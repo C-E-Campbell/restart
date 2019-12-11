@@ -48,7 +48,11 @@ class Idea extends Component {
     });
     return (
       <div className="whole">
-          <SideBar showHomeBtn={true} />
+        <SideBar
+          showHomeBtn={true}
+          users={this.props.users}
+          loggedUser={this.props.userData}
+        />
         <MainContent bgcolor={"#fff"}>
           <div className="idea-container">{allIdeas}</div>
         </MainContent>
