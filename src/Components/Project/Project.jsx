@@ -4,7 +4,6 @@ import { withRouter, Link } from "react-router-dom";
 import "./Project.style.scss";
 
 function Project(props) {
-  console.log(props);
   return (
     <>
       <Link

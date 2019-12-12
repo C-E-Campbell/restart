@@ -1,13 +1,22 @@
 .header {
   width: 100%;
-  background-color: blueviolet;
+  background-color: #222;
   height: 50px;
-}
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
 
-.inner-header {
-  margin: 0 auto;
-  height: 100%;
-  width: 100%;
-  max-width: 860px;
-  background-color: brown;
+  a {
+    color: #fff;
+  }
+}
+.header-logo {
+  background-image: url("../../Assets/DevMtnLogo.png");
+  background-size: contain;
+  margin-left: 1rem;
+  background-repeat: no-repeat;
+  height: 90%;
+  width: 100px;
 }

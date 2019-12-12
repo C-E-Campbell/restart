@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const session = require("express-session");
 const massive = require("massive");
+const socketio = require("socket.io");
 const profileCTRL = require("./profile_controller");
 // app.use(express.status(__dirname + "/../build"));
 const multer = require("multer");
@@ -100,4 +101,23 @@ app.put("/auth/edit_idea_feedback", editIdeaFeedback);
 app.delete("/auth/delete_idea_feedback/:idea_feedback_id", deleteIdeaFeedback);
 
 let port = SERVER_PORT || 4001;
-app.listen(port, () => console.log(`up and running on port ${port}`));
+const expressServer = app.listen(port, () =>
+  console.log(`up and running on port ${port}`)
+);
+
+const io = socketio(expressServer);
+
+const history = [];
+
+io.on("connection", socket => {
+  console.log(socket.id);
+  socket.emit("welcome", "Welcome to the chat");
+  socket.on("message", message => {
+    console.log(message);
+    // if (history.length === 500) {
+    //   history.pop();
+    //   history.unshift(message);
+    // }
+    io.emit("newMessage", message);
+  });
+});

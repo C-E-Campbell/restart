@@ -47,7 +47,16 @@ class Sidebar extends Component {
             data-aos-delay="100"
             data-aos-easing="ease-in"
           >
-            <li>Profile</li>
+            <li>Your Profile</li>
+          </Link>
+          <Link
+            to="/chat"
+            className="sidebar-link"
+            data-aos="fade-right"
+            data-aos-delay="200"
+            data-aos-easing="ease-in"
+          >
+            <li>codeTalk</li>
           </Link>
           <Link
             to="/idea"
@@ -56,16 +65,7 @@ class Sidebar extends Component {
             data-aos-delay="200"
             data-aos-easing="ease-in"
           >
-            <li>Idea</li>
-          </Link>
-          <Link
-            to="/help"
-            className="sidebar-link"
-            data-aos="fade-right"
-            data-aos-delay="250"
-            data-aos-easing="ease-in"
-          >
-            <li>Help</li>
+            <li>Team Up</li>
           </Link>
           <Link
             to="/Chart"
@@ -76,6 +76,16 @@ class Sidebar extends Component {
           >
             <li>Campus Stats</li>
           </Link>
+          <Link
+            to="/help"
+            className="sidebar-link"
+            data-aos="fade-right"
+            data-aos-delay="250"
+            data-aos-easing="ease-in"
+          >
+            <li>Resources</li>
+          </Link>
+
           <MyContext.Consumer>
             {value => (
               <Link
