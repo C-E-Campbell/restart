@@ -49,6 +49,8 @@ const {
   getIdeaFeedback
 } = require("./idea_controller");
 
+const { getCampusInfo, getCampusLinkEamil } = require("./chart_controller");
+
 app.use(express.json());
 
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
@@ -98,6 +100,9 @@ app.get("/auth/get_idea_feedback", getIdeaFeedback);
 app.post("/auth/add_idea_feedback", addIdeaFeedback);
 app.put("/auth/edit_idea_feedback", editIdeaFeedback);
 app.delete("/auth/delete_idea_feedback/:idea_feedback_id", deleteIdeaFeedback);
+
+app.get("/auth/get_campus", getCampusInfo);
+app.get("/auth/get_link_campus_email/:id", getCampusLinkEamil);
 
 let port = SERVER_PORT || 4001;
 app.listen(port, () => console.log(`up and running on port ${port}`));

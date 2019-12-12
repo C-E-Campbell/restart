@@ -1,0 +1,2 @@
+SELECT campus 
+FROM users;
