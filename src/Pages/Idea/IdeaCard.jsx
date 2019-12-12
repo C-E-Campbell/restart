@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import {FaRegTrashAlt} from "react-icons/fa"
+import {FaRegTrashAlt} from "react-icons/fa";
 import "./IdeaCard.style.scss"
+import {IoMdAddCircleOutline} from 'react-icons/io';
 
 class IdeaCard extends Component {
   render() {
@@ -15,7 +16,8 @@ class IdeaCard extends Component {
         
         <div className="idea-box">{idea}</div>
         <div className="input-box">
-     <input type='text'/>
+     <input placeholder="leave feedback on this idea..." className="input-field" type='text'/>
+     <IoMdAddCircleOutline/>
      </div>
       </div>
     );
