@@ -54,11 +54,10 @@ class Landing extends React.Component {
   //       });
   //   }
   // };
-  
 
   componentDidMount = async () => {
     this.getProjects();
-    //this.checkcache();
+    // this.checkcache();
   };
 
   register = async e => {
