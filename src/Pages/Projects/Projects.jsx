@@ -13,6 +13,7 @@ class Projects extends Component {
       noData: false,
       projectData: []
     };
+    this.getSearch.bind(this);
   }
   async componentDidMount() {
     const results = await axios.get("/auth/getAllProjects");
@@ -49,9 +50,15 @@ class Projects extends Component {
 
         .filter(items => {
           return (
-            items.first.indexOf(this.state.search) !== -1 ||
-            items.last.indexOf(this.state.search) !== -1 ||
-            items.project_name.indexOf(this.state.search) !== -1
+            items.first
+              .toLowerCase()
+              .indexOf(this.state.search.toLowerCase()) !== -1 ||
+            items.last
+              .toLowerCase()
+              .indexOf(this.state.search.toLowerCase()) !== -1 ||
+            items.project_name
+              .toLowerCase()
+              .indexOf(this.state.search.toLowerCase()) !== -1
             // items.technologies[0].indexOf(this.state.search) !== -1 ||
             // items.technologies[1].indexOf(this.state.search) !== -1 ||
             // items.technologies[2].indexOf(this.state.search) !== -1 ||

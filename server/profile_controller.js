@@ -1,7 +1,8 @@
 module.exports = {
   imgUpload: (req, res, next) => {
-    // const db = req.app.get("db");
-    // db.insert_profile_photo([photo, id]);
-    res.send("uploaded photo");
+    // sampleFile.mv("/somewhere/on/your/server/filename.jpg", function(err) {
+    //   if (err) return res.status(500).send(err);
+    //   res.send("File uploaded!");
+    // });
   }
 };
