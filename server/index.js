@@ -115,7 +115,7 @@ const io = socketio(expressServer);
 const history = [];
 
 io.on("connection", socket => {
-  console.log(socket.id);
+  // console.log(socket.id);
   socket.emit("welcome", "Welcome to the chat");
   socket.on("message", message => {
     console.log(message);

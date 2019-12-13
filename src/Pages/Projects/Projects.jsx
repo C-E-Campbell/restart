@@ -11,10 +11,13 @@ class Projects extends Component {
     this.state = {
       search: ""
     };
+    this.getSearch.bind(this);
   }
+
   getSearch = data => {
     this.setState({ search: data });
   };
+
   render() {
     // const { search } = this.state;
 
