@@ -1,0 +1,51 @@
+.message-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  padding: 6px;
+  min-height: 50px;
+  i {
+    font-weight: 300;
+    margin: 0 2px;
+    font-size: 0.9rem;
+
+    &:hover {
+      cursor: pointer;
+      color: #000;
+      font-weight: 400;
+      color: rgb(199, 9, 9);
+    }
+  }
+
+  &:nth-child(odd) {
+    background-color: rgb(236, 236, 236);
+  }
+}
+
+.message-box {
+  height: 100%;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+
+  .message {
+    max-width: 80%;
+
+    word-wrap: break-word;
+  }
+
+  .trashcan {
+    width: 10%;
+  }
+}
+
+.user-box {
+  margin-top: 15px;
+  font-family: "Merriweather", serif;
+  font-size: 0.6rem;
+  color: #000;
+  text-transform: capitalize;
+}

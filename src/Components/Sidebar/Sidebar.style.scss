@@ -9,6 +9,7 @@
   background: linear-gradient(#222, 80%, #0c4b66);
 
   input {
+    width: 80%;
     border-radius: 4px;
     border: none;
     padding: 8px 16px;
@@ -37,8 +38,9 @@
 .sidebar-link {
   text-decoration: none;
   color: rgb(201, 201, 201);
-  font-size: 2rem;
-  margin: 1.5rem auto;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+
   &:hover {
     color: #fff;
   }

@@ -37,7 +37,7 @@ module.exports = {
           .status(401)
           .send("Cant find that account. You may need to register");
       } else {
-        //client.set(`${email}:password`, password);
+        //client.set(`${email}:password`, password); // store session instead
         let checkPass = bcrypt.compareSync(password, checkForUser[0].password);
         if (checkPass) {
           req.session.user = {
@@ -58,6 +58,11 @@ module.exports = {
   logout: (req, res, next) => {
     req.session.destroy();
     res.status(200).send("Logout successful");
+  },
+  getNames: async (req, res, next) => {
+    const db = req.app.get("db");
+    const result = await db.get_names_by_id();
+    return res.status(200).send(result);
   }
   // checkCache: (req, res, next) => {
   //   const { email } = req.body;

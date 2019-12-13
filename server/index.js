@@ -3,10 +3,30 @@ const express = require("express");
 const app = express();
 const session = require("express-session");
 const massive = require("massive");
-
+const socketio = require("socket.io");
+const profileCTRL = require("./profile_controller");
 // app.use(express.status(__dirname + "/../build"));
+const multer = require("multer");
 
-const { register, logout, login, checkCache } = require("./auth_controller");
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, "./uploads");
+  },
+  filename: function(req, file, cb) {
+    cb(null, `${file.originalname}`);
+  }
+});
+
+const upload = multer({ storage: storage });
+upload.single("profileImg");
+
+const {
+  register,
+  logout,
+  login,
+  checkCache,
+  getNames
+} = require("./auth_controller");
 const {
   userProjects,
   deleteProject,
@@ -30,6 +50,8 @@ const {
   getIdeaFeedback
 } = require("./idea_controller");
 
+const { getCampusInfo, getCampusLinkEamil } = require("./chart_controller");
+
 app.use(express.json());
 
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
@@ -52,17 +74,23 @@ massive(CONNECTION_STRING).then(db => {
 app.post("/auth/register", register);
 app.post("/auth/login", login);
 //app.post("/auth/checkcache", checkCache);
+app.post(
+  "/auth/imageupload",
+  upload.single("profileImage"),
+  profileCTRL.imgUpload
+);
 app.delete("/auth/logout", logout);
 app.get("/auth/getAllProjects", getAllProjects);
 app.get("/auth/userProjects/:user_id", userProjects);
+app.get("/auth/getNames", getNames);
 app.delete("/auth/delete_project/:project_id", deleteProject);
 app.put("/auth/edit_project", editproject);
 app.post("/auth/addProject", addProject);
 
-app.get("/auth/get_all_feedback", getAllFeedback);
+app.get("/auth/get_all_feedback/:id", getAllFeedback);
 app.post("/auth/add_feedback", addFeedback);
 app.put("/auth/edit_feedback", editFeedback);
-app.delete("/auth/delete_feedback/:feedback_id", deleteFeedback);
+app.delete("/auth/delete_feedback/:feedback_id/:project_id", deleteFeedback);
 
 app.get("/auth/get_ideas", getAllIdeas);
 app.post("/auth/add_idea", addIdea);
@@ -74,5 +102,27 @@ app.post("/auth/add_idea_feedback", addIdeaFeedback);
 app.put("/auth/edit_idea_feedback", editIdeaFeedback);
 app.delete("/auth/delete_idea_feedback/:idea_feedback_id", deleteIdeaFeedback);
 
+app.get("/auth/get_campus", getCampusInfo);
+app.get("/auth/get_link_campus_email/:id", getCampusLinkEamil);
+
 let port = SERVER_PORT || 4001;
-app.listen(port, () => console.log(`up and running on port ${port}`));
+const expressServer = app.listen(port, () =>
+  console.log(`up and running on port ${port}`)
+);
+
+const io = socketio(expressServer);
+
+const history = [];
+
+io.on("connection", socket => {
+  console.log(socket.id);
+  socket.emit("welcome", "Welcome to the chat");
+  socket.on("message", message => {
+    console.log(message);
+    // if (history.length === 500) {
+    //   history.pop();
+    //   history.unshift(message);
+    // }
+    io.emit("newMessage", message);
+  });
+});

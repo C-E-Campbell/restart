@@ -3,7 +3,7 @@ import "./Landing.style.scss";
 import logo from "../../Assets/DevMtnLogo.png";
 import video from "../../Assets/landing-video.mp4";
 import { withRouter } from "react-router-dom";
-import spinner from "../../Assets/spinner.svg";
+// import spinner from "../../Assets/spinner.svg";
 import axios from "axios";
 
 class Landing extends React.Component {
@@ -16,7 +16,8 @@ class Landing extends React.Component {
       email: "",
       password: "",
       campus: null,
-      status: null
+      status: null,
+      allIds: []
     };
   }
 
@@ -53,6 +54,7 @@ class Landing extends React.Component {
   //       });
   //   }
   // };
+  
 
   componentDidMount = async () => {
     this.getProjects();

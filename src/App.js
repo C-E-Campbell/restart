@@ -8,6 +8,11 @@ import Help from "./Pages/Help/Help.jsx";
 import Idea from "./Pages/Idea/Idea.jsx";
 import ProjectModal from "./Components/ProjectModal/ProjectModal.jsx";
 import MyProvider from "./Components/MyProvider/MyProvider.jsx";
+import axios from "axios";
+import Chart from "./Chart/Chart";
+import Chat from "./Pages/Chat/Chat.jsx";
+import io from "socket.io-client";
+let socket = io.connect("http://localhost:4001");
 
 class App extends React.Component {
   constructor(props) {
@@ -15,7 +20,9 @@ class App extends React.Component {
     this.state = {
       userInfo: {},
       projects: {},
-      comments: {}
+      comments: {},
+      allIds: [],
+      chatArr: []
     };
   }
 
@@ -26,6 +33,21 @@ class App extends React.Component {
   getUserInfo = result => {
     this.setState({ userInfo: result });
   };
+
+  getAllNames = async () => {
+    const result = await axios.get("/auth/getNames");
+    this.setState({ allIds: result.data });
+  };
+
+  componentDidMount() {
+    this.getAllNames();
+
+    socket.on("newMessage", msg => {
+      let chat = this.state.chatArr;
+      chat = [...chat, msg];
+      this.setState({ chatArr: chat });
+    });
+  }
 
   render() {
     return (
@@ -46,29 +68,72 @@ class App extends React.Component {
             <Route
               path="/projects"
               exact
-              render={() => <Projects projectData={this.state.projects} />}
+              render={() => (
+                <Projects
+                  projectData={this.state.projects}
+                  userData={this.state.userInfo}
+                />
+              )}
             />
 
             <Route
               path="/project/:id"
               exact
-              render={() => <SingleProject user={this.state.userInfo} />}
+              render={() => (
+                <SingleProject
+                  user={this.state.userInfo}
+                  allUsers={this.state.allIds}
+                />
+              )}
             />
-
+            <Route
+              path="/profile/project/:id"
+              exact
+              render={() => (
+                <SingleProject
+                  user={this.state.userInfo}
+                  allUsers={this.state.allIds}
+                />
+              )}
+            />
             <Route
               path="/profile/:id"
               exact
               render={() => (
                 <Profile
-                  projectData={this.state.projects}
+                  projectDataMain={this.state.projects}
                   user={this.state.userInfo}
                 />
               )}
             />
 
-            <Route path="/help" exact component={Help} />
+            <Route
+              path="/help"
+              exact
+              render={() => <Help user={this.state.userInfo} />}
+            />
 
-            <Route path="/idea" exact component={Idea} />
+            <Route
+              path="/idea"
+              exact
+              render={() => (
+                <Idea
+                  users={this.state.allIds}
+                  userData={this.state.userInfo}
+                />
+              )}
+            />
+            <Route
+              path="/chat"
+              exact
+              render={() => (
+                <Chat
+                  chat={this.state.chatArr}
+                  users={this.state.allIds}
+                  userData={this.state.userInfo}
+                />
+              )}
+            />
 
             <Route
               path="/projectUpload"
@@ -79,6 +144,11 @@ class App extends React.Component {
                   id={this.state.userInfo}
                 />
               )}
+            />
+            <Route
+              path="/Chart"
+              exact
+              render={() => <Chart users={this.state.allIds} />}
             />
           </Switch>
         </React.Fragment>

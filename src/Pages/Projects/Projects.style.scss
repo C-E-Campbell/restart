@@ -7,7 +7,18 @@
 
 .project-grid {
   width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1rem;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+::-webkit-scrollba-track {
+  display: none;
+}
+::-webkit-scrollbar-thumb {
+  display: none;
 }

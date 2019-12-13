@@ -1,0 +1,11 @@
+.single-message {
+  display: flex;
+  align-items: flex-end;
+}
+
+.chat-name {
+  text-transform: capitalize;
+  margin-right: 5px;
+  font-size: 0.6rem;
+  color: rgb(131, 131, 131);
+}

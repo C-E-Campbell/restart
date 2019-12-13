@@ -23,7 +23,8 @@ class ProjectModal extends Component {
       javascript: false,
       redux: false,
       postgres: false,
-      mongo: false
+      mongo: false,
+      otherTechs: ""
     };
   }
 
@@ -41,7 +42,11 @@ class ProjectModal extends Component {
       javascript,
       redux,
       postgres,
-      mongo
+      mongo,
+      thumbnail,
+      angular,
+      vue,
+      otherTechs
     } = this.state;
     const { id, first, last } = this.props.id;
 
@@ -60,7 +65,11 @@ class ProjectModal extends Component {
       postgres,
       mongo,
       first,
-      last
+      last,
+      thumbnail,
+      angular,
+      vue,
+      otherTechs
     });
     const result = await axios.get("/auth/getAllProjects");
     this.props.getData(result.data);
@@ -70,11 +79,18 @@ class ProjectModal extends Component {
   render() {
     return (
       <div className="modal-container">
-        <Sidebar showHomeBtn={true} />
-        <MainContent bgcolor={"#fff"}>
+        <Sidebar showHomeBtn={true} loggedUser={this.props.id} />
+        <MainContent bgcolor={"#0c2c41"} padding={"0px"}>
           <div className="project-modal-main">
-            <h2>Upload Your Work</h2>
-            <form onSubmit={e => this.submitHandler(e)}>
+            <h2 data-aos="fade" data-aos-delay="300" data-aos-easing="ease-in">
+              Upload Your Work
+            </h2>
+            <form
+              data-aos="fade"
+              data-aos-delay="300"
+              data-aos-easing="ease-in"
+              onSubmit={e => this.submitHandler(e)}
+            >
               <input
                 className="project-modal-input"
                 placeholder="Project Name"
@@ -97,7 +113,7 @@ class ProjectModal extends Component {
               />
               <input
                 className="project-modal-input"
-                placeholder="Live Site Url: Optional but recommended"
+                placeholder="Url: Typed 'https://(yoursite)'Optional"
                 onChange={e => this.setState({ host_url: e.target.value })}
               />
               <input
@@ -199,7 +215,9 @@ class ProjectModal extends Component {
               />
               <textarea
                 placeholder="Project Description"
-                onChange={e => this.setState({ description: e.target.value })}
+                onChange={e =>
+                  this.setState({ project_description: e.target.value })
+                }
               ></textarea>
               <button>Upload Project</button>
             </form>

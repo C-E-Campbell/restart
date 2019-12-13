@@ -1,4 +1,4 @@
-INSERT INTO projects (user_id, project_name, host_url, github, react, javascript, nodejs, redux, postgres, mongo, description, linkedin, email, first, last)
+INSERT INTO projects (user_id, project_name, host_url, github, react, javascript, nodejs, redux, postgres, mongo, description, linkedin, email, first, last, thumbnail)
 VALUES ($1,
         $2,
         $3,
@@ -13,6 +13,7 @@ VALUES ($1,
         $12,
         $13,
         $14,
-        $15);
+        $15,
+        $16);
 
 -- SELECT * FROM projects;
