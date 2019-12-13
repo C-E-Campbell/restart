@@ -1,7 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./ImageUpload.style.scss";
+import axios from "axios";
 import logo from "../../Assets/defaultUser.png";
 const ImageUploader = props => {
+  const [photo, setPhoto] = useState("");
+  const [path, setPath] = useState({});
   const filePickerRef = useRef();
   const overlay = useRef();
   const plus = useRef();
@@ -20,9 +23,25 @@ const ImageUploader = props => {
     img.current.style.filter = "blur(0px)";
   };
 
+  const submitPhoto = async e => {
+    e.preventDefault();
+    const fd = new FormData();
+    fd.append("photoImage", photo);
+
+    try {
+      const res = await axios.post("/auth/imageupload", fd, {
+        headers: {
+          "content-type": "multipart/form-data"
+        }
+      });
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const pickedHandler = e => {
-    console.log(e.target);
-    console.log("hello");
+    setPhoto(e.target.files[0]);
   };
 
   return (
@@ -38,13 +57,20 @@ const ImageUploader = props => {
       </div>
 
       <img ref={img} className="imgUpload" src={logo} alt="preview" />
-      <input
-        ref={filePickerRef}
-        style={{ display: "none" }}
-        type="file"
-        accept=".jpg,.jpeg,.png"
-        onChange={e => pickedHandler(e)}
-      />
+      <form
+        onSubmit={e => {
+          submitPhoto(e);
+        }}
+        encType="multipart/form-data"
+      >
+        <input
+          ref={filePickerRef}
+          style={{ display: "none" }}
+          type="file"
+          accept=".jpg,.jpeg,.png"
+          onChange={e => pickedHandler(e)}
+        />
+      </form>
     </div>
   );
 };
