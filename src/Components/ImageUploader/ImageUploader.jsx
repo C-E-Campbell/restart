@@ -4,8 +4,7 @@ import axios from "axios";
 import defaultPic from "./default.png";
 const ImageUploader = props => {
   const [file, setFile] = useState("");
-  const [path, setPath] = useState("");
-  const [name, setName] = useState("");
+
   const filePickerRef = useRef();
   const overlay = useRef();
   const plus = useRef();
@@ -37,8 +36,6 @@ const ImageUploader = props => {
           "content-type": "multipart/form-data"
         }
       });
-      setPath(res.data.filePath);
-      setName(res.data.fileName);
       props.getPhoto();
     } catch (err) {
       console.log(err);
