@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import logo from "../../Assets/smallLogo.png";
-<<<<<<< HEAD
-import ImageUploader from "../ImageUploader/ImageUploader";
 import axios from "axios";
-=======
 import ImageUploader from "../Project/ImageUploader/ImageUploader";
-
->>>>>>> 91870b4b430c58280f219bb060bb4efbda50148e
 import "./Sidebar.style.scss";
 import { MyContext } from "../MyProvider/MyProvider";
 
@@ -34,6 +29,7 @@ class Sidebar extends Component {
       profileImg: results.data
     });
   };
+
   render() {
     console.log();
     return (
@@ -102,64 +98,7 @@ class Sidebar extends Component {
           >
             <li>Resources</li>
           </Link>
-          <nav role="navigation">
-            <div id="menuToggle">
-              <input type="checkbox" />
 
-              <span></span>
-              <span></span>
-              <span></span>
-
-              <ul id="menu">
-                {!this.props.showHomeBtn ? (
-                  <input
-                    placeholder="Seach Developers"
-                    onChange={e => this.props.found(e.target.value)}
-                  />
-                ) : (
-                  <Link to="/projects" className="back-to-projects-btn">
-                    Back To Projects
-                  </Link>
-                )}
-                <Link
-                  to={`profile/${this.props.loggedUser.id}`}
-                  className="ham"
-                  data-aos="fade-right"
-                  data-aos-delay="100"
-                  data-aos-easing="ease-in"
-                >
-                  <li>Profile</li>
-                </Link>
-                <Link
-                  to="/chat"
-                  className="ham"
-                  data-aos="fade-right"
-                  data-aos-delay="200"
-                  data-aos-easing="ease-in"
-                >
-                  <li>codeTalk</li>
-                </Link>
-                <Link
-                  to="/Chart"
-                  className="ham"
-                  data-aos="fade-right"
-                  data-aos-delay="250"
-                  data-aos-easing="ease-in"
-                >
-                  <li>Campus Stats</li>
-                </Link>
-                <Link
-                  to="/help"
-                  className="ham"
-                  data-aos="fade-right"
-                  data-aos-delay="250"
-                  data-aos-easing="ease-in"
-                >
-                  <li>Resources</li>
-                </Link>
-              </ul>
-            </div>
-          </nav>
           <MyContext.Consumer>
             {value => (
               <Link
