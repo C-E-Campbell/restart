@@ -35,9 +35,11 @@ class SingleProjects extends Component {
           <div className="single-container">
             <div id="top" className={this.state.up ? "hide" : "show"}>
               <iframe
+                style={{ height: "80vh", width: "90%" }}
+                className="iframe"
                 title="project"
-                width="1260"
-                height="800"
+                // width="1100"
+                // height="800"
                 src={this.props.location.state.host_url}
               ></iframe>
 
@@ -75,6 +77,11 @@ class SingleProjects extends Component {
                   <i className="fab fa-linkedin fa-2x"></i>
                 </a>
                 <i className="far fa-envelope fa-2x"></i>
+
+                <a href={"mailto:" + this.props.location.state.email}>
+                  <i className="far fa-envelope fa-2x"></i>
+                </a>
+                <i className="fas fa-comments fa-2x"></i>
               </div>
               <div className="single-project-description">
                 <h2>Description:</h2>

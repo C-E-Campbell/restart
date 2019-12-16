@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
 import axios from "axios";
-import stats from "../Assets/stats.jpg";
+
 import BasicHeader from "../Components/BasicHeader/BasicHeader";
 import "./Chart.scss";
 // import MainContent from "../Components/MainContent/MainContent";
@@ -57,13 +57,13 @@ export default class Chart extends Component {
             have more registered users.
           </div>
         </div>
-        <div>
+        <div className="smoke">
           <div className="chart-title">
             <h6 className="campus-label">Registered Users by Campus</h6>
           </div>
           <div className="chart-box">
             <Bar
-              height={130}
+              height={100}
               options={{
                 scales: {
                   yAxes: [

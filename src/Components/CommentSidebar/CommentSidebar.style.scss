@@ -72,3 +72,8 @@
   background-color: rgb(255, 255, 255);
   border: 1px solid #333;
 }
+@media (max-width: 768px) {
+  .comment-sidebar-container {
+    display: none;
+  }
+}
