@@ -63,7 +63,7 @@ export default class Chart extends Component {
           </div>
           <div className="chart-box">
             <Bar
-              height={130}
+              height={100}
               options={{
                 scales: {
                   yAxes: [
