@@ -23,7 +23,7 @@ class Sidebar extends Component {
           </Link>
         </div>
         <ul className="sidebar-ul">
-          <ImageUploader />
+          <ImageUploader id={this.props.loggedUser.id} />
           {!this.props.showHomeBtn ? (
             <input
               placeholder="Seach Developers"
