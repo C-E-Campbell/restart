@@ -23,7 +23,11 @@ class Sidebar extends Component {
           </Link>
         </div>
         <ul className="sidebar-ul">
-          <ImageUploader id={this.props.loggedUser.id} />
+          <ImageUploader
+            getPhoto={this.props.getPhoto}
+            pic={this.props.picture}
+            id={this.props.loggedUser.id}
+          />
           {!this.props.showHomeBtn ? (
             <input
               placeholder="Seach Developers"
@@ -58,15 +62,7 @@ class Sidebar extends Component {
           >
             <li>codeTalk</li>
           </Link>
-          <Link
-            to="/idea"
-            className="sidebar-link"
-            data-aos="fade-right"
-            data-aos-delay="200"
-            data-aos-easing="ease-in"
-          >
-            <li>Team Up</li>
-          </Link>
+
           <Link
             to="/Chart"
             className="sidebar-link"
