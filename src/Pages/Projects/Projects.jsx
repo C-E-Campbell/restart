@@ -11,18 +11,26 @@ class Projects extends Component {
     this.state = {
       search: "",
       noData: false,
-      projectData: []
+      projectData: [],
+      profileImg: null
     };
     this.getSearch.bind(this);
   }
   async componentDidMount() {
-    const results = await axios.get("/auth/getAllProjects");
-    this.setState({
-      projectData: results.data
-    });
+    this.resetData();
+    this.getProfilePhoto();
   }
   getSearch = data => {
     this.setState({ search: data });
+  };
+
+  getProfilePhoto = async () => {
+    const results = await axios.get(
+      `/auth/getProfilePhoto/${this.props.userData.id}`
+    );
+    this.setState({
+      profileImg: results.data
+    });
   };
 
   resetData = async () => {
@@ -76,7 +84,12 @@ class Projects extends Component {
 
     return (
       <div className="project-container">
-        <Sidebar found={this.getSearch} loggedUser={this.props.userData} />
+        <Sidebar
+          picture={this.state.profileImg}
+          found={this.getSearch}
+          loggedUser={this.props.userData}
+          getPhoto={this.getProfilePhoto}
+        />
         <MainContent>
           {this.state.noData ? (
             <h1>Hello</h1>

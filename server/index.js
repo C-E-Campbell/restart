@@ -29,7 +29,8 @@ const {
   addFeedback,
   editFeedback,
   deleteFeedback,
-  getAllFeedback
+  getAllFeedback,
+  getProfilePhoto
 } = require("./projects_controller");
 
 const {
@@ -65,9 +66,10 @@ massive(CONNECTION_STRING).then(db => {
 app.post("/auth/register", register);
 app.post("/auth/login", login);
 //app.post("/auth/checkcache", checkCache);
-app.post("/auth/imageupload", profileCTRL.imgUpload);
+app.post("/auth/imageupload/:id", profileCTRL.imgUpload);
 app.delete("/auth/logout", logout);
 app.get("/auth/getAllProjects", getAllProjects);
+app.get("/auth/getProfilePhoto/:id", profileCTRL.getProfilePhoto);
 app.get("/auth/userProjects/:user_id", userProjects);
 app.get("/auth/getNames", getNames);
 app.delete("/auth/delete_project/:project_id", deleteProject);
@@ -100,11 +102,6 @@ const expressServer = app.listen(port, () =>
 const io = socketio(expressServer);
 
 io.on("connection", socket => {
-<<<<<<< HEAD
-=======
-  // console.log(socket.id);
-  socket.emit("welcome", "Welcome to the chat");
->>>>>>> 67bdd8810bd1d1d255e464030f6b48bf57a58737
   socket.on("message", message => {
     io.emit("newMessage", message);
   });

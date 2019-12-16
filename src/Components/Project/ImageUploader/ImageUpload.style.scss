@@ -1,4 +1,6 @@
 .img-container {
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   position: relative;
   margin-bottom: 1rem;
@@ -23,10 +25,33 @@
   opacity: 0;
 }
 .imgUpload {
+  border-radius: 50%;
   width: 150px;
+  height: 150px;
   margin-bottom: 2rem;
   &:hover {
     cursor: pointer;
     filter: blur(2px);
+  }
+}
+@media (max-width: 768px) {
+  .imgUpload {
+    display: none;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 2rem;
+    &:hover {
+      cursor: pointer;
+      filter: blur(2px);
+    }
+  }
+  .img-container {
+    display: none;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 1rem;
   }
 }

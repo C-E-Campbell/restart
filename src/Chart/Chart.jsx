@@ -57,7 +57,7 @@ export default class Chart extends Component {
             have more registered users.
           </div>
         </div>
-        <div>
+        <div className="smoke">
           <div className="chart-title">
             <h6 className="campus-label">Registered Users by Campus</h6>
           </div>
