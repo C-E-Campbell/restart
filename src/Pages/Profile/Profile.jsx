@@ -46,7 +46,7 @@ class Profile extends Component {
               <div>Campus: {this.state.profileData.campus}</div>
               <div>Email: {this.state.profileData.email}</div>
               <a target="target_blank" href={this.state.profileData.linkedin}>
-                <i class="fab fa-linkedin"></i>
+                <i className="fab fa-linkedin"></i>
               </a>
             </div>
           </div>

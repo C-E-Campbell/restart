@@ -15,8 +15,7 @@
   overflow-x: hidden;
   overflow-y: auto;
 
-  iframe {
-    height: 700px;
+  .iframe {
     margin: 0 auto;
     box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.541);
   }
@@ -32,8 +31,8 @@
   overflow: hidden;
 
   iframe {
-    height: 700px;
-    margin: 0 auto;
+    margin-top: 5%;
+    margin-left: 5%;
     box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.541);
     overflow-x: hidden;
   }
@@ -46,7 +45,7 @@
   margin: 0 auto;
 }
 .hide {
-  margin-top: -98%;
+  display: none;
 }
 
 .btn-to-info {
@@ -146,4 +145,7 @@
 
 .single-project-tech {
   margin: 2rem auto 4rem;
+}
+#top {
+  width: 100%;
 }
