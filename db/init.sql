@@ -73,3 +73,11 @@ CREATE TABLE ideaFeedback
 =======
       
 >>>>>>> 643ff89162ec05d298a4b31dc935dc6e6bfaa5bf
+
+
+ALTER TABLE users
+ADD profile_image VARCHAR;
+
+SELECT profile_image
+FROM users
+WHERE user_id = $1;

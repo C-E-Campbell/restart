@@ -5,20 +5,12 @@ const session = require("express-session");
 const massive = require("massive");
 const socketio = require("socket.io");
 const profileCTRL = require("./profile_controller");
+const fileUpload = require("express-fileupload");
+
 // app.use(express.status(__dirname + "/../build"));
-const multer = require("multer");
 
-var storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, "./uploads");
-  },
-  filename: function(req, file, cb) {
-    cb(null, `${file.originalname}`);
-  }
-});
-
-const upload = multer({ storage: storage });
-upload.single("profileImg");
+app.use(fileUpload());
+app.use(express.json());
 
 const {
   register,
@@ -27,6 +19,7 @@ const {
   checkCache,
   getNames
 } = require("./auth_controller");
+
 const {
   userProjects,
   deleteProject,
@@ -36,7 +29,8 @@ const {
   addFeedback,
   editFeedback,
   deleteFeedback,
-  getAllFeedback
+  getAllFeedback,
+  getProfilePhoto
 } = require("./projects_controller");
 
 const {
@@ -51,8 +45,6 @@ const {
 } = require("./idea_controller");
 
 const { getCampusInfo, getCampusLinkEamil } = require("./chart_controller");
-
-app.use(express.json());
 
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
 app.use(
@@ -74,13 +66,10 @@ massive(CONNECTION_STRING).then(db => {
 app.post("/auth/register", register);
 app.post("/auth/login", login);
 //app.post("/auth/checkcache", checkCache);
-app.post(
-  "/auth/imageupload",
-  upload.single("profileImage"),
-  profileCTRL.imgUpload
-);
+app.post("/auth/imageupload/:id", profileCTRL.imgUpload);
 app.delete("/auth/logout", logout);
 app.get("/auth/getAllProjects", getAllProjects);
+app.get("/auth/getProfilePhoto/:id", profileCTRL.getProfilePhoto);
 app.get("/auth/userProjects/:user_id", userProjects);
 app.get("/auth/getNames", getNames);
 app.delete("/auth/delete_project/:project_id", deleteProject);
@@ -112,17 +101,8 @@ const expressServer = app.listen(port, () =>
 
 const io = socketio(expressServer);
 
-const history = [];
-
 io.on("connection", socket => {
-  console.log(socket.id);
-  socket.emit("welcome", "Welcome to the chat");
   socket.on("message", message => {
-    console.log(message);
-    // if (history.length === 500) {
-    //   history.pop();
-    //   history.unshift(message);
-    // }
     io.emit("newMessage", message);
   });
 });
