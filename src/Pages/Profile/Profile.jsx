@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import BasicHeader from "../../Components/BasicHeader/BasicHeader";
 import "./Profile.style.scss";
 import Project from "../../Components/ProfileProject/ProfileProject";
-import logo from "../../Assets/DevMtnLogo.png";
+
 import axios from "axios";
 
 class Profile extends Component {

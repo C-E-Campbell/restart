@@ -100,11 +100,8 @@ const expressServer = app.listen(port, () =>
 const io = socketio(expressServer);
 
 io.on("connection", socket => {
-<<<<<<< HEAD
-=======
   // console.log(socket.id);
   socket.emit("welcome", "Welcome to the chat");
->>>>>>> 67bdd8810bd1d1d255e464030f6b48bf57a58737
   socket.on("message", message => {
     io.emit("newMessage", message);
   });

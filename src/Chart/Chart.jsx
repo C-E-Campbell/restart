@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
 import axios from "axios";
-import stats from "../Assets/stats.jpg";
+
 import BasicHeader from "../Components/BasicHeader/BasicHeader";
 import "./Chart.scss";
 // import MainContent from "../Components/MainContent/MainContent";
