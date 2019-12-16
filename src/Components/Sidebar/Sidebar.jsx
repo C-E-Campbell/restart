@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 import logo from "../../Assets/smallLogo.png";
 import ImageUploader from "../ImageUploader/ImageUploader";
-
+import axios from "axios";
 import "./Sidebar.style.scss";
 import { MyContext } from "../MyProvider/MyProvider";
 
@@ -10,9 +10,25 @@ class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: ""
+      search: "",
+      profileImg: null
     };
   }
+
+  componentDidMount() {
+    if (this.state.profileImg === null) {
+      this.getProfilePhoto();
+    }
+  }
+
+  getProfilePhoto = async () => {
+    const results = await axios.get(
+      `/auth/getProfilePhoto/${this.props.loggedUser.id}`
+    );
+    this.setState({
+      profileImg: results.data
+    });
+  };
   render() {
     console.log();
     return (
@@ -25,7 +41,7 @@ class Sidebar extends Component {
         <ul className="sidebar-ul">
           <ImageUploader
             getPhoto={this.props.getPhoto}
-            pic={this.props.picture}
+            pic={this.state.profileImg}
             id={this.props.loggedUser.id}
           />
           {!this.props.showHomeBtn ? (

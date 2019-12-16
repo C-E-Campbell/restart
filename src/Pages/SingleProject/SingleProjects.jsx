@@ -3,7 +3,7 @@ import "./SingleProject.style.scss";
 import CommentSidebar from "../../Components/CommentSidebar/CommentSidebar";
 import logo from "../../Assets/defaultUser.png";
 import MainContent from "../../Components/MainContent/MainContent";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 class SingleProjects extends Component {
   constructor(props) {
@@ -52,7 +52,13 @@ class SingleProjects extends Component {
               <header>
                 <div className="header-inner-container">
                   <h2>{this.props.location.state.project_name}</h2>
-                  <i className="fab fa-github-alt fa-3x"></i>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={this.props.location.state.github}
+                  >
+                    <i className="fab fa-github-alt fa-3x"></i>
+                  </a>
                 </div>
               </header>
               <img className="project-details-photo" src={logo} alt="user" />
@@ -61,17 +67,22 @@ class SingleProjects extends Component {
                 {this.props.location.state.last}
               </h2>
               <div className="project-contact-container">
-                <i className="fab fa-linkedin fa-2x"></i>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={this.props.location.state.linkedin}
+                >
+                  <i className="fab fa-linkedin fa-2x"></i>
+                </a>
                 <i className="far fa-envelope fa-2x"></i>
-                <i className="fas fa-comments fa-2x"></i>
               </div>
               <div className="single-project-description">
                 <h2>Description:</h2>
                 <p>{this.props.location.state.description}</p>
-                <div className="single-project-tech">
+                {/* <div className="single-project-tech">
                   <h2>Technologies</h2>
                   <ul>{this.props.location.state.technologies.join(" ")}</ul>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="btn-to-info btn-to-info2">
