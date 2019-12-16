@@ -44,6 +44,7 @@ class CommentSidebar extends React.Component {
     const comment = allFeedback.map(comment => {
       return (
         <Comment
+          loggedUser={this.props.user}
           allIds={this.props.ids}
           key={comment.feedback_id}
           delete={this.deleteCommentHandler}

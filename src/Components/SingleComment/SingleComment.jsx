@@ -12,12 +12,14 @@ export default function SingleComment(props) {
             <div className="message">
               <p>{props.message}</p>
             </div>
-            <div className="trashcan">
-              <i
-                onClick={() => props.delete(props.id, props.project)}
-                className="fas fa-trash-alt"
-              ></i>
-            </div>
+            {props.loggedUser === props.user ? (
+              <div className="trashcan">
+                <i
+                  onClick={() => props.delete(props.id, props.project)}
+                  className="fas fa-trash-alt"
+                ></i>
+              </div>
+            ) : null}
           </div>
           <div className="user-box">{`${myName[0].first} ${myName[0].last} `}</div>
         </div>
