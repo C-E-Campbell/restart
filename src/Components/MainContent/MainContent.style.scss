@@ -6,3 +6,12 @@
   background: #fff;
   display: flex;
 }
+
+.whole {
+  width: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  padding: 1rem;
+  background: linear-gradient(#0c4b66, 80%, #222);
+  display: flex;
+}
