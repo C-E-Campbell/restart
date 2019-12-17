@@ -1,10 +1,11 @@
-/* eslint-disable array-callback-return */
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import BasicHeader from "../../Components/BasicHeader/BasicHeader";
 import "./Profile.style.scss";
 import Project from "../../Components/ProfileProject/ProfileProject";
 import axios from "axios";
+import Sidebar from "../../Components/Sidebar/Sidebar";
+import MainContent from "../../Components/MainContent/MainContent";
 
 class Profile extends Component {
   constructor(props) {
@@ -38,11 +39,15 @@ class Profile extends Component {
     });
 
     return (
-      <React.Fragment>
+      <div className="whole-profile">
+        <Sidebar
+        loggedUser={this.props.user.id}
+        />
+        <MainContent>
         <div className="profile-main">
-          <BasicHeader />
+          
 
-          <div className="profile-pic"></div>
+          
 
           <div className="profile-info">
             <div className="profile-details">
@@ -50,7 +55,7 @@ class Profile extends Component {
               {this.props.user.last}
             </div>
 
-            <div>
+            {/* <div> */}
               <div>Campus: {this.state.profileData.campus}</div>
               <div>Email: {this.state.profileData.email}</div>
               {!this.state.profileData.linkedin ? (
@@ -60,15 +65,17 @@ class Profile extends Component {
                   <i className="fab fa-linkedin"></i>
                 </a>
               )}
-            </div>
+            {/* </div> */}
           </div>
-
           <h4>My Projects</h4>
+          <div className="profile-grid-container">
           <div className="profile-container">
             <div className="profile-grid"> {mappedProjects}</div>
+            </div>
           </div>
         </div>
-      </React.Fragment>
+        </MainContent>
+      </div>
     );
   }
 }
