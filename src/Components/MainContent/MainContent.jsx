@@ -4,7 +4,7 @@ export default function MainContent(props) {
   return (
     <div
       style={{ background: `${props.bgcolor}`, padding: `${props.padding}` }}
-      className="main-content"
+      className="main-content whole"
       data-aos="fade"
       data-aos-easing="ease-in"
     >
