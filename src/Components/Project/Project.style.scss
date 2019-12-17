@@ -17,7 +17,12 @@
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.384);
   }
 }
-
+.project-name {
+  display: block;
+  margin: 10px 0;
+  color: #333;
+  font-family: "Montserrat", sans-serif;
+}
 .project-photo {
   display: block;
   height: 250px;

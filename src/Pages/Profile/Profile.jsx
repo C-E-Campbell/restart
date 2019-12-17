@@ -17,13 +17,13 @@ class Profile extends Component {
   }
   async componentDidMount() {
     const result = await axios.get(
-      `/auth/get_link_campus_email/${this.props.user.id}`
+      `/auth/get_link_campus_email/${Number(this.props.match.params.id)}`
     );
     if (result.data[0] === true) {
       this.setState({ profileData: result.data[0] });
     } else {
       const result = await axios.get(
-        `/auth/get_campus_email/${this.props.user.id}`
+        `/auth/get_campus_email/${Number(this.props.match.params.id)}`
       );
       console.log(result.data);
       this.setState({ profileData: result.data[0] });
@@ -32,7 +32,7 @@ class Profile extends Component {
 
   render() {
     const mappedProjects = this.props.projectDataMain.map(project => {
-      if (project.user_id === this.props.user.id) {
+      if (project.user_id === Number(this.props.match.params.id)) {
         return <Project profile={project} />;
       }
     });
@@ -46,8 +46,8 @@ class Profile extends Component {
 
           <div className="profile-info">
             <div className="profile-details">
-              {this.props.user.first}
-              {this.props.user.last}
+              {/* {this.props.all.first}
+              {this.props.all.last} */}
             </div>
 
             <div>

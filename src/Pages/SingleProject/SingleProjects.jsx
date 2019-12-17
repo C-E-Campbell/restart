@@ -74,12 +74,10 @@ class SingleProjects extends Component {
                 >
                   <i className="fab fa-linkedin fa-2x"></i>
                 </a>
-                <i className="far fa-envelope fa-2x"></i>
 
                 <a href={"mailto:" + this.props.location.state.email}>
                   <i className="far fa-envelope fa-2x"></i>
                 </a>
-                <i className="fas fa-comments fa-2x"></i>
               </div>
               <div className="single-project-description">
                 <h2>Description:</h2>
