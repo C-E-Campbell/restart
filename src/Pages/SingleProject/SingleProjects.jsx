@@ -3,7 +3,7 @@ import "./SingleProject.style.scss";
 import CommentSidebar from "../../Components/CommentSidebar/CommentSidebar";
 import logo from "../../Assets/defaultUser.png";
 import MainContent from "../../Components/MainContent/MainContent";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class SingleProjects extends Component {
   constructor(props) {
@@ -38,8 +38,6 @@ class SingleProjects extends Component {
                 style={{ height: "80vh", width: "90%" }}
                 className="iframe"
                 title="project"
-                // width="1100"
-                // height="800"
                 src={this.props.location.state.host_url}
               ></iframe>
 

@@ -17,7 +17,8 @@ const {
   logout,
   login,
   checkCache,
-  getNames
+  getNames,
+  getCampusAndEmail
 } = require("./auth_controller");
 
 const {
@@ -92,6 +93,7 @@ app.put("/auth/edit_idea_feedback", editIdeaFeedback);
 app.delete("/auth/delete_idea_feedback/:idea_feedback_id", deleteIdeaFeedback);
 
 app.get("/auth/get_campus", getCampusInfo);
+app.get("/auth/get_campus_email/:id", getCampusAndEmail);
 app.get("/auth/get_link_campus_email/:id", getCampusLinkEamil);
 
 let port = SERVER_PORT || 4001;

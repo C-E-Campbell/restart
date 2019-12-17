@@ -19,7 +19,15 @@ class Profile extends Component {
     const result = await axios.get(
       `/auth/get_link_campus_email/${this.props.user.id}`
     );
-    this.setState({ profileData: result.data[0] });
+    if (result.data[0] === true) {
+      this.setState({ profileData: result.data[0] });
+    } else {
+      const result = await axios.get(
+        `/auth/get_campus_email/${this.props.user.id}`
+      );
+      console.log(result.data);
+      this.setState({ profileData: result.data[0] });
+    }
   }
 
   render() {
@@ -45,9 +53,13 @@ class Profile extends Component {
             <div>
               <div>Campus: {this.state.profileData.campus}</div>
               <div>Email: {this.state.profileData.email}</div>
-              <a target="target_blank" href={this.state.profileData.linkedin}>
-                <i className="fab fa-linkedin"></i>
-              </a>
+              {!this.state.profileData.linkedin ? (
+                <></>
+              ) : (
+                <a target="target_blank" href={this.state.profileData.linkedin}>
+                  <i className="fab fa-linkedin"></i>
+                </a>
+              )}
             </div>
           </div>
 
