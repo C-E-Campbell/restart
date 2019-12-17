@@ -98,7 +98,7 @@ class Sidebar extends Component {
           >
             <li>Resources</li>
           </Link>
-          <nav role="navigation">
+          <nav className="hamsss" role="navigation">
             <div id="menuToggle">
               <input type="checkbox" />
 
@@ -156,6 +156,7 @@ class Sidebar extends Component {
               </ul>
             </div>
           </nav>
+
           <MyContext.Consumer>
             {value => (
               <Link

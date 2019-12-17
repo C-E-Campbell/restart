@@ -68,6 +68,9 @@
     margin-right: 5px;
   }
 }
+.hamsss {
+  display: none;
+}
 
 @media (max-width: 1600px) {
   .sidebar-link {
@@ -272,5 +275,8 @@
 
   #menuToggle input:checked ~ ul {
     transform: none;
+  }
+  .hamsss {
+    display: block;
   }
 }

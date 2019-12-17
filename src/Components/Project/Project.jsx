@@ -12,7 +12,7 @@ function Project(props) {
           state: props.all
         }}
       >
-        <div>
+        <div className="projects">
           <div className="project-box">
             <div className="project-overlay">
               <p> {props.all.project_name}</p>

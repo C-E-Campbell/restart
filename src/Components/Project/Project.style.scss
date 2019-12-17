@@ -19,6 +19,11 @@
 }
 
 .project-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  position: relative;
   display: block;
   height: 250px;
   width: 100%;
