@@ -38,8 +38,6 @@ class SingleProjects extends Component {
                 style={{ height: "80vh", width: "90%" }}
                 className="iframe"
                 title="project"
-                // width="1100"
-                // height="800"
                 src={this.props.location.state.host_url}
               ></iframe>
 
@@ -62,6 +60,14 @@ class SingleProjects extends Component {
                     {this.props.location.state.last}
                   </h2>
                   <i className="fab fa-github-alt fa-3x github"></i>
+                  <h2>{this.props.location.state.project_name}</h2>
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={this.props.location.state.github}
+                  >
+                    <i className="fab fa-github-alt fa-3x"></i>
+                  </a>
                 </div>
               </header>
               <img
@@ -73,7 +79,15 @@ class SingleProjects extends Component {
                 {this.props.location.state.project_name}
               </h2>
               <div className="project-contact-container">
-                <i className="fab fa-linkedin fa-2x"></i>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={this.props.location.state.linkedin}
+                >
+                  <i className="fab fa-linkedin fa-2x"></i>
+                </a>
+                <i className="far fa-envelope fa-2x"></i>
+
                 <a href={"mailto:" + this.props.location.state.email}>
                   <i className="far fa-envelope fa-2x"></i>
                 </a>

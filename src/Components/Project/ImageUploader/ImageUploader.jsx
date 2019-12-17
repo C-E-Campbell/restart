@@ -62,11 +62,11 @@ const ImageUploader = props => {
       >
         <i ref={plus} className="fas fa-plus fa-lg"></i>
       </div>
-      {props.pic === "" ? (
+      {props.pic === null || props.pic === undefined ? (
         <img
           onClick={pickImageHandler}
           ref={img}
-          className="imgUpload"
+          className="imgUpload1"
           src={defaultPic}
           alt="preview"
         />

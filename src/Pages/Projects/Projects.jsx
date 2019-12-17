@@ -18,7 +18,9 @@ class Projects extends Component {
   }
   async componentDidMount() {
     this.resetData();
-    this.getProfilePhoto();
+    if (this.state.profileImg === null) {
+      this.getProfilePhoto();
+    }
   }
   getSearch = data => {
     this.setState({ search: data });

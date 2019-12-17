@@ -22,7 +22,8 @@ class App extends React.Component {
       projects: {},
       comments: {},
       allIds: [],
-      chatArr: []
+      chatArr: [],
+      profileImg: null
     };
   }
 
@@ -70,6 +71,7 @@ class App extends React.Component {
               exact
               render={() => (
                 <Projects
+                  getPhoto={this.getProfilePhoto}
                   projectData={this.state.projects}
                   userData={this.state.userInfo}
                 />
