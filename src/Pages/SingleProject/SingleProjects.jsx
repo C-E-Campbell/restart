@@ -47,7 +47,6 @@ class SingleProjects extends Component {
                 </button>
               </div>
             </div>
-
             <div
               id="bottom"
               className={this.state.up ? "single-project-details" : "view"}
@@ -60,13 +59,13 @@ class SingleProjects extends Component {
                     {this.props.location.state.last}
                   </h2>
                   <i className="fab fa-github-alt fa-3x github"></i>
-                  <h2>{this.props.location.state.project_name}</h2>
+                  {/* <h2>{this.props.location.state.project_name}</h2> */}
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
                     href={this.props.location.state.github}
                   >
-                    <i className="fab fa-github-alt fa-3x"></i>
+                    {/* <i className="fab fa-github-alt fa-3x"></i> */}
                   </a>
                 </div>
               </header>
@@ -86,7 +85,6 @@ class SingleProjects extends Component {
                 >
                   <i className="fab fa-linkedin fa-2x"></i>
                 </a>
-                <i className="far fa-envelope fa-2x"></i>
 
                 <a href={"mailto:" + this.props.location.state.email}>
                   <i className="far fa-envelope fa-2x"></i>

@@ -40,22 +40,16 @@ class Profile extends Component {
 
     return (
       <div className="whole-profile">
-        <Sidebar
-        loggedUser={this.props.user.id}
-        />
+        <Sidebar loggedUser={this.props.user.id} />
         <MainContent>
-        <div className="profile-main">
-          
+          <div className="profile-main">
+            <div className="profile-info">
+              <div className="profile-details">
+                {this.props.user.first}
+                {this.props.user.last}
+              </div>
 
-          
-
-          <div className="profile-info">
-            <div className="profile-details">
-              {this.props.user.first}
-              {this.props.user.last}
-            </div>
-
-            {/* <div> */}
+              {/* <div> */}
               <div>Campus: {this.state.profileData.campus}</div>
               <div>Email: {this.state.profileData.email}</div>
               {!this.state.profileData.linkedin ? (
@@ -65,15 +59,15 @@ class Profile extends Component {
                   <i className="fab fa-linkedin"></i>
                 </a>
               )}
+            </div>
             {/* </div> */}
-          </div>
-          <h4>My Projects</h4>
-          <div className="profile-grid-container">
-          <div className="profile-container">
-            <div className="profile-grid"> {mappedProjects}</div>
+            <h4>My Projects</h4>
+            <div className="profile-grid-container">
+              <div className="profile-container">
+                <div className="profile-grid"> {mappedProjects}</div>
+              </div>
             </div>
           </div>
-        </div>
         </MainContent>
       </div>
     );
