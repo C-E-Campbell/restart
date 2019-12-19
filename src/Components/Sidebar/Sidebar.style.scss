@@ -6,7 +6,7 @@
   color: #fff;
   font-family: "Montserrat", sans-serif;
   position: relative;
-  background: linear-gradient(#222, 80%, #0c4b66);
+  background: linear-gradient(#222, 80%, #222);
 
   input {
     width: 80%;
@@ -67,6 +67,9 @@
   i {
     margin-right: 5px;
   }
+}
+.hamsss {
+  display: none;
 }
 
 @media (max-width: 1600px) {
@@ -272,5 +275,8 @@
 
   #menuToggle input:checked ~ ul {
     transform: none;
+  }
+  .hamsss {
+    display: block;
   }
 }

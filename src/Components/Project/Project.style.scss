@@ -17,7 +17,17 @@
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.384);
   }
 }
+.project-name {
+  display: block;
+  font-size: 0.8rem;
+  margin: 10px 0;
+  color: rgb(231, 231, 231);
+  font-family: "Montserrat", sans-serif;
 
+  &:hover {
+    color: #fff;
+  }
+}
 .project-photo {
   display: flex;
   flex-direction: column;

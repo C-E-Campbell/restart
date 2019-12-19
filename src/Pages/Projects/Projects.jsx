@@ -36,10 +36,12 @@ class Projects extends Component {
   };
 
   resetData = async () => {
-    const results = await axios.get("/auth/getAllProjects");
-    this.setState({
-      projectData: results.data
-    });
+    if (!this.state.projectData[0]) {
+      const results = await axios.get("/auth/getAllProjects");
+      this.setState({
+        projectData: results.data
+      });
+    }
   };
 
   render() {

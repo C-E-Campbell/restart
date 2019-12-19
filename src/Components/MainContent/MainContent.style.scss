@@ -12,6 +12,10 @@
   overflow: hidden;
   margin: 0 auto;
   padding: 1rem;
-  background: linear-gradient(#0c4b66, 80%, #222);
+  background: linear-gradient(rgba(47, 66, 77, 0.911), rgba(40, 57, 58, 0.795)),
+    url("./abstract-art-background-blue-370799.jpg");
+
+  background-repeat: no-repeat;
+
   display: flex;
 }

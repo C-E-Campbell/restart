@@ -3,16 +3,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 80vw;
+  justify-content: space-evenly;
+  width: 100%;
 
   background-color: #333;
   font-family: "Montserrat", sans-serif;
   background-image: linear-gradient(
-      rgba(51, 51, 51, 0.932),
-      rgba(51, 51, 51, 0.87)
+      rgba(58, 73, 95, 0.712),
+      rgba(11, 25, 29, 0.856)
     ),
-    url("../../Assets/brickwall.jpg");
+    url("./stars-and-constellation-in-the-outer-spacel-2892619.jpg");
+  background-size: cover;
 
   h4 {
     color: #fff;
@@ -22,9 +23,8 @@
 }
 .profile-container {
   margin: 0 auto;
-  
-  width: 100vw;
 
+  width: 100vw;
 }
 
 .profile-grid {
@@ -49,11 +49,11 @@
   width: 40%;
   height: 25vh;
   display: flex;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	justify-content: space-around;
-	align-items: center;
-	align-content: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: stretch;
   margin: 0 auto;
   // background-color: #fff;
   border-radius: 4px;
@@ -79,10 +79,23 @@
   color: white;
 }
 
-.whole-profile{
+.whole-profile {
   display: flex;
-
 }
-.profile-grid-container{
+.profile-grid-container {
   width: 70vw;
+}
+
+.profile-info-img {
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+}
+
+.profile-projects-container {
+  text-align: center;
+}
+
+.profile-info-text {
+  margin: 1rem auto;
 }
