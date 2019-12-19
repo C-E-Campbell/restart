@@ -26,12 +26,11 @@ const ImageUploader = props => {
 
   const submitPhoto = async e => {
     e.preventDefault();
-    console.log("hello");
     const fd = new FormData();
     fd.append("file", file);
 
     try {
-      const res = await axios.post(`/auth/imageupload/${props.id}`, fd, {
+      await axios.post(`/auth/imageupload/${props.id}`, fd, {
         headers: {
           "content-type": "multipart/form-data"
         }
@@ -75,7 +74,7 @@ const ImageUploader = props => {
           onClick={pickImageHandler}
           ref={img}
           className="imgUpload"
-          src={props.pic}
+          src={`.${props.pic}`}
           alt="preview"
         />
       )}

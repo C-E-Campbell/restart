@@ -19,11 +19,21 @@
 }
 .project-name {
   display: block;
+  font-size: 0.8rem;
   margin: 10px 0;
-  color: #333;
+  color: rgb(231, 231, 231);
   font-family: "Montserrat", sans-serif;
+
+  &:hover {
+    color: #fff;
+  }
 }
 .project-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  position: relative;
   display: block;
   height: 250px;
   width: 100%;

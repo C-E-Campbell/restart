@@ -31,7 +31,7 @@ class SingleProjects extends Component {
           user={this.props.user.id}
           project={Number(this.props.match.params.id)}
         />
-        <MainContent bgcolor={"#fff"}>
+        <MainContent className="whole">
           <div className="single-container">
             <div id="top" className={this.state.up ? "hide" : "show"}>
               <iframe
@@ -48,9 +48,18 @@ class SingleProjects extends Component {
               </div>
             </div>
 
-            <div id="bottom" className="single-project-details">
+            <div
+              id="bottom"
+              className={this.state.up ? "single-project-details" : "view"}
+            >
               <header>
                 <div className="header-inner-container">
+                  <h2>
+                    {" "}
+                    {this.props.location.state.first}{" "}
+                    {this.props.location.state.last}
+                  </h2>
+                  <i className="fab fa-github-alt fa-3x github"></i>
                   <h2>{this.props.location.state.project_name}</h2>
                   <a
                     target="_blank"
@@ -61,10 +70,13 @@ class SingleProjects extends Component {
                   </a>
                 </div>
               </header>
-              <img className="project-details-photo" src={logo} alt="user" />
-              <h2>
-                {this.props.location.state.first}{" "}
-                {this.props.location.state.last}
+              <img
+                className="project-details-photo"
+                src={this.props.location.state.thumbnail}
+                alt="user"
+              />
+              <h2 className="proname">
+                {this.props.location.state.project_name}
               </h2>
               <div className="project-contact-container">
                 <a
@@ -80,15 +92,20 @@ class SingleProjects extends Component {
                 </a>
               </div>
               <div className="single-project-description">
-                <h2>Description:</h2>
-                <p>{this.props.location.state.description}</p>
+                <h2 className="descript">Description:</h2>
+                <div className="acdescript">
+                  <p>{this.props.location.state.description}</p>
+                </div>
+
                 {/* <div className="single-project-tech">
                   <h2>Technologies</h2>
                   <ul>{this.props.location.state.technologies.join(" ")}</ul>
                 </div> */}
               </div>
             </div>
-            <div className="btn-to-info btn-to-info2">
+            <div
+              className={this.state.up ? "btn-to-info btn-to-info2" : "view"}
+            >
               <button onClick={e => this.toUp(e.target.value)}>
                 Live Project <i className="fas fa-chevron-up"></i>
               </button>

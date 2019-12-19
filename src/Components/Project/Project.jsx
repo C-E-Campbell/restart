@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
-
+import ImageUploader from "../ImageUploader/ImageUploader";
 import "./Project.style.scss";
 
 function Project(props) {
@@ -12,7 +12,7 @@ function Project(props) {
           state: props.all
         }}
       >
-        <div>
+        <div className="projects">
           <div className="project-box">
             <div className="project-overlay">
               <p> {props.all.project_name}</p>
@@ -28,8 +28,7 @@ function Project(props) {
       <h6>
         <Link className="project-name" to={`/profile/${props.all.user_id}`}>
           <p className="project-name">
-            {props.all.first}
-            {props.all.last}
+            {`${props.all.first} ${props.all.last}`}
           </p>
         </Link>
       </h6>

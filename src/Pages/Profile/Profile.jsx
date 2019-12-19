@@ -1,10 +1,12 @@
-/* eslint-disable array-callback-return */
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import BasicHeader from "../../Components/BasicHeader/BasicHeader";
 import "./Profile.style.scss";
 import Project from "../../Components/ProfileProject/ProfileProject";
 import axios from "axios";
+import Sidebar from "../../Components/Sidebar/Sidebar";
+import MainContent from "../../Components/MainContent/MainContent";
+import DefaultPic from "./defaultUser.png";
 
 class Profile extends Component {
   constructor(props) {
@@ -38,21 +40,37 @@ class Profile extends Component {
     });
 
     return (
-      <React.Fragment>
-        <div className="profile-main">
-          <BasicHeader />
+      <div className="whole-profile">
+        <Sidebar showHomeBtn={true} loggedUser={this.props.user} />
+        <MainContent padding={"0px"}>
+          <div className="profile-main">
+            <div className="profile-info">
+              {this.state.profileData.profile_image ? (
+                <img
+                  className="profile-info-img"
+                  src={`.${this.state.profileData.profile_image}`}
+                  alt="profile"
+                />
+              ) : (
+                <img
+                  className="profile-info-img"
+                  src={DefaultPic}
+                  alt="profile"
+                />
+              )}
 
-          <div className="profile-pic"></div>
+              <div className="profile-details">
+                {this.state.profileData.first}
+                {this.state.profileData.last}
+              </div>
 
-          <div className="profile-info">
-            <div className="profile-details">
-              {/* {this.props.all.first}
-              {this.props.all.last} */}
-            </div>
-
-            <div>
-              <div>Campus: {this.state.profileData.campus}</div>
-              <div>Email: {this.state.profileData.email}</div>
+              {/* <div> */}
+              <div className="profilfe-info-text">
+                Campus: {this.state.profileData.campus}
+              </div>
+              <div className="profile-info-text">
+                Email: {this.state.profileData.email}
+              </div>
               {!this.state.profileData.linkedin ? (
                 <></>
               ) : (
@@ -60,15 +78,19 @@ class Profile extends Component {
                   <i className="fab fa-linkedin"></i>
                 </a>
               )}
+              {/* </div> */}
+            </div>
+            <div className="profile-projects-container">
+              <h4>My Projects</h4>
+              <div className="profile-grid-container">
+                <div className="profile-container">
+                  <div className="profile-grid"> {mappedProjects}</div>
+                </div>
+              </div>
             </div>
           </div>
-
-          <h4>My Projects</h4>
-          <div className="profile-container">
-            <div className="profile-grid"> {mappedProjects}</div>
-          </div>
-        </div>
-      </React.Fragment>
+        </MainContent>
+      </div>
     );
   }
 }
