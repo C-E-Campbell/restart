@@ -1,7 +1,9 @@
-// const { getUserInfo, getAllNames } = require("../App");
+// const { sum, sayHello, fetchUser } = require("./functions");
 
-// test("user name is Kinley", async () => {
-//   expect.assertions(1);
-//   const data = await getAllNames();
-//   expect(data.user_id[7]).toEqual("Kinley");
+// test("adds 1 + 2 to equal 3", () => {
+//   expect(sum(1, 2)).toBe(3);
+// });
+
+// test("sayHello says hello", () => {
+//   expect(sayHello()).toBe("hello");
 // });

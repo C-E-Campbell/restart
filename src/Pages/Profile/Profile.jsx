@@ -41,6 +41,7 @@ class Profile extends Component {
 
     return (
       <div className="whole-profile">
+<<<<<<< HEAD
         <Sidebar showHomeBtn={true} loggedUser={this.props.user} />
         <MainContent padding={"0px"}>
           <div className="profile-main">
@@ -71,6 +72,20 @@ class Profile extends Component {
               <div className="profile-info-text">
                 Email: {this.state.profileData.email}
               </div>
+=======
+        <Sidebar loggedUser={this.props.user.id} />
+        <MainContent>
+          <div className="profile-main">
+            <div className="profile-info">
+              <div className="profile-details">
+                {this.props.user.first}
+                {this.props.user.last}
+              </div>
+
+              {/* <div> */}
+              <div>Campus: {this.state.profileData.campus}</div>
+              <div>Email: {this.state.profileData.email}</div>
+>>>>>>> server
               {!this.state.profileData.linkedin ? (
                 <></>
               ) : (
@@ -78,6 +93,7 @@ class Profile extends Component {
                   <i className="fab fa-linkedin"></i>
                 </a>
               )}
+<<<<<<< HEAD
               {/* </div> */}
             </div>
             <div className="profile-projects-container">
@@ -86,6 +102,14 @@ class Profile extends Component {
                 <div className="profile-container">
                   <div className="profile-grid"> {mappedProjects}</div>
                 </div>
+=======
+            </div>
+            {/* </div> */}
+            <h4>My Projects</h4>
+            <div className="profile-grid-container">
+              <div className="profile-container">
+                <div className="profile-grid"> {mappedProjects}</div>
+>>>>>>> server
               </div>
             </div>
           </div>

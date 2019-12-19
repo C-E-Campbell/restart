@@ -35,7 +35,7 @@ class SingleProjects extends Component {
           <div className="single-container">
             <div id="top" className={this.state.up ? "hide" : "show"}>
               <iframe
-                style={{ height: "80vh", width: "90%" }}
+                style={{ height: "77vh", width: "90%" }}
                 className="iframe"
                 title="project"
                 src={this.props.location.state.host_url}
@@ -47,7 +47,6 @@ class SingleProjects extends Component {
                 </button>
               </div>
             </div>
-
             <div
               id="bottom"
               className={this.state.up ? "single-project-details" : "view"}
@@ -60,13 +59,13 @@ class SingleProjects extends Component {
                     {this.props.location.state.last}
                   </h2>
                   <i className="fab fa-github-alt fa-3x github"></i>
-                  <h2>{this.props.location.state.project_name}</h2>
+                  {/* <h2>{this.props.location.state.project_name}</h2> */}
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
                     href={this.props.location.state.github}
                   >
-                    <i className="fab fa-github-alt fa-3x"></i>
+                    {/* <i className="fab fa-github-alt fa-3x"></i> */}
                   </a>
                 </div>
               </header>
