@@ -42,6 +42,7 @@ class Profile extends Component {
       <div className="whole-profile">
         <Sidebar
         loggedUser={this.props.user.id}
+        
         />
         <MainContent>
         <div className="profile-main">
