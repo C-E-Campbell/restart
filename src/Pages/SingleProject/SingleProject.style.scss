@@ -1,6 +1,6 @@
-.user-box {
-  background: linear-gradient(#222, 80%, #0c4b66);
-}
+// .project-user-box {
+//   background: linear-gradient(#222, 80%, #0c4b66);
+// }
 .single-project-container {
   display: flex;
   overflow: hidden;
@@ -30,11 +30,11 @@
   justify-content: space-between;
   font-family: "Montserrat", sans-serif;
   width: 100%;
-  height: 98%;
+  // height: 98%;
   overflow: hidden;
 
   iframe {
-    margin-top: 5%;
+    margin-top: 2%;
     margin-left: 5%;
     box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.541);
     overflow-x: hidden;
@@ -128,21 +128,21 @@
   }
 
   header {
-    width: 100%;
+    width: 25%;
 
     .header-inner-container {
       display: flex;
-      height: 60px;
+      // height: 60px;
       margin: 0 auto 1rem;
       max-width: 1060px;
-      align-items: flex-start;
+      align-items: center;
       justify-content: space-between;
       margin-top: 5%;
 
       h2 {
         font-size: 1.2rem;
         font-weight: 700;
-        margin-left: 5%;
+        margin-right: 20%;
       }
     }
   }
@@ -158,8 +158,8 @@
   justify-content: space-around;
 }
 .project-details-photo {
-  width: 52%;
-  height: 33%;
+  width: 60%;
+  height: 50%;
   margin-bottom: 1%;
   margin-top: 0%;
   border-radius: 5px;
@@ -189,6 +189,7 @@
 }
 #top {
   width: 100%;
+  height: 98%;
 }
 .proname {
   font-size: 24px;
@@ -197,6 +198,7 @@
 .acdescript {
   width: 100%;
   height: 100%;
+  overflow: scroll;
 }
 .descript {
   font-size: 20px;

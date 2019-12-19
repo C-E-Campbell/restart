@@ -35,7 +35,7 @@ class SingleProjects extends Component {
           <div className="single-container">
             <div id="top" className={this.state.up ? "hide" : "show"}>
               <iframe
-                style={{ height: "80vh", width: "90%" }}
+                style={{ height: "77vh", width: "90%" }}
                 className="iframe"
                 title="project"
                 src={this.props.location.state.host_url}
