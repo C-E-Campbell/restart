@@ -24,7 +24,7 @@ module.exports = {
     const { id } = req.params;
     try {
       const result = await db.get_profile_photo([id]);
-      console.log(result);
+
       res.status(200).send(result[0].profile_image);
     } catch (err) {
       console.log(err);

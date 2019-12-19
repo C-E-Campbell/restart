@@ -61,15 +61,18 @@ class Sidebar extends Component {
               <i className="fas fa-plus-square"></i> Upload Your Work
             </div>
           </Link>
-          <Link
-            to={`profile/${this.props.loggedUser.id}`}
-            className="sidebar-link"
-            data-aos="fade-right"
-            data-aos-delay="100"
-            data-aos-easing="ease-in"
-          >
-            <li>Your Profile</li>
-          </Link>
+          {this.props.profileBtn ? null : (
+            <Link
+              to={`profile/${this.props.loggedUser.id}`}
+              className="sidebar-link"
+              data-aos="fade-right"
+              data-aos-delay="100"
+              data-aos-easing="ease-in"
+            >
+              <li>Your Profile</li>
+            </Link>
+          )}
+
           <Link
             to="/chat"
             className="sidebar-link"

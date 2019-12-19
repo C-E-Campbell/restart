@@ -41,7 +41,11 @@ class Profile extends Component {
 
     return (
       <div className="whole-profile">
-        <Sidebar showHomeBtn={true} loggedUser={this.props.user} />
+        <Sidebar
+          showHomeBtn={true}
+          loggedUser={this.props.user}
+          profileBtn={true}
+        />
         <MainContent padding={"0px"}>
           <div className="profile-main">
             <div className="profile-info">
