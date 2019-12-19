@@ -38,7 +38,7 @@
   }
 }
 .chat-box {
-  width: 40%;
+  width: 450px;
 
   .chat {
     padding: 1rem;
@@ -50,8 +50,13 @@
   }
 }
 .chat-input-box {
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: stretch;
+	align-content: stretch;
   input {
     width: 100%;
     border: 1px solid #ccc;
@@ -72,5 +77,13 @@
       background-color: rgb(81, 31, 100);
       cursor: pointer;
     }
+  }
+}
+
+@media(max-width:520px){
+
+  .chat-input-box{
+    width: 275px;
+    
   }
 }
