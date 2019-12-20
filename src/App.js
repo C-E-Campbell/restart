@@ -12,7 +12,11 @@ import axios from "axios";
 import Chart from "./Chart/Chart";
 import Chat from "./Pages/Chat/Chat.jsx";
 import io from "socket.io-client";
-let socket = io.connect("https://localhost:4001");
+let socket = io.connect("https://localhost:4001", {
+  secure: true,
+  reconnect: true,
+  rejectUnauthorized: false
+});
 
 class App extends React.Component {
   constructor(props) {

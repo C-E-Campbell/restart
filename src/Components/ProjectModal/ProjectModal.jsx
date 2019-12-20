@@ -113,7 +113,7 @@ class ProjectModal extends Component {
               />
               <input
                 className="project-modal-input"
-                placeholder="Url: Typed 'https://(yoursite)'Optional"
+                placeholder={`URL: https:// (www.yoursite.com)`}
                 onChange={e => this.setState({ host_url: e.target.value })}
               />
               <input
