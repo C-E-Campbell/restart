@@ -7,7 +7,7 @@ const socketio = require("socket.io");
 const profileCTRL = require("./profile_controller");
 const fileUpload = require("express-fileupload");
 
-// app.use(express.status(__dirname + "/../build"));
+app.use(express.static(`${__dirname}/../build`));
 
 app.use(fileUpload());
 app.use(express.json());
@@ -107,4 +107,9 @@ io.on("connection", socket => {
   socket.on("message", message => {
     io.emit("newMessage", message);
   });
+});
+
+const path = require("path");
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
 });
