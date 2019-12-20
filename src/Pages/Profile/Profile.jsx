@@ -1,6 +1,6 @@
+/* eslint-disable array-callback-return */
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import BasicHeader from "../../Components/BasicHeader/BasicHeader";
 import "./Profile.style.scss";
 import Project from "../../Components/ProfileProject/ProfileProject";
 import axios from "axios";
