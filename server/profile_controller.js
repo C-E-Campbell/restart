@@ -7,7 +7,7 @@ module.exports = {
     }
 
     const file = req.files.file;
-    file.mv(__dirname + "/../public/uploads/" + id + file.name, err => {
+    file.mv(__dirname + "/../build/uploads/" + id + file.name, err => {
       if (err) {
         console.log(err);
         return res.status(500).send(err);
