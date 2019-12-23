@@ -41,7 +41,7 @@ class Sidebar extends Component {
         </div>
         <ul className="sidebar-ul">
           <ImageUploader
-            getPhoto={this.props.getPhoto}
+            getPhoto={this.getProfilePhoto}
             pic={this.state.profileImg}
             id={this.props.loggedUser.id}
           />
