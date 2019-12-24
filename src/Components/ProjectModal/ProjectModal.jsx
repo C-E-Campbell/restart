@@ -49,13 +49,10 @@ class ProjectModal extends Component {
       otherTechs
     } = this.state;
     const { id, first, last } = this.props.id;
-    if (
-      !github.includes("http") ||
-      !thumbnail.includes("http")
-    ) {
+    if (!github.includes("http") || !thumbnail.includes("http")) {
       alert("Please add the full URL including http://");
     }
-    if()
+
     await axios.post("/auth/addProject", {
       id,
       project_name,
