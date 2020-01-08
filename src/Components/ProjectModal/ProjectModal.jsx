@@ -111,7 +111,7 @@ class ProjectModal extends Component {
               />
               <input
                 className="project-modal-input"
-                placeholder="Site Thumbnail"
+                placeholder="Site Thumbnail: https://thumbnail url (optional but recommended)"
                 onChange={e => this.setState({ thumbnail: e.target.value })}
               />
               <input

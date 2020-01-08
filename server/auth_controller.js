@@ -13,7 +13,7 @@ module.exports = {
       const saltRounds = 12;
       const salt = await bcrypt.genSalt(saltRounds);
       const hashedPassword = await bcrypt.hash(password, salt);
-      const [newUser] = await db.create_user([
+      const newUser = await db.create_user([
         first,
         last,
         email,
@@ -21,8 +21,14 @@ module.exports = {
         campus,
         status
       ]);
-      req.session.user = newUser;
-      console.log(req.session.user);
+
+      req.session.user = req.session.user = {
+        id: newUser[0].user_id,
+        email: newUser[0].email,
+        first: newUser[0].first,
+        last: newUser[0].last
+      };
+
       res.status(200).send(req.session.user);
     }
   },
