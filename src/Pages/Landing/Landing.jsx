@@ -80,11 +80,15 @@ class Landing extends React.Component {
     if (this.state.email === "" || this.state.password === "") {
     } else {
       const { email, password } = this.state;
-      localStorage.setItem("localCachedEmail", email);
+
       const result = await axios.post("/auth/login", {
         email,
         password
       });
+
+      if (result.data.email) {
+        localStorage.setItem("localCachedEmail", email);
+      }
 
       this.props.user(result.data);
       this.props.history.push("/projects");

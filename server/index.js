@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 const session = require("express-session");
 const massive = require("massive");
-const socketio = require("socket.io");
+// const socketio = require("socket.io");
 const profileCTRL = require("./profile_controller");
 const fileUpload = require("express-fileupload");
 
@@ -100,13 +100,13 @@ const expressServer = app.listen(port, () =>
   console.log(`up and running on port ${port}`)
 );
 
-const io = socketio(expressServer);
+// const io = socketio(expressServer);
 
-io.on("connection", socket => {
-  socket.on("message", message => {
-    io.emit("newMessage", message);
-  });
-});
+// io.on("connection", socket => {
+//   socket.on("message", message => {
+//     io.emit("newMessage", message);
+//   });
+// });
 
 const path = require("path");
 
