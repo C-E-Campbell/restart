@@ -40,11 +40,11 @@ class Sidebar extends Component {
           </Link>
         </div>
         <ul className="sidebar-ul">
-          <ImageUploader
+          {/* <ImageUploader
             getPhoto={this.getProfilePhoto}
             pic={this.state.profileImg}
             id={this.props.loggedUser.id}
-          />
+          /> */}
           {!this.props.showHomeBtn ? (
             <input
               placeholder="Seach Developers"

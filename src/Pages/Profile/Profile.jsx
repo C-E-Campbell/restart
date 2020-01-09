@@ -49,7 +49,7 @@ class Profile extends Component {
         <MainContent padding={"0px"}>
           <div className="profile-main">
             <div className="profile-info">
-              {this.state.profileData.profile_image ? (
+              {/* {this.state.profileData.profile_image ? (
                 <img
                   className="profile-info-img"
                   src={`.${this.state.profileData.profile_image}`}
@@ -61,7 +61,7 @@ class Profile extends Component {
                   src={DefaultPic}
                   alt="profile"
                 />
-              )}
+              )} */}
 
               <div className="profile-details">
                 {this.state.profileData.first}
