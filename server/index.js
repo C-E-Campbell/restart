@@ -46,7 +46,7 @@ const {
 const { getCampusInfo, getCampusLinkEamil } = require('./chart_controller');
 
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
-console.log(SESSION_SECRET);
+
 app.use(
   session({
     secret: SESSION_SECRET,
@@ -71,7 +71,6 @@ massive({
 
 app.post('/auth/register', register);
 app.post('/auth/login', login);
-
 app.post('/auth/imageupload/:id', profileCTRL.imgUpload);
 app.delete('/auth/logout', logout);
 app.get('/auth/getAllProjects', getAllProjects);
@@ -81,7 +80,6 @@ app.get('/auth/getNames', getNames);
 app.delete('/auth/delete_project/:project_id', deleteProject);
 app.put('/auth/edit_project', editproject);
 app.post('/auth/addProject', addProject);
-
 app.get('/auth/get_all_feedback/:id', getAllFeedback);
 app.post('/auth/add_feedback', addFeedback);
 app.put('/auth/edit_feedback', editFeedback);
