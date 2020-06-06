@@ -46,9 +46,10 @@ const {
 const { getCampusInfo, getCampusLinkEamil } = require('./chart_controller');
 
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
+console.log(SESSION_SECRET);
 app.use(
   session({
-    secret: 'sertertert',
+    secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookies: {
@@ -58,14 +59,13 @@ app.use(
 );
 
 massive({
-  connectionString:
-    'postgres://gmxzovjfjktxng:97a3ee3e95fe129285ea95c470854c3ac5a762df20cce6c8de478af6969f3a78@ec2-50-19-95-77.compute-1.amazonaws.com:5432/dft043im6lq5dn?ssl=true',
+  connectionString: CONNECTION_STRING,
   ssl: {
     rejectUnauthorized: false,
   },
 })
-  .then((dbInstance) => {
-    app.set('db', dbInstance);
+  .then((db) => {
+    app.set('db', db);
   })
   .catch((err) => console.log(err));
 

@@ -41,7 +41,6 @@ module.exports = {
           .status(401)
           .send('Cant find that account. You may need to register');
       } else {
-        client.set(`${email}:password`, password); // store session instead
         let checkPass = bcrypt.compareSync(password, checkForUser[0].password);
         if (checkPass) {
           req.session.user = {
@@ -64,14 +63,17 @@ module.exports = {
     res.status(200).send('Logout successful');
   },
   getNames: async (req, res, next) => {
-    const db = req.app.get('db');
+    const dbInstance = req.app.get('db');
 
-    try {
-      const result = await db.get_names_by_id();
-      return res.status(200).send(result);
-    } catch (err) {
-      console.log(err);
-    }
+    dbInstance
+      .get_names_by_id()
+      .then((result) => {
+        res.status(200).send(result);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).send(err);
+      });
   },
   getCampusAndEmail: async (req, res, next) => {
     const db = req.app.get('db');
