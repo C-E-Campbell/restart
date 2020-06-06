@@ -49,7 +49,7 @@ const { getCampusInfo, getCampusLinkEamil } = require("./chart_controller");
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
 app.use(
   session({
-    secret: SESSION_SECRET,
+    secret: "sertertert",
     resave: false,
     saveUninitialized: false,
     cookies: {
@@ -58,7 +58,9 @@ app.use(
   })
 );
 
-massive(CONNECTION_STRING).then(db => {
+massive(
+  "postgres://gmxzovjfjktxng:97a3ee3e95fe129285ea95c470854c3ac5a762df20cce6c8de478af6969f3a78@ec2-50-19-95-77.compute-1.amazonaws.com:5432/dft043im6lq5dn?ssl=true"
+).then(db => {
   console.log("database connected");
   app.set("db", db);
 });
