@@ -16,7 +16,6 @@ const {
   register,
   logout,
   login,
-  checkCache,
   getNames,
   getCampusAndEmail,
 } = require('./auth_controller');
