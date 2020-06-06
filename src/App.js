@@ -10,9 +10,6 @@ import ProjectModal from "./Components/ProjectModal/ProjectModal.jsx";
 import MyProvider from "./Components/MyProvider/MyProvider.jsx";
 import axios from "axios";
 import Chart from "./Chart/Chart";
-import Chat from "./Pages/Chat/Chat.jsx";
-// import io from "socket.io-client";
-// let socket = io.connect("http://localhost:4001");
 
 class App extends React.Component {
   constructor(props) {
@@ -120,17 +117,6 @@ class App extends React.Component {
               exact
               render={() => (
                 <Idea
-                  users={this.state.allIds}
-                  userData={this.state.userInfo}
-                />
-              )}
-            />
-            <Route
-              path="/chat"
-              exact
-              render={() => (
-                <Chat
-                  chat={this.state.chatArr}
                   users={this.state.allIds}
                   userData={this.state.userInfo}
                 />

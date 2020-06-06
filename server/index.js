@@ -67,7 +67,7 @@ massive(
 
 app.post("/auth/register", register);
 app.post("/auth/login", login);
-app.post("/auth/checkcache", checkCache);
+
 app.post("/auth/imageupload/:id", profileCTRL.imgUpload);
 app.delete("/auth/logout", logout);
 app.get("/auth/getAllProjects", getAllProjects);

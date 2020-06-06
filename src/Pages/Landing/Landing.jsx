@@ -36,28 +36,8 @@ class Landing extends React.Component {
     this.props.projects(results.data);
   };
 
-  checkcache = () => {
-    if (localStorage.getItem("localCachedEmail")) {
-      const lsEmail = localStorage.getItem("localCachedEmail");
-      axios
-        .post("/auth/checkcache", {
-          email: lsEmail
-        })
-        .then(res => {
-          if (res.data) {
-            this.setState({
-              email: localStorage.getItem("localCachedEmail"),
-              password: res.data
-            });
-            this.login();
-          }
-        });
-    }
-  };
-
   componentDidMount = async () => {
     this.getProjects();
-    this.checkcache();
   };
 
   register = async e => {
@@ -85,10 +65,6 @@ class Landing extends React.Component {
         email,
         password
       });
-
-      if (result.data.email) {
-        localStorage.setItem("localCachedEmail", email);
-      }
 
       this.props.user(result.data);
       this.props.history.push("/projects");
