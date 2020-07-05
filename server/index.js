@@ -49,7 +49,7 @@ const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
 
 app.use(
   session({
-    secret: SESSION_SECRET,
+    secret: '46efjghfd*&^%lkJGHKJYF',
     resave: false,
     saveUninitialized: false,
     cookies: {
@@ -59,7 +59,8 @@ app.use(
 );
 
 massive({
-  connectionString: CONNECTION_STRING,
+  connectionString:
+    'postgres://gmxzovjfjktxng:97a3ee3e95fe129285ea95c470854c3ac5a762df20cce6c8de478af6969f3a78@ec2-50-19-95-77.compute-1.amazonaws.com:5432/dft043im6lq5dn',
   ssl: {
     rejectUnauthorized: false,
   },
@@ -100,7 +101,7 @@ app.get('/auth/get_campus_email/:id', getCampusAndEmail);
 app.get('/auth/get_link_campus_email/:id', getCampusLinkEamil);
 
 let port = SERVER_PORT;
-app.listen(port, () => console.log(`up and running on port ${port}`));
+app.listen(4001, () => console.log(`up and running on port ${port}`));
 
 const path = require('path');
 
