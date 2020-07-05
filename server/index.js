@@ -100,8 +100,7 @@ app.get('/auth/get_campus', getCampusInfo);
 app.get('/auth/get_campus_email/:id', getCampusAndEmail);
 app.get('/auth/get_link_campus_email/:id', getCampusLinkEamil);
 
-let port = SERVER_PORT;
-app.listen(4001, () => console.log(`up and running on port ${port}`));
+app.listen(4001, () => console.log(`up and running on port 4001`));
 
 const path = require('path');
 

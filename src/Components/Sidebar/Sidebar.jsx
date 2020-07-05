@@ -1,17 +1,17 @@
-import React, { Component } from "react";
-import { withRouter, Link } from "react-router-dom";
-import logo from "../../Assets/smallLogo.png";
-import axios from "axios";
-import ImageUploader from "../ImageUploader/ImageUploader";
-import "./Sidebar.style.scss";
-import { MyContext } from "../MyProvider/MyProvider";
+import React, { Component } from 'react';
+import { withRouter, Link } from 'react-router-dom';
+import logo from '../../Assets/smallLogo.png';
+import axios from 'axios';
+import ImageUploader from '../ImageUploader/ImageUploader';
+import './Sidebar.style.scss';
+import { MyContext } from '../MyProvider/MyProvider';
 
 class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: "",
-      profileImg: null
+      search: '',
+      profileImg: null,
     };
   }
 
@@ -26,7 +26,7 @@ class Sidebar extends Component {
       `/auth/getProfilePhoto/${this.props.loggedUser.id}`
     );
     this.setState({
-      profileImg: results.data
+      profileImg: results.data,
     });
   };
 
@@ -48,7 +48,7 @@ class Sidebar extends Component {
           {!this.props.showHomeBtn ? (
             <input
               placeholder="Seach Developers"
-              onChange={e => this.props.found(e.target.value)}
+              onChange={(e) => this.props.found(e.target.value)}
             />
           ) : (
             <Link to="/projects" className="back-to-projects-btn">
@@ -57,9 +57,7 @@ class Sidebar extends Component {
           )}
 
           <Link to="/projectUpload" className="sidebar-link">
-            <div className="upload-btn">
-              <i className="fas fa-plus-square"></i> Upload Your Work
-            </div>
+            <div className="upload-btn">Upload Your Work</div>
           </Link>
           {this.props.profileBtn ? null : (
             <Link
@@ -113,7 +111,7 @@ class Sidebar extends Component {
                 {!this.props.showHomeBtn ? (
                   <input
                     placeholder="Seach Developers"
-                    onChange={e => this.props.found(e.target.value)}
+                    onChange={(e) => this.props.found(e.target.value)}
                   />
                 ) : (
                   <Link to="/projects" className="back-to-projects-btn">
@@ -161,7 +159,7 @@ class Sidebar extends Component {
           </nav>
 
           <MyContext.Consumer>
-            {value => (
+            {(value) => (
               <Link
                 to="/"
                 className="sidebar-link"
