@@ -1,12 +1,11 @@
 /* eslint-disable array-callback-return */
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import "./Profile.style.scss";
-import Project from "../../Components/ProfileProject/ProfileProject";
-import axios from "axios";
-import Sidebar from "../../Components/Sidebar/Sidebar";
-import MainContent from "../../Components/MainContent/MainContent";
-import DefaultPic from "./defaultUser.png";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import './Profile.style.scss';
+import Project from '../../Components/ProfileProject/ProfileProject';
+import axios from 'axios';
+import Sidebar from '../../Components/Sidebar/Sidebar';
+import MainContent from '../../Components/MainContent/MainContent';
 
 class Profile extends Component {
   constructor(props) {
@@ -14,7 +13,7 @@ class Profile extends Component {
     this.state = {
       projects: {},
       userInfo: {},
-      profileData: {}
+      profileData: {},
     };
   }
   async componentDidMount() {
@@ -33,7 +32,7 @@ class Profile extends Component {
   }
 
   render() {
-    const mappedProjects = this.props.projectDataMain.map(project => {
+    const mappedProjects = this.props.projectDataMain.map((project) => {
       if (project.user_id === Number(this.props.match.params.id)) {
         return <Project profile={project} />;
       }
@@ -46,29 +45,14 @@ class Profile extends Component {
           loggedUser={this.props.user}
           profileBtn={true}
         />
-        <MainContent padding={"0px"}>
+        <MainContent padding={'0px'}>
           <div className="profile-main">
             <div className="profile-info">
-              {/* {this.state.profileData.profile_image ? (
-                <img
-                  className="profile-info-img"
-                  src={`.${this.state.profileData.profile_image}`}
-                  alt="profile"
-                />
-              ) : (
-                <img
-                  className="profile-info-img"
-                  src={DefaultPic}
-                  alt="profile"
-                />
-              )} */}
-
               <div className="profile-details">
                 {this.state.profileData.first}
                 {this.state.profileData.last}
               </div>
 
-              {/* <div> */}
               <div className="profilfe-info-text">
                 Campus: {this.state.profileData.campus}
               </div>
@@ -82,7 +66,6 @@ class Profile extends Component {
                   <i className="fab fa-linkedin"></i>
                 </a>
               )}
-              {/* </div> */}
             </div>
             <div className="profile-projects-container">
               <h4>My Projects</h4>

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import logo from '../../Assets/smallLogo.png';
 import axios from 'axios';
-import ImageUploader from '../ImageUploader/ImageUploader';
 import './Sidebar.style.scss';
 import { MyContext } from '../MyProvider/MyProvider';
 
