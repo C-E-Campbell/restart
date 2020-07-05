@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({ path: '../.env' });
 const express = require('express');
 const app = express();
 const session = require('express-session');
@@ -99,7 +99,7 @@ app.get('/auth/get_campus', getCampusInfo);
 app.get('/auth/get_campus_email/:id', getCampusAndEmail);
 app.get('/auth/get_link_campus_email/:id', getCampusLinkEamil);
 
-let port = SERVER_PORT || 4001;
+let port = SERVER_PORT;
 app.listen(port, () => console.log(`up and running on port ${port}`));
 
 const path = require('path');
