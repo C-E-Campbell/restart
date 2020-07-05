@@ -1,9 +1,8 @@
-require('dotenv').config({ path: '../.env' });
 const express = require('express');
 const app = express();
 const session = require('express-session');
 const massive = require('massive');
-// const socketio = require("socket.io");
+
 const profileCTRL = require('./profile_controller');
 const fileUpload = require('express-fileupload');
 
@@ -44,8 +43,6 @@ const {
 } = require('./idea_controller');
 
 const { getCampusInfo, getCampusLinkEamil } = require('./chart_controller');
-
-const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT } = process.env;
 
 app.use(
   session({
