@@ -56,17 +56,12 @@ app.use(
   })
 );
 
-massive(
-  {
-    connectionString: CONNECTION_STRING,
-    ssl: {
-      rejectUnauthorized: false,
-    },
+massive({
+  connectionString: CONNECTION_STRING,
+  ssl: {
+    rejectUnauthorized: false,
   },
-  {
-    scripts: '../db',
-  }
-)
+})
   .then((db) => {
     console.log('db connected');
     app.set('db', db);
