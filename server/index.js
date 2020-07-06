@@ -68,6 +68,7 @@ massive(
   }
 )
   .then((db) => {
+    console.log('db connected');
     app.set('db', db);
   })
   .catch((err) => console.log(err));
