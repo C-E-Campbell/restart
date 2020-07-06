@@ -1,8 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const session = require('express-session');
 const massive = require('massive');
-
+const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env;
 const profileCTRL = require('./profile_controller');
 const fileUpload = require('express-fileupload');
 
@@ -46,7 +47,7 @@ const { getCampusInfo, getCampusLinkEamil } = require('./chart_controller');
 
 app.use(
   session({
-    secret: '46efjghfd*&^%lkJGHKJYF',
+    secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookies: {
@@ -56,8 +57,7 @@ app.use(
 );
 
 massive({
-  connectionString:
-    'postgres://gmxzovjfjktxng:97a3ee3e95fe129285ea95c470854c3ac5a762df20cce6c8de478af6969f3a78@ec2-50-19-95-77.compute-1.amazonaws.com:5432/dft043im6lq5dn',
+  connectionString: CONNECTION_STRING,
   ssl: {
     rejectUnauthorized: false,
   },
@@ -97,7 +97,9 @@ app.get('/auth/get_campus', getCampusInfo);
 app.get('/auth/get_campus_email/:id', getCampusAndEmail);
 app.get('/auth/get_link_campus_email/:id', getCampusLinkEamil);
 
-app.listen(4001, () => console.log(`up and running on port 4001`));
+app.listen(SERVER_PORT, () =>
+  console.log(`up and running on port ${SERVER_PORT}`)
+);
 
 const path = require('path');
 
