@@ -1,4 +1,4 @@
-require('dotenv').config({ path: '.../.env' });
+require('dotenv').config({ path: '../.env' });
 const express = require('express');
 const app = express();
 const session = require('express-session');
@@ -56,12 +56,17 @@ app.use(
   })
 );
 
-massive({
-  connectionString: CONNECTION_STRING,
-  ssl: {
-    rejectUnauthorized: false,
+massive(
+  {
+    connectionString: CONNECTION_STRING,
+    ssl: {
+      rejectUnauthorized: false,
+    },
   },
-})
+  {
+    scripts: '../db',
+  }
+)
   .then((db) => {
     app.set('db', db);
   })
